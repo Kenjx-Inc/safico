@@ -1,0 +1,7 @@
+{
+  "name": "safico",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
