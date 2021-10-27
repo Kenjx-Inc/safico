@@ -1,9 +1,126 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>home</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="home-page">
+  <ion-header class="ion-no-border">
+    <ion-toolbar class="header-home">
+      <ion-title class="company-title">Safico Cafe</ion-title>
+      <ion-avatar slot="end">
+        <img src="../../assets/profile/profile1.PNG" alt="owner of the account" class="profile-image">
+      </ion-avatar>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content>
+  <ion-content [fullscreen]="true">
+    <div id="main-section">
+      <div id="top-section">
+        <ion-searchbar animated placeholder="Search Food" (ionChange)="onSearchChange($event)" showCancelButton="focus"
+          inputmode="search" search-icon="search-outline" class="ion-no-shadow">
+        </ion-searchbar>
 
-</ion-content>
+        <header>
+          <span class="recommended-items">Recommended </span>
+          <span class="list-all-items">
+            <span>View All</span>
+            <ion-icon class="arrow-forward-icon" name="arrow-forward"></ion-icon>
+          </span>
+        </header>
+
+        <!-- Slides for the recommended items -->
+        <ion-slides mode="ios" pager="false" [options]="options">
+          <ion-slide>
+            <div class="item">
+              <div class="item-image-wrapper">
+                <img class="item-image" src="../../assets/flakes.png" />
+              </div>
+              <ion-card class="item-showcase">
+                <ion-card-header>
+                  <!-- Category, Title(Name), Price -->
+                  <ion-card-subtitle class="item-category">Breakfast</ion-card-subtitle>
+                  <ion-card-title class="item-title">Flakes</ion-card-title>
+                </ion-card-header>
+                <ion-card-content class="item-price">
+                  UGX 12,000
+                </ion-card-content>
+              </ion-card>
+            </div>
+          </ion-slide>
+
+          <ion-slide>
+            <div class="item">
+              <div class="item-image-wrapper">
+                <img class="item-image" src="../../assets/salads.png" />
+              </div>
+              <ion-card class="item-showcase second-item-cat">
+                <ion-card-header>
+                  <!-- Category, Title(Name), Price -->
+                  <ion-card-subtitle class="item-category">Natural</ion-card-subtitle>
+                  <ion-card-title class="item-title">Salads</ion-card-title>
+                </ion-card-header>
+                <ion-card-content class="item-price">
+                  UGX 5,500
+                </ion-card-content>
+              </ion-card>
+            </div>
+          </ion-slide>
+          <ion-slide>
+            <div class="item">
+              <div class="item-image-wrapper">
+                <img class="item-image" src="../../assets/hot dog.png" />
+              </div>
+              <ion-card class="item-showcase">
+                <ion-card-header>
+                  <!-- Category, Title(Name), Price -->
+                  <ion-card-subtitle class="item-category">Fast Food</ion-card-subtitle>
+                  <ion-card-title class="item-title">Hot Dog (Burger)</ion-card-title>
+                </ion-card-header>
+                <ion-card-content class="item-price">
+                  UGX 15,000
+                </ion-card-content>
+              </ion-card>
+            </div>
+          </ion-slide>
+        </ion-slides>
+      </div>
+
+      <!-- End slides -->
+
+
+      <div class="popular-items">
+        <!-- TODO iterate from an array of objects to create an automated categories available -->
+        <!-- START SEGMENT -->
+        <ion-segment scrollable value="popular">
+
+          <ion-segment-button value="popular">
+            <ion-label>Popular</ion-label>
+          </ion-segment-button>
+
+          <ion-segment-button value="fast-food">
+            <ion-label>Fast Food</ion-label>
+          </ion-segment-button>
+
+          <ion-segment-button value="local">
+            <ion-label>Local</ion-label>
+          </ion-segment-button>
+
+        </ion-segment>
+        <!-- END SEGMENT -->
+
+        <!-- SLIDES -->
+        <div class="bottom-section">
+
+          <!-- Item One  -->
+          <ion-card>
+            <img src="" alt="" class="bottom-section-image">
+            <ion-card-content>
+              <div class="item-summary">
+                <span class="item-name">Item name</span>
+                <span class="item-price">UGX 7000</span>
+              </div>
+              <div class="favourite-icon-border">
+                <ion-icon class="favourite-button" slot="end" name="heart"></ion-icon>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </div>
+
+      </div>
+    </div>
+  </ion-content>
