@@ -2,6 +2,8 @@ ion-content {
   --background: #fff !important;
 }
 
+
+
 .home-page {
   margin: 2px 6px !important;
 }
@@ -55,13 +57,19 @@ ion-content {
     .list-all-items {
       opacity: 0.4;
       font-weight: 300;
+
+      .view-all-items-link:hover,
+      .view-all-items-link:focus{
+        cursor: pointer;
+        color: #0e0d0d;
+      }
     }
 
     ion-icon.arrow-forward-icon {
       font-size: inherit;
       top: 2px;
       padding-left: 2px;
-      color: #e346118a;
+      color: #e34611;
     }
 
   }
@@ -69,8 +77,8 @@ ion-content {
   ///////////////////////////////////////////
   // Items Showcase
   //////////////////////////////////////////
-  ion-slides::content {
-    height: 350px !important;
+  .first-slides::content {
+    height: 400px !important;
   }
 
 
@@ -80,7 +88,7 @@ ion-content {
     align-items: baseline;
     margin-top: 1.5rem !important;
     margin: 0;
-    height: 100% !important;
+    height: 150% !important;
     flex-direction: column !important;
   }
 
@@ -137,4 +145,95 @@ ion-content {
     margin-top: -8px !important;
   }
 
+}
+
+///////////////////////////////
+// Bottom Section ////
+/////////////////////////////
+
+ion-segment {
+  margin-bottom: 13px;
+  padding: 0 13px;
+}
+
+ion-segment-button {
+  text-transform: capitalize !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  --color-checked: #e34411;
+}
+
+.bottom-slides::content {
+  height: auto !important;
+}
+
+.popular-items ion-slide.swiper-slide {
+  height: 200px !important;
+  // width: 300px !important;
+  justify-content: flex-start !important;
+}
+
+.card-bottom-section {
+  background: #ffffff;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  margin: -53px 0 40px 0px;
+  padding: 1rem 0.9rem !important;
+  border-radius: 15px;
+  width: 85vw;
+  height: 100px;
+  max-width: 350px;
+
+  ion-avatar {
+    width: 120px;
+    height: 100%;
+    max-height: 80px;
+    border: none;
+    --border-radius: 20px !important;
+  }
+
+  ion-card-content {
+    display: flex;
+    width: 100%;
+    text-align: left;
+    justify-content: space-between;
+    flex-direction: row !important;
+    font-weight: 600 !important;
+
+    span.item-price {
+      display: block;
+      padding-top: 9px !important;
+      font-weight: 600 !important;
+    }
+
+    .item-summary>.item-name {
+      display: block;
+      font-weight: 400 !important;
+      margin-top: -10px !important;
+      font-size: 20px !important;
+    }
+
+
+    .favourite-icon-border {
+      width: 33px;
+      height: 33px;
+      border-radius: 50%;
+      background: #e34411;
+      opacity: 0.7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+    }
+
+    .favourite-icon-border>* {
+      color: #fff;
+      display: block;
+      z-index: 3;
+      font-size: 27px;
+      opacity: 0.8;
+    }
+
+  }
 }

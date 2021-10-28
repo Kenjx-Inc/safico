@@ -18,13 +18,13 @@
         <header>
           <span class="recommended-items">Recommended </span>
           <span class="list-all-items">
-            <span>View All</span>
+            <span class="view-all-items-link" [routerLink]="['/tabnav/favourites']">View All</span>
             <ion-icon class="arrow-forward-icon" name="arrow-forward"></ion-icon>
           </span>
         </header>
 
         <!-- Slides for the recommended items -->
-        <ion-slides mode="ios" pager="false" [options]="options">
+        <ion-slides class="first-slides" mode="ios" pager="false" [options]="options">
           <ion-slide>
             <div class="item">
               <div class="item-image-wrapper">
@@ -85,42 +85,85 @@
 
       <div class="popular-items">
         <!-- TODO iterate from an array of objects to create an automated categories available -->
-        <!-- START SEGMENT -->
-        <ion-segment scrollable value="popular">
+        <ion-header class="ion-no-border" style="background:#F4FAF6">
+          <ion-toolbar class="popular-items-toolbar">
+            <!-- START SEGMENT -->
+            <ion-segment [(ngModel)]="segment" (ionChange)="segmentChanged($event)">
 
-          <ion-segment-button value="popular">
-            <ion-label>Popular</ion-label>
-          </ion-segment-button>
+              <ion-segment-button value="0">
+                <ion-label>Popular</ion-label>
+              </ion-segment-button>
 
-          <ion-segment-button value="fast-food">
-            <ion-label>Fast Food</ion-label>
-          </ion-segment-button>
+              <ion-segment-button value="1">
+                <ion-label>Fast Food</ion-label>
+              </ion-segment-button>
 
-          <ion-segment-button value="local">
-            <ion-label>Local</ion-label>
-          </ion-segment-button>
+              <ion-segment-button value="2">
+                <ion-label>Local</ion-label>
+              </ion-segment-button>
 
-        </ion-segment>
-        <!-- END SEGMENT -->
+            </ion-segment>
+            <!-- END SEGMENT -->
 
-        <!-- SLIDES -->
-        <div class="bottom-section">
+            <!-- SLIDES -->
+            <ion-slides class="bottom-slides" pager="false" #slides [options]="slidesOptions" (ionSlideDidChange)="slidesChanged(slides)"
+              (ionSlideDidload)="slidesChanged(slides)">
+              <!-- Item One  -->
+              <ion-slide>
+                <ion-card class="card-bottom-section ion-no-shadow">
+                  <ion-avatar>
+                    <img src="../../assets/flakesx35.png" alt="" class="bottom-section-image">
+                  </ion-avatar>
+                  <ion-card-content>
+                    <div class="item-summary">
+                      <span class="item-name">Flakes</span>
+                      <span class="item-price">UGX 12,700</span>
+                    </div>
+                    <div class="favourite-icon-border">
+                      <ion-icon class="favourite-button" slot="end" name="heart-outline"></ion-icon>
+                    </div>
+                  </ion-card-content>
+                </ion-card>
+              </ion-slide>
 
-          <!-- Item One  -->
-          <ion-card>
-            <img src="../../assets/flakes.png" alt="" class="bottom-section-image">
-            <ion-card-content>
-              <div class="item-summary">
-                <span class="item-name">Item name</span>
-                <span class="item-price">UGX 7000</span>
-              </div>
-              <div class="favourite-icon-border">
-                <ion-icon class="favourite-button" slot="end" name="heart"></ion-icon>
-              </div>
-            </ion-card-content>
-          </ion-card>
-        </div>
+              <ion-slide>
+                <ion-card class="card-bottom-section ion-no-shadow">
+                  <ion-avatar>
+                    <img src="../../assets/hot dogx35.png" alt="" class="bottom-section-image">
+                  </ion-avatar>
+                  <ion-card-content>
+                    <div class="item-summary">
+                      <span class="item-name">Hot Dog</span>
+                      <span class="item-price">UGX 15,000</span>
+                    </div>
+                    <div class="favourite-icon-border">
+                      <ion-icon class="favourite-button" slot="end" name="heart-outline"></ion-icon>
+                    </div>
+                  </ion-card-content>
+                </ion-card>
+              </ion-slide>
 
+              <ion-slide>
+                <ion-card class="card-bottom-section ion-no-shadow">
+                  <ion-avatar>
+                    <img src="../../assets/saladsx35.png" alt="" class="bottom-section-image">
+                  </ion-avatar>
+                  <ion-card-content>
+                    <div class="item-summary">
+                      <span class="item-name">Salads</span>
+                      <span class="item-price">UGX 7000</span>
+                    </div>
+                    <div class="favourite-icon-border">
+                      <ion-icon class="favourite-button" slot="end" name="heart-outline"></ion-icon>
+                    </div>
+                  </ion-card-content>
+                </ion-card>
+              </ion-slide>
+
+            </ion-slides>
+            <!-- END SLIDES -->
+          </ion-toolbar>
+        </ion-header>
       </div>
     </div>
   </ion-content>
