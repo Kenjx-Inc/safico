@@ -34,7 +34,8 @@
                 <ion-card-header>
                   <!-- Category, Title(Name), Price -->
                   <ion-card-subtitle class="item-category">Breakfast</ion-card-subtitle>
-                  <ion-card-title class="item-name">Flakes</ion-card-title>
+                  <!-- Hover effect on the title for details OR Give a short description in this section -->
+                  <ion-card-title class="item-name" [routerLink]="['/single-item']">Flakes</ion-card-title>
                 </ion-card-header>
                 <ion-card-content class="item-price">
                   UGX 12,000

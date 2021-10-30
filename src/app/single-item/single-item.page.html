@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar class="ion-no-shadow">
+    <ion-icon slot="start" [routerLink]="['/tabnav/home']" name="chevron-back"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <img src="../../assets/hot dog.png" alt="">
+
+  <ion-card>
+    <ion-header>
+      <ion-title>
+        Egg Sandwich
+        <!-- Category -->
+        <ion-button>Desert</ion-button>
+      </ion-title>
+    </ion-header>
+    <ion-content class="item-details-se">
+      <ion-header>
+        Ingredients
+      </ion-header>
+      <!-- DETAILS OF THE ITEM -->
+      <section class="specific-ingredients">White Rice, Sugar, Green Leaves, Magnetis Mix</section>
+      <section class="quantity-selection">
+        <span class="quantity-label">Quantity</span>
+        <span>
+          <ion-input type="number"></ion-input>
+        </span>
+      </section>
+    </ion-content>
+
+  </ion-card>
+
+  <!-- BOTTOM FIXED CARD -->
+  <ion-card class="fixed-card-order">
+    <div class="total-price-section">
+      <span class="total-price-heading"> Price </span>
+      <span> UGX 2,000 </span>
+    </div>
+    <ion-button class="order-now-button" [routerLink]="['/tabnav/cart']"> Order Now </ion-button>
+  </ion-card>
+</ion-content>

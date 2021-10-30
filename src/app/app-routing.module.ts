@@ -9,6 +9,10 @@ const routes: Routes = [
   {
     path: 'track-orders',
     loadChildren: () => import('./track-orders/track-orders.module').then( m => m.TrackOrdersPageModule)
+  },
+  {
+    path: 'single-item',
+    loadChildren: () => import('./single-item/single-item.module').then( m => m.SingleItemPageModule)
   }
 ];
 
