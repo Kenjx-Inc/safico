@@ -1,0 +1,123 @@
+<ion-header>
+  <ion-toolbar class="ion-no-border">
+    <ion-icon slot="start" [routerLink]="['/tabnav/profile']" name="chevron-back"></ion-icon>
+    <ion-title> Choose your favourite item</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <section class="cart-section">
+    <ion-card>
+      <div class="background-image-wrapper">
+        <img src="../../assets/flakesx35.png" />
+      </div>
+      <div class="item-summary">
+        <ion-title>Sandwich</ion-title>
+        <ion-chip>Desert</ion-chip>
+        <ion-subtitle>UGX 6400</ion-subtitle>
+      </div>
+      <ion-button class="add-to-cart-button">
+        <ion-label>Add To Cart</ion-label>
+        <ion-icon [routerLink]="['/tabnav/cart']" name="cart"></ion-icon>
+      </ion-button>
+    </ion-card>
+    <ion-card>
+      <div class="background-image-wrapper">
+        <img src="../../assets/hot dogx35.png" />
+      </div>
+      <div class="item-summary">
+        <ion-title>Sandwich</ion-title>
+        <ion-chip>Desert</ion-chip>
+        <ion-subtitle>UGX 700</ion-subtitle>
+      </div>
+      <ion-button class="add-to-cart-button">
+        <ion-label>Add To Cart</ion-label>
+        <ion-icon [routerLink]="['/tabnav/cart']" name="cart"></ion-icon>
+      </ion-button>
+    </ion-card>
+    <ion-card>
+      <div class="background-image-wrapper">
+        <img src="../../assets/flakesx35.png" />
+      </div>
+      <div class="item-summary">
+        <ion-title>Sandwich</ion-title>
+        <ion-chip>Desert</ion-chip>
+        <ion-subtitle>UGX 4000</ion-subtitle>
+      </div>
+      <ion-button class="add-to-cart-button">
+        <ion-label>Add To Cart</ion-label>
+        <ion-icon [routerLink]="['/tabnav/cart']" name="cart"></ion-icon>
+      </ion-button>
+    </ion-card>
+    <ion-card>
+      <div class="background-image-wrapper">
+        <img src="../../assets/hot dogx35.png" />
+      </div>
+      <div class="item-summary">
+        <ion-title>Sandwich</ion-title>
+
+        <ion-chip>Desert</ion-chip>
+        <ion-subtitle>UGX 19,000</ion-subtitle>
+      </div>
+      <ion-button class="add-to-cart-button">
+        <ion-label>Add To Cart</ion-label>
+        <ion-icon [routerLink]="['/tabnav/cart']" name="cart"></ion-icon>
+      </ion-button>
+    </ion-card>
+    <ion-card>
+      <div class="background-image-wrapper">
+        <img src="../../assets/salads.png" />
+      </div>
+      <div class="item-summary">
+        <ion-title>Sandwich</ion-title>
+
+        <ion-chip>Desert</ion-chip>
+        <ion-subtitle>UGX 8,900</ion-subtitle>
+      </div>
+      <ion-button class="add-to-cart-button">
+        <ion-label>Add To Cart</ion-label>
+        <ion-icon [routerLink]="['/tabnav/cart']" name="cart"></ion-icon>
+      </ion-button>
+    </ion-card>
+    <ion-card>
+      <div class="background-image-wrapper">
+        <img src="../../assets/hot dog.png" />
+      </div>
+      <div class="item-summary">
+        <ion-title>Sandwich</ion-title>
+        <!-- CATEGORY -->
+        <ion-chip>Desert</ion-chip>
+        <ion-subtitle>UGX 63,400</ion-subtitle>
+      </div>
+      <ion-button class="add-to-cart-button">
+        <ion-label>Add To Cart</ion-label>
+        <ion-icon [routerLink]="['/tabnav/cart']" name="cart"></ion-icon>
+      </ion-button>
+    </ion-card>
+  </section>
+  <section class="amount-section">
+    <ion-item class="ion-no-shadow">
+      <!-- PRICE OF ALL ITEMS -->
+      <span>Subtotal</span>
+      <span> UGX 10500</span>
+    </ion-item>
+    <ion-item>
+      <span>Total</span>
+      <!-- FINAL PRICE WITH TRANSPORT INCLUSIVE -->
+      <span>UGX 10500</span>
+    </ion-item>
+    <!-- UPDATE CURRENT LOCATION PRICE (EACH KM IS UGX 2000)-->
+    <span class="distance-price">(Distance : 59 KM - UGX 59,000)</span>
+  </section>
+  <section class="order-button">
+
+    <ion-button class="order-button">Place Order</ion-button>
+  </section>
+
+  <!-- ITEM TO SHOW WHEN CART IS EMPTY -->
+  <!-- <ion-header>
+    <ion-toolbar class="ion-no-shadow">
+      <>Go back to select your first <a>item</a></>
+    </ion-toolbar>
+ </ion-header> -->
+</ion-content>

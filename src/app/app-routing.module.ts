@@ -13,6 +13,10 @@ const routes: Routes = [
   {
     path: 'single-item',
     loadChildren: () => import('./single-item/single-item.module').then( m => m.SingleItemPageModule)
+  },
+  {
+    path: 'items',
+    loadChildren: () => import('./items/items.module').then( m => m.ItemsPageModule)
   }
 ];
 
