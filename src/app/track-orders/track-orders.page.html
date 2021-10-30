@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar class="ion-no-shadow">
+    <ion-icon slot="start" [routerLink]="['/tabnav/profile']" name="chevron-back"></ion-icon>
+    <ion-title>TrackOrders</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <img src="../../assets/hot dog.png" alt="" />
+      <ion-title></ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-card>
+    <ion-header>
+      <ion-avatar>
+        <img src="../../assets/profile/profile1.PNG">
+      </ion-avatar>
+      <ion-item>
+        <div class="driver-details">
+          <p class="driver-name"> Kenjx XX</p>
+          <p class="driver-spec"> Driver - AUD 234K</p>
+        </div>
+      </ion-item>
+      <ion-icon name="telephone-circle"></ion-icon>
+    </ion-header>
+
+    <!-- TRACKING DELIVERY -->
+    <section class="track-section">
+      <div class="start-location-details">
+        <ion-icon name="time"></ion-icon>
+        <div class="start-location">
+          <p class="start-location-place"> Safico Cafe</p>
+          <p class="start-location-time">Restaurant - 8:00 PM</p>
+        </div>
+      </div>
+      <div class="transiton-location-indicator"></div>
+      <div class="end-location-details">
+        <ion-icon name="home"></ion-icon>
+        <div class="">
+        <p class="end-location-place">Mukono Plaza</p>
+        <p class="end-location-time">Home - 12:00 PM</p>
+        </div>
+      </div>
+      <ion-button>Order Recieved</ion-button>
+    </section>
+  </ion-card>
+</ion-content>

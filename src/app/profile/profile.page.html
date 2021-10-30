@@ -1,9 +1,44 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>profile</ion-title>
+<ion-header class="header-profile">
+  <ion-toolbar class="header-toolbar">
+    <ion-title>Welcome, Kenjx! </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <section class="profile-image-section">
+    <ion-avatar>
+      <img src="../../assets/profile/profile1.PNG" />
+    </ion-avatar>
+  </section>
+  <section class="profile-details">
+    <span class="profile-name">
+      <span class="first-name">Kenjx </span>
+      <span class="last-name">Joel</span>
+    </span>
+    <span class="email"> kenjxjj@gmail.com</span>
+    <span class="home-address-location">Mukono</span>
+  </section>
+
+  <div class="profile-request-services">
+    <ion-card class="card-one">
+      <div class="first-request">
+        <div class="background-icon-wrapper">
+          <ion-icon name="menu"></ion-icon>
+        </div>
+        <p class="go-cart" >My Orders </p>
+      </div>
+      <ion-icon name="chevron-forward-circle"[routerLink]="['/tabnav/cart']"></ion-icon>
+    </ion-card>
+    <ion-card class="card-two">
+      <div class="second-request">
+        <div class="background-icon-wrapper">
+          <ion-icon name="location"></ion-icon>
+        </div>
+        <p class="track-my-orders">Order Progress</p>
+      </div>
+      <ion-icon name="chevron-forward-circle" [routerLink]="['/track-orders']"></ion-icon>
+    </ion-card>
+  </div>
 
 </ion-content>

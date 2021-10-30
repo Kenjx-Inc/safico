@@ -5,6 +5,10 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./tabnav/tabnav.module').then(m => m.TabnavPageModule)
+  },
+  {
+    path: 'track-orders',
+    loadChildren: () => import('./track-orders/track-orders.module').then( m => m.TrackOrdersPageModule)
   }
 ];
 

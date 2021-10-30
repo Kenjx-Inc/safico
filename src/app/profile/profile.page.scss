@@ -1,0 +1,103 @@
+///////////////////////////////////
+// FIRST SECTION
+///////////////////////////////////
+
+ion-content {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+
+}
+
+ion-avatar {
+  width: 120px !important;
+  height: 120px !important;
+  margin: 1.8rem auto 1.2rem !important;
+}
+
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  opacity: 0.6;
+  justify-content: center;
+  margin-bottom: 15px !important;
+}
+
+.profile-name,
+.email,
+.home-address-location {
+  margin-bottom: 9px;
+  display: block;
+}
+
+.profile-name .first-name,
+.profile-name .last-name {
+  font-weight: 700;
+  font-size: 27px;
+}
+
+.profile-email .email {
+  font-size: 14px;
+}
+
+.home-address-location {
+  font-size: 11px;
+}
+
+//////////////////////////////////////
+// BOTTOM SECTION FOR ORDERS /////////
+//////////////////////////////////////
+
+.profile-request-services {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90vw;
+  margin: auto;
+}
+
+.profile-request-services>*,
+.first-request,
+.second-request {
+  padding: 14px;
+  display: flex;
+  font-size: 0.96rem;
+  font-weight: 500;
+  color: rgb(31, 31, 31);
+  justify-content: space-between !important;
+  align-items: center;
+}
+
+ion-icon {
+  font-size: 27px !important;
+}
+
+.background-icon-wrapper {
+  margin-right: 9px;
+  background-color: #57555536;
+  width: 2.5rem;
+  height: 2.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+ion-icon[name="chevron-forward-circle"] {
+  --background: transparent !important;
+  cursor: pointer;
+  color: #a1a19d9a;
+}
+
+ion-icon[name="location"] {
+  padding: 4px;
+  color: #b19644;
+}
+
+ion-icon[name="menu"] {
+  padding: 4px;
+  color: #e34411;
+}
