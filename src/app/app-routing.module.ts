@@ -3,7 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'tabnav',
     loadChildren: () => import('./tabnav/tabnav.module').then(m => m.TabnavPageModule)
   },
   {
@@ -17,6 +17,15 @@ const routes: Routes = [
   {
     path: 'items',
     loadChildren: () => import('./items/items.module').then( m => m.ItemsPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
   }
 ];
 

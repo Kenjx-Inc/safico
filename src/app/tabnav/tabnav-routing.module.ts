@@ -5,7 +5,7 @@ import { TabnavPage } from './tabnav.page';
 
 const routes: Routes = [
   {
-    path: 'tabnav',
+    path: '',
     component: TabnavPage,
     children: [
       {
@@ -23,6 +23,11 @@ const routes: Routes = [
       {
         path: 'profile',
         loadChildren: () => import('../profile/profile.module').then(m => m.ProfilePageModule)
+      },
+      {
+        path: '',
+        redirectTo: '/tabnav/home',
+        pathMatch: 'full'
       }
     ]
   },
