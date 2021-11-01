@@ -1,0 +1,30 @@
+<ion-content [fullscreen]="true">
+  <div class="create-content">
+    <div class="image-wrapper-logo">
+      <img src="../../assets/logo1.JPG" />
+    </div>
+    <section class="intro">
+      <p class="create">Welcome</p>
+      <p>Please enter your details below.</p>
+    </section>
+
+    <section class="create-wrapper-form">
+      <form class="create-form">
+        <ion-input required type="text" placeholder="First Name" minlength="3" name="first-name"></ion-input>
+        <ion-input required type="text" placeholder="Last Name" minlength="3" name="last-name"></ion-input>
+        <ion-input required type="email" placeholder="Email" name="email"></ion-input>
+        <ion-input required type="password" placeholder="Password" name="password" minlength="8" clear-input="true">
+        </ion-input>
+       <ion-button class="create-button" [routerLink]="['/login']" routerDirection="root">
+          CREATE NOW
+        </ion-button>
+      </form>
+    </section>
+    <section class="login-account-section">
+      <p>
+        <!-- LINK TO CREATE ACCOUNT -->
+        Already have an account? <span class="login-account-link" [routerLink]="['/login']">Login</span>
+      </p>
+    </section>
+  </div>
+</ion-content>
