@@ -1,49 +1,66 @@
-<ion-header>
-  <ion-toolbar class="ion-no-shadow">
-    <ion-icon slot="start" [routerLink]="['/tabnav/profile']" name="chevron-back"></ion-icon>
-    <ion-title>TrackOrders</ion-title>
+<ion-header class="track-order-header">
+  <ion-toolbar>
+    <ion-button [routerLink]="['/tabnav/profile']">
+      <ion-icon slot="start" name="chevron-back"></ion-icon>
+    </ion-button>
+    <ion-title>Track Orders</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <!-- LOCATION IN REAL TIME SLOT -->
   <ion-header>
-    <ion-toolbar>
-      <img src="../../assets/hot dog.png" alt="" />
-      <ion-title></ion-title>
+    <ion-toolbar class="image-location-wrapper">
+      <img class="image-location" src="../../assets/delivery.jpg" alt="" />
     </ion-toolbar>
   </ion-header>
-  <ion-card>
-    <ion-header>
+
+  <!-- DRIVER CONTACT -->
+  <ion-card class="track-card-details"  slot="fixed">
+     <div class="line-divider"></div>
+    <ion-card class="driver-contact ion-no-border">
       <ion-avatar>
         <img src="../../assets/profile/profile1.PNG">
       </ion-avatar>
-      <ion-item>
+      <ion-item lines="none">
         <div class="driver-details">
-          <p class="driver-name"> Kenjx XX</p>
-          <p class="driver-spec"> Driver - AUD 234K</p>
+          <p class="driver-name">Kenjx XX</p>
+          <p class="driver-spec">Driver - AUD 234K</p>
         </div>
       </ion-item>
-      <ion-icon name="telephone-circle"></ion-icon>
-    </ion-header>
+      <div class="call-button">
+        <ion-icon name="call"></ion-icon>
+      </div>
+    </ion-card>
 
     <!-- TRACKING DELIVERY -->
     <section class="track-section">
       <div class="start-location-details">
-        <ion-icon name="time"></ion-icon>
+        <div class="time-icon-wrapper">
+          <ion-icon class="time-icon" name="time"></ion-icon>
+        </div>
         <div class="start-location">
           <p class="start-location-place"> Safico Cafe</p>
           <p class="start-location-time">Restaurant - 8:00 PM</p>
         </div>
       </div>
-      <div class="transiton-location-indicator"></div>
+      <div class="transition-location-indicator">
+        <ion-icon class="circle-icon" name="ellipse"></ion-icon>
+        <ion-icon class="circle-icon transition-circle" name="ellipse"></ion-icon>
+        <ion-icon class="circle-icon" name="ellipse"></ion-icon>
+      </div>
       <div class="end-location-details">
-        <ion-icon name="home"></ion-icon>
-        <div class="">
-        <p class="end-location-place">Mukono Plaza</p>
-        <p class="end-location-time">Home - 12:00 PM</p>
+        <div class="location-icon-wrapper">
+          <ion-icon class="location-icon" name="location"></ion-icon>
+        </div>
+        <div class="end-location">
+          <p class="end-location-place">Mukono Plaza</p>
+          <p class="end-location-time">Home - 12:00 PM</p>
         </div>
       </div>
-      <ion-button>Order Recieved</ion-button>
     </section>
+
+    <!-- ORDER RECIEVED BUTTON -->
+    <ion-button>Order Recieved</ion-button>
   </ion-card>
 </ion-content>
