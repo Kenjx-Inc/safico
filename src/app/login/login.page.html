@@ -13,8 +13,10 @@
         <ion-input type="email" placeholder="Email"></ion-input>
         <ion-input type="password" placeholder="Password" clear-input="true"></ion-input>
         <!-- LINK TO FORGOT PASSWORD -->
-        <ion-text [routerLink]="['/tabnav/home']" routerDirection="root"> Forgot Password?</ion-text>
-        <ion-button class="login-button" [routerLink]="['/tabnav/home']"  routerDirection="root">
+        <ion-text [routerLink]="['/forgot-password']">
+          Forgot Password?
+        </ion-text>
+        <ion-button class="login-button" [routerLink]="['/tabnav/home']" routerDirection="root">
           Login
         </ion-button>
       </form>
