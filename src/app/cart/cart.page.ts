@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartPage implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  subtract() {
+    console.log('Subtract....');
+  }
+
+  addQuantity() {
+    console.log('Add Quantity...');
+  }
+
+ 
 }
