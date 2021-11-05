@@ -1,42 +1,65 @@
-<ion-header>
-  <ion-toolbar class="ion-no-shadow">
-    <ion-icon slot="start" [routerLink]="['/tabnav/home']" name="chevron-back"></ion-icon>
+<ion-header class="item-header ion-no-border">
+  <div class="image-cover-background"></div>
+  <ion-toolbar>
+    <ion-button [routerLink]="['/tabnav/home']">
+      <ion-icon slot="start" [routerLink]="['/tabnav/home']" name="chevron-back"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <img src="../../assets/hot dog.png" alt="">
-
-  <ion-card>
-    <ion-header>
-      <ion-title>
-        Egg Sandwich
-        <!-- Category -->
-        <ion-button>Desert</ion-button>
-      </ion-title>
-    </ion-header>
-    <ion-content class="item-details-se">
-      <ion-header>
-        Ingredients
-      </ion-header>
-      <!-- DETAILS OF THE ITEM -->
-      <section class="specific-ingredients">White Rice, Sugar, Green Leaves, Magnetis Mix</section>
-      <section class="quantity-selection">
-        <span class="quantity-label">Quantity</span>
-        <span>
-          <ion-input type="number"></ion-input>
-        </span>
-      </section>
-    </ion-content>
-
-  </ion-card>
-
-  <!-- BOTTOM FIXED CARD -->
-  <ion-card class="fixed-card-order">
-    <div class="total-price-section">
-      <span class="total-price-heading"> Price </span>
-      <span> UGX 2,000 </span>
+  <div class="item-wrapper">
+    <div class="image-wrapper">
+      <img src="../../assets/salads.png" alt="">
     </div>
-    <ion-button class="order-now-button" [routerLink]="['/tabnav/cart']"> Order Now </ion-button>
-  </ion-card>
+    <ion-card class="item">
+      <ion-header class="ion-no-border item-details-header">
+        <ion-title>
+          Roasted guinea fowl
+        </ion-title>
+        <!-- Category -->
+        <ion-chip>Breakfast</ion-chip>
+      </ion-header>
+      <section class="item-details-section">
+        <ion-header class="ion-no-border">
+          Ingredients
+        </ion-header>
+        <!-- DETAILS OF THE ITEM -->
+        <section class="specific-ingredients">1 guinea fowl,
+          150g/5½oz mascarpone,
+          4 sprigs thyme, leaves picked and chopped,
+          1 lemon, zest and juice,
+          4 slices prosciutto di Parma,
+          4 tbsp extra virgin olive oil,
+          2 slices sourdough,
+          250g/9oz Swiss chard, cut down the middle of the stem and cut into 2cm/¾in pieces,
+          1 garlic clove, finely chopped,
+          250g/9oz Portobello mushrooms, cut into 5mm slices,
+          pinch roughly chopped fresh mint,
+          salt and freshly ground black pepper
+        </section>
+      </section>
+      <section class="quantity-selection">
+        <ion-label class="quantity-label">Quantity</ion-label>
+        <div class="quantity-selection-input">
+          <span title="subtract" (click)="subtractQuantity()">
+            <ion-icon name="remove-circle-outline"></ion-icon>
+          </span>
+          <ion-label>1</ion-label>
+          <span title="add" (click)="addQuantity()">
+            <ion-icon name="add-circle"></ion-icon>
+          </span>
+        </div>
+      </section>
+      <!-- BOTTOM FIXED CARD -->
+    </ion-card>
+    <ion-card class="fixed-card-order">
+      <div class="total-price-section">
+        <span class="total-price-heading">Total Price </span>
+        <span> UGX 2,000 </span>
+      </div>
+      <ion-button class="order-now-button" [routerLink]="['/tabnav/cart']"> Order Now </ion-button>
+    </ion-card>
+
+  </div>
 </ion-content>

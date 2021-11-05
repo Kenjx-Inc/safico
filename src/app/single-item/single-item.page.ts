@@ -12,4 +12,13 @@ export class SingleItemPage implements OnInit {
   ngOnInit() {
   }
 
+  subtractQuantity() {
+    // Min return value is 1
+    console.log('Subtract....');
+  }
+  
+  addQuantity() {
+    console.log('Add Quantity...');
+  }
+
 }
