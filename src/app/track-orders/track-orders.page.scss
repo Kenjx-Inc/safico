@@ -16,11 +16,12 @@
       height: 50px;
       --border-radius: 50%;
       --background: transparent !important;
+      --background-activated: #e34411 !important;
+      --ripple-color: #e34411 !important;
       --box-shadow: none;
-
+      
       ion-icon {
         cursor: pointer;
-        // width: 100%;
         display: block;
         color: #e34411 !important;
       }
@@ -71,7 +72,8 @@ ion-content {
     .line-divider {
       border: 2px solid #ccc;
       width: 15%;
-      opacity: 0.56;
+      opacity: 0.96;
+      height: 1px;
       border-radius: 25px;
       margin: 10px auto 20px !important;
     }
@@ -86,7 +88,7 @@ ion-content {
       padding: 15px !important;
       border-radius: 25px !important;
       --flex-direction: column !important;
-      box-shadow: 4px 7px 8px -3px rgba(210, 62, 18, 0.28);
+      box-shadow: 1px 3px 6px 1px rgba(228, 70, 17, 0.26);
 
       .driver-details {
         .driver-name {
@@ -107,16 +109,19 @@ ion-content {
       }
 
       .call-button {
-        width: 40px;
-        height: 40px;
+        width: 40px !important;
+        height: 40px !important;
         border-radius: 50%;
         background: #e34411;
         display: flex;
+        margin: 0 !important;
+        padding: 0 !important;
         align-items: center;
         justify-content: center;
 
+
         ion-icon {
-          font-size: 20px;
+          font-size: 20px !important;
           color: #fff;
         }
       }
@@ -210,7 +215,7 @@ ion-content {
       --background: #e34411 !important;
       --border-radius: 28px !important;
       --box-shadow: 0 3px 1px -2px #e34411, 0 2px 2px 0 #e346118c 0 1px 5px 0 #e346110a;
-
     }
   }
+
 }

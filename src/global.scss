@@ -24,3 +24,29 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.custom-alert-wrapper .alert-wrapper {
+  --width: 64vw;
+  --height: 25vh;
+
+  .alert-title {
+    color: #e34411;
+  }
+  .alert-message{
+     color: #000;
+     font-weight: 300;
+  }
+  .alert-button.sc-ion-alert-md.alert-style-one {
+    color: #e34411;
+  }
+
+  .alert-button.sc-ion-alert-md.alert-style-two {
+    color: #000 !important;
+    opacity: 0.45;
+  }
+}
+
+.ripple-parent{
+  position: relative;
+  overflow: hidden;
+}

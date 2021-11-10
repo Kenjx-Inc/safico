@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NavController, Platform } from '@ionic/angular';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { CallNumber } from '@ionic-native/call-number/ngx';
+import { AlertController } from '@ionic/angular';
 
 declare const google;
 
@@ -17,7 +19,15 @@ export class TrackOrdersPage implements OnInit {
   coords: any;
   map: any;
 
-  constructor(public navCtrl: NavController, private geolocation: Geolocation, private plt: Platform) {
+  // Set time
+  startDate: any = new Date().toISOString();
+  deliveryTime: any;
+  deliveryLocation: any;
+
+  constructor(public navCtrl: NavController,
+    public alertController: AlertController,
+    private call: CallNumber, private geolocation: Geolocation, private plt: Platform) {
+
     const directionsService = new google.maps.DirectionsService();
     const directionsRenderer = new google.maps.DirectionsRenderer();
 
@@ -43,6 +53,10 @@ export class TrackOrdersPage implements OnInit {
           title: 'Current Location'
         });
 
+        // Delivery Place
+        this.deliveryLocation = 'Mukono Plaza';
+        this.deliveryTime = '12:45 PM';
+
         const content = '<p>This is your current position </p>';
         const infoWindow = new google.maps.InfoWindow({
           content
@@ -58,12 +72,14 @@ export class TrackOrdersPage implements OnInit {
     });
 
     /**Display route
-
     Direction Service not yet fully implemented for need of subscription to service
-
     */
+
     directionsRenderer.setMap(this.map);
+
+    // SET DELIVERY TIME - TODO
     this.calculateAndDisplayRoute(directionsService, directionsRenderer);
+
   }
 
   ngOnInit() { }
@@ -83,5 +99,49 @@ export class TrackOrdersPage implements OnInit {
       directionsRenderer.setDirections(response);
     })
       .catch((e) => window.alert('Directions request failed due to ' + status));
+
   }
+
+  // Call to driver
+  async callDriver(): Promise<any> {
+    try {
+      await this.call.callNumber('+256771865931', true);
+    }
+    catch (e) {
+      console.error(e);
+    }
+  }
+
+  // Confirm order recieved
+  isOrderRecieved() {
+
+    // Present alert
+    this.presentAlert();
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Order',
+      message: 'Confirm order recieved please.',
+      cssClass: 'custom-alert-wrapper',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'alert-style-two'
+        }, {
+          text: 'Confirm',
+          cssClass: 'alert-style-one',
+          handler: () => {
+            console.log('Confirm Okay');
+          }
+        }]
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    console.log('Cancelled order alert ', role);
+  }
+
 }

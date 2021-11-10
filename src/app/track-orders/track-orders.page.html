@@ -1,8 +1,9 @@
 <ion-header class="track-order-header">
   <ion-toolbar>
-    <ion-button [routerLink]="['/tabnav/profile']">
+    <ion-button class="ripple-parent" [routerLink]="['/tabnav/profile']">
       <ion-icon slot="start" name="chevron-back"></ion-icon>
-    </ion-button>
+      <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+     </ion-button>
     <ion-title>Track Orders</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -24,13 +25,14 @@
       </ion-avatar>
       <ion-item lines="none">
         <div class="driver-details">
-          <p class="driver-name">Kenjx XX</p>
-          <p class="driver-spec">Driver - AUD 234K</p>
+          <p class="driver-name">Sunday Nicholas</p>
+          <p class="driver-spec">Driver</p>
         </div>
       </ion-item>
-      <div class="call-button">
+      <button class="call-button ripple-parent ion-activatable" (click)="callDriver()">
         <ion-icon name="call"></ion-icon>
-      </div>
+        <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+       </button>
     </ion-card>
 
     <!-- TRACKING DELIVERY -->
@@ -41,7 +43,7 @@
         </div>
         <div class="start-location">
           <p class="start-location-place" #start> Safico Cafe</p>
-          <p class="start-location-time">Restaurant - 8:00 PM</p>
+          <p class="start-location-time">Restaurant - {{ startDate | date:'shortTime' }}</p>
         </div>
       </div>
       <div class="transition-location-indicator">
@@ -54,13 +56,15 @@
           <ion-icon class="location-icon" name="location"></ion-icon>
         </div>
         <div class="end-location">
-          <p class="end-location-place" #end>Mukono Plaza</p>
-          <p class="end-location-time">Home - 12:00 PM</p>
+          <p class="end-location-place" #end>{{ deliveryLocation }}</p>
+          <p class="end-location-time">Delivery - {{ deliveryTime }}</p>
         </div>
       </div>
     </section>
 
     <!-- ORDER RECIEVED BUTTON -->
-    <ion-button>Order Recieved</ion-button>
+    <ion-button class="ripple-parent" (click)='isOrderRecieved()'>Order Recieved
+      <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+     </ion-button>
   </ion-card>
 </ion-content>
