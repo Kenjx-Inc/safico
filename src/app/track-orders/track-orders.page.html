@@ -10,14 +10,14 @@
 <ion-content>
   <!-- LOCATION IN REAL TIME SLOT -->
   <ion-header>
-    <ion-toolbar class="image-location-wrapper">
-      <img class="image-location" src="../../assets/delivery.jpg" alt="" />
+    <ion-toolbar class="map-location-wrapper">
+      <div #map id="map"></div>
     </ion-toolbar>
   </ion-header>
 
   <!-- DRIVER CONTACT -->
-  <ion-card class="track-card-details"  slot="fixed">
-     <div class="line-divider"></div>
+  <ion-card class="track-card-details" slot="fixed">
+    <div class="line-divider"></div>
     <ion-card class="driver-contact ion-no-border">
       <ion-avatar>
         <img src="../../assets/profile/profile1.PNG">
@@ -40,7 +40,7 @@
           <ion-icon class="time-icon" name="time"></ion-icon>
         </div>
         <div class="start-location">
-          <p class="start-location-place"> Safico Cafe</p>
+          <p class="start-location-place" #start> Safico Cafe</p>
           <p class="start-location-time">Restaurant - 8:00 PM</p>
         </div>
       </div>
@@ -54,7 +54,7 @@
           <ion-icon class="location-icon" name="location"></ion-icon>
         </div>
         <div class="end-location">
-          <p class="end-location-place">Mukono Plaza</p>
+          <p class="end-location-place" #end>Mukono Plaza</p>
           <p class="end-location-time">Home - 12:00 PM</p>
         </div>
       </div>
