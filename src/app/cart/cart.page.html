@@ -9,137 +9,42 @@
 
 <ion-content [fullscreen]="true">
   <section class="cart-section">
-    <ion-card class="item">
+    <ion-card class="item" *ngFor="let item of cartItems">
       <div class="background-image-wrapper">
-        <img src="../../assets/flakesx35.png" />
+        <img [src]="item.image" />
       </div>
       <div class="item-summary">
-        <ion-card-subtitle class="item-category">Desert</ion-card-subtitle>
-        <ion-card-title class="item-title">Sandwich</ion-card-title>
-        <ion-card-content class="item-price"><span>UGX</span> 6400</ion-card-content>
+        <ion-card-subtitle class="item-category">{{item.category}}</ion-card-subtitle>
+        <ion-card-title class="item-title">{{item.name}}</ion-card-title>
+        <ion-card-content class="item-price"><span>{{item.currency}}</span> {{item.price | number}}</ion-card-content>
       </div>
       <div class="input-quantity">
-        <span title="subtract" (click)="subtract()">
-          <ion-icon name="remove-circle-outline"></ion-icon>
+        <ion-label>{{ item.quantity }}</ion-label>
+        <span title="subtract" class="ion-activatable" 
+        style="overflow: visible; position: relative;" (click)="removeCartItem(item.id)">
+          <ion-icon name="trash"></ion-icon>
+          <ion-ripple-effect type="unbounded"></ion-ripple-effect>
         </span>
-        <ion-label>1</ion-label>
-        <span title="add" (click)="addQuantity()">
-          <ion-icon name="add-circle"></ion-icon>
-        </span>
-      </div>
-    </ion-card>
-    <ion-card class="item">
-      <div class="background-image-wrapper">
-        <img src="../../assets/hot dogx35.png" />
-      </div>
-      <div class="item-summary">
-        <ion-card-subtitle class="item-category">Desert</ion-card-subtitle>
-        <ion-card-title class="item-title">Sandwich</ion-card-title>
-        <ion-card-content class="item-price"><span>UGX</span> 700</ion-card-content>
-      </div>
-      <div class="input-quantity">
-        <span title="subtract" (click)="subtract()">
-          <ion-icon name="remove-circle-outline"></ion-icon>
-        </span>
-        <ion-label>1</ion-label>
-    <span title="add" (click)="addQuantity()">
-          <ion-icon name="add-circle"></ion-icon>
-        </span>
-      </div>
-    </ion-card>
-    <ion-card class="item">
-      <div class="background-image-wrapper">
-        <img src="../../assets/flakesx35.png" />
-      </div>
-      <div class="item-summary">
-        <ion-card-subtitle class="item-category">Desert</ion-card-subtitle>
-        <ion-card-title class="item-title">Sandwich</ion-card-title>
-        <ion-card-content class="item-price"><span>UGX</span> 4000</ion-card-content>
-      </div>
-      <div class="input-quantity">
-        <span title="subtract" (click)="subtract()">
-          <ion-icon name="remove-circle-outline"></ion-icon>
-        </span>
-        <ion-label>1</ion-label>
-    <span title="add" (click)="addQuantity()">
-          <ion-icon name="add-circle"></ion-icon>
-        </span>
-      </div>
-    </ion-card>
-    <ion-card class="item">
-      <div class="background-image-wrapper">
-        <img src="../../assets/hot dogx35.png" />
-      </div>
-      <div class="item-summary">
-        <ion-card-subtitle class="item-category">Desert</ion-card-subtitle>
-        <ion-card-title class="item-title">Sandwich</ion-card-title>
-        <ion-card-content class="item-price"><span>UGX</span> 19,000</ion-card-content>
-      </div>
-      <div class="input-quantity">
-        <span title="subtract" (click)="subtract()">
-          <ion-icon name="remove-circle-outline"></ion-icon>
-        </span>
-        <ion-label>1</ion-label>
-    <span title="add" (click)="addQuantity()">
-          <ion-icon name="add-circle"></ion-icon>
-        </span>
-      </div>
-    </ion-card>
-    <ion-card class="item">
-      <div class="background-image-wrapper">
-        <img src="../../assets/salads.png" />
-      </div>
-      <div class="item-summary">
-        <ion-card-subtitle class="item-category">Desert</ion-card-subtitle>
-        <ion-card-title class="item-title">Sandwich</ion-card-title>
-        <ion-card-content class="item-price"><span>UGX</span> 8,900</ion-card-content>
-      </div>
-      <div class="input-quantity">
-        <span title="subtract" (click)="subtract()">
-          <ion-icon name="remove-circle-outline"></ion-icon>
-        </span>
-        <ion-label>1</ion-label>
-    <span title="add" (click)="addQuantity()">
-          <ion-icon name="add-circle"></ion-icon>
-        </span>
-      </div>
-    </ion-card>
-    <ion-card class="item">
-      <div class="background-image-wrapper">
-        <img src="../../assets/hot dog.png" />
-      </div>
-      <div class="item-summary">
-        <ion-card-subtitle class="item-category">Desert</ion-card-subtitle>
-        <ion-card-title class="item-title">Sandwich</ion-card-title>
-        <ion-card-content class="item-price"><span>UGX</span> 63,400</ion-card-content>
-      </div>
-      <div class="input-quantity">
-        <span title="subtract" (click)="subtract()">
-          <ion-icon name="remove-circle-outline"></ion-icon>
-        </span>
-        <ion-label>1</ion-label>
-    <span title="add" (click)="addQuantity()">
-          <ion-icon name="add-circle"></ion-icon>
-        </span>
-      </div>
+        
+      </div> 
     </ion-card>
   </section>
   <section class="amount-section">
     <ion-item class="amount-section-subtotal" lines="none">
       <!-- PRICE OF ALL ITEMS -->
       <span>Subtotal</span>
-      <span> UGX 10500</span>
+      <span> {{ subTotal | number }}</span>
     </ion-item>
     <ion-item class="amount-section-total" lines="none">
       <span>Total</span>
       <!-- FINAL PRICE WITH TRANSPORT INCLUSIVE -->
-      <span>UGX 10500</span>
+      <span>{{ grandTotal | number }}</span>
     </ion-item>
     <!-- UPDATE CURRENT LOCATION PRICE (EACH KM IS UGX 2000)-->
-    <span class="distance-price">(Distance : 59 KM - UGX 59,000)</span>
+    <span class="distance-price">(Distance : {{ distance }} KM - UGX {{ distanceCost }})</span>
   </section>
   <section class="order-button">
-    <ion-button class="order-button">Place Order</ion-button>
+    <ion-button class="order-button" [routerLink]="['/send-payment']">Place Order</ion-button>
   </section>
 
   <!-- ITEM TO SHOW WHEN CART IS EMPTY -->

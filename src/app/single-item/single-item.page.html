@@ -10,43 +10,31 @@
 <ion-content>
   <div class="item-wrapper">
     <div class="image-wrapper">
-      <img src="../../assets/salads.png" alt="">
+      <img [src]="item?.img" alt="">
     </div>
     <ion-card class="item">
       <ion-header class="ion-no-border item-details-header">
-        <ion-title>
-          Roasted guinea fowl
+        <ion-title>{{item?.name}}
         </ion-title>
         <!-- Category -->
-        <ion-chip>Breakfast</ion-chip>
+        <ion-chip>{{item?.category}}</ion-chip>
       </ion-header>
       <section class="item-details-section">
         <ion-header class="ion-no-border">
           Ingredients
         </ion-header>
         <!-- DETAILS OF THE ITEM -->
-        <section class="specific-ingredients">1 guinea fowl,
-          150g/5½oz mascarpone,
-          4 sprigs thyme, leaves picked and chopped,
-          1 lemon, zest and juice,
-          4 slices prosciutto di Parma,
-          4 tbsp extra virgin olive oil,
-          2 slices sourdough,
-          250g/9oz Swiss chard, cut down the middle of the stem and cut into 2cm/¾in pieces,
-          1 garlic clove, finely chopped,
-          250g/9oz Portobello mushrooms, cut into 5mm slices,
-          pinch roughly chopped fresh mint,
-          salt and freshly ground black pepper
+        <section class="specific-ingredients">{{ item?.description }}
         </section>
       </section>
       <section class="quantity-selection">
         <ion-label class="quantity-label">Quantity</ion-label>
         <div class="quantity-selection-input">
-          <span title="subtract" (click)="subtractQuantity()">
+          <span title="subtract" (click)="subtractQuantity(value)">
             <ion-icon name="remove-circle-outline"></ion-icon>
           </span>
-          <ion-label>1</ion-label>
-          <span title="add" (click)="addQuantity()">
+          <ion-label>{{ value }}</ion-label>
+          <span title="add" (click)="addQuantity(value)">
             <ion-icon name="add-circle"></ion-icon>
           </span>
         </div>
@@ -56,10 +44,14 @@
     <ion-card class="fixed-card-order">
       <div class="total-price-section">
         <span class="total-price-heading">Total Price </span>
-        <span> UGX 2,000 </span>
+        <span>{{ newPrice }}</span>
       </div>
-      <ion-button class="order-now-button" [routerLink]="['/tabnav/cart']"> Order Now </ion-button>
+      <ion-button class="order-now-button" (click)="orderNow(item.id, newPrice, value)" [routerLink]="['/items']" routerDirection="back"> Add To Cart </ion-button>
     </ion-card>
-
   </div>
 </ion-content>
+
+<!-- <div *ngIf="item == null" class="page-loader">
+  <ion-spinner name="lines-small"></ion-spinner>
+</div> -->
+

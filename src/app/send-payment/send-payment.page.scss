@@ -1,0 +1,85 @@
+.payments-content {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    padding-top: 67px !important;
+    padding-bottom: 40px !important;
+    width: 75vw;
+    max-width: 500px;
+    margin: auto;
+    height: auto !important;
+  
+    .image-wrapper-logo {
+      img {
+        display: block;
+        margin: auto;
+      }
+    }
+  
+    .intro {
+      margin-top: 0.5rem;
+  
+      .payments-header{
+        font-size: 26px;
+        font-weight: 600;
+      }
+  
+      :not(.payments-header) {
+        margin-top: -0.7rem;
+        font-size: 14px;
+      }
+    }
+  
+    .payments-wrapper {
+        width: 100%;
+        margin: 18px auto 12px !important;
+        display: flex;
+        flex-direction: column;
+        max-width: 300px !important;
+
+        .button-solid {
+         margin-bottom: 12px !important;
+         width: 80% !important;
+         height: 60px;
+        padding: 0 !important;
+        margin: 10px auto 20px;
+        --background: #e34411 !important;
+        --border-radius: 28px !important;
+        --background-activated: transparent;
+        --background-hover: #e346115b !important;
+        --background-focused: #e346115b !important;
+        --background-activated-opacity: 0.6;
+        --background-focused-opacity: 0.08;
+        --background-hover-opacity: 0.85;
+        --box-shadow: 0 3px 1px -2px #e34411, 0 2px 2px 0 #e346118c 0 1px 5px 0 #e346110a;
+      }
+    }
+    
+    .tabs-section {
+        font-weight: 300;
+        font-size: 12px;
+        width: 200px;
+        display: flex;
+        margin: 5px auto;
+        justify-content: space-around;
+        flex-direction: row;
+        
+        .tabs-custom {
+            overflow: hidden;
+            position: relative;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            --ripple-effect-color: #e34411 !important;
+            
+            ion-icon {
+                position: relative;
+                top: 25%;
+                font-size: 27px !important;
+            }
+        }
+     }
+
+  
+  }
+  

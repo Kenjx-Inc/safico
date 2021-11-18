@@ -1,0 +1,30 @@
+<ion-content>
+  <div class="payments-content">
+    <div class="image-wrapper-logo">
+      <img src="../../assets/logo1.JPG" />
+    </div>
+    <section class="intro">
+      <p class="payments-header">Payments</p>
+      <p>Please press the buttons to initiate via</p>
+    </section>
+
+    <section class="payments-wrapper">
+      <ion-button class="payments-button" [routerLink]="['/tabnav/home']" routerDirection="root">
+        Mtn Mobile Money
+      </ion-button>
+      <ion-button class="payments-button" [routerLink]="['/tabnav/home']" routerDirection="root">
+        Airtel Mobile Money
+      </ion-button>
+    </section>
+    <section class="tabs-section">
+      <span class="tabs-custom ion-activatable">
+      <ion-icon name="home"></ion-icon>
+      <ion-ripple-effect></ion-ripple-effect>
+      </span>
+      <span class="tabs-custom ion-activatable">
+      <ion-icon name="cart"></ion-icon>
+      <ion-ripple-effect></ion-ripple-effect>
+      </span>
+    </section>
+  </div>
+</ion-content>

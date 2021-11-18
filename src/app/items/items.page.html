@@ -1,7 +1,7 @@
 <ion-header class="items-header">
   <ion-toolbar>
     <ion-button [routerLink]="['/tabnav/home']">
-      <ion-icon slot="start" name="chevron-back"></ion-icon>
+      <ion-icon slot="start" [routerLink]="['/tabnav/home']" name="chevron-back"></ion-icon>
     </ion-button>
     <ion-title> All Items </ion-title>
   </ion-toolbar>
@@ -9,87 +9,19 @@
 
 <ion-content [fullscreen]="true">
   <section class="item-section">
-     <ion-card class="item">
+    <ion-card class="item" *ngFor="let item of items">
       <div class="background-image-wrapper">
-        <img src="../../assets/flakesx35.png" />
+        <img [src]="item.image" />
       </div>
-      <div class="item-summary"  [routerLink]="['/single-item']">
+      <div class="item-summary" (click)="openItemDetails(item.id)">
         <span class="section-one">
-          <ion-title class="item-title">Sandwich</ion-title>
-          <ion-chip class="item-category">Desert</ion-chip>
+          <ion-title class="item-title">{{item.name}}</ion-title>
+          <ion-chip class="item-category">{{item.category}}</ion-chip>
         </span> <span class="section-price">
-          <span class="item-price"><span class="currency">UGX</span> 8,900</span>
-        </span>
-      </div>
-    </ion-card>
-     <ion-card class="item">
-      <div class="background-image-wrapper">
-        <img src="../../assets/hot dogx35.png" />
-      </div>
-    <div class="item-summary"  [routerLink]="['/single-item']">
-        <span class="section-one">
-          <ion-title class="item-title">Sandwich</ion-title>
-          <ion-chip class="item-category">Desert</ion-chip>
-        </span>
-        <span class="section-price">
-          <span class="item-price"><span class="currency">UGX</span> 8,900</span>
-        </span>
-      </div>
-    </ion-card>
-     <ion-card class="item">
-      <div class="background-image-wrapper">
-        <img src="../../assets/flakesx35.png" />
-      </div>
-    <div class="item-summary"  [routerLink]="['/single-item']">
-        <span class="section-one">
-          <ion-title class="item-title">Sandwich</ion-title>
-          <ion-chip class="item-category">Desert</ion-chip>
-        </span>
-        <span class="section-price">
-          <span class="item-price"><span class="currency">UGX</span> 8,900</span>
-        </span>
-      </div>
-    </ion-card>
-     <ion-card class="item">
-      <div class="background-image-wrapper">
-        <img src="../../assets/hot dogx35.png" />
-      </div>
-    <div class="item-summary"  [routerLink]="['/single-item']">
-        <span class="section-one">
-          <ion-title class="item-title">Sandwich</ion-title>
-          <ion-chip class="item-category">Desert</ion-chip>
-        </span>
-        <span class="section-price">
-          <span class="item-price"><span class="currency">UGX</span> 8,900</span>
-        </span>
-      </div>
-    </ion-card>
-     <ion-card class="item">
-      <div class="background-image-wrapper">
-        <img src="../../assets/salads.png" />
-      </div>
-    <div class="item-summary" [routerLink]="['/single-item']">
-        <span class="section-one">
-          <ion-title class="item-title">Sandwich</ion-title>
-          <ion-chip class="item-category">Desert</ion-chip>
-        </span>
-        <span class="section-price">
-          <span class="item-price"><span class="currency">UGX</span> 8,900</span>
-        </span>
-      </div>
-
-    </ion-card>
-     <ion-card class="item">
-      <div class="background-image-wrapper">
-        <img src="../../assets/hot dog.png" />
-      </div>
-      <div class="item-summary">
-        <span class="section-one">
-          <ion-title class="item-title">Sandwich</ion-title>
-          <ion-chip class="item-category">BreakFast</ion-chip>
-        </span>
-        <span class="section-price">
-          <span class="item-price"><span class="currency">UGX</span> 8,900</span>
+          <span class="item-price">
+            <span class="currency">{{ item.currency }}</span>
+            {{item.price | number }}
+          </span>
         </span>
       </div>
     </ion-card>

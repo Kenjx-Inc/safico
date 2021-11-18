@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { CustomPreloadingStrategyService } from './services/custom-preloading-strategy.service';
+import { DataResolverService } from './services/data-resolver.service';
 
 const routes: Routes = [
   {
@@ -11,7 +13,10 @@ const routes: Routes = [
     loadChildren: () => import('./track-orders/track-orders.module').then( m => m.TrackOrdersPageModule)
   },
   {
-    path: 'single-item',
+    path: 'items/:id',
+    resolve: {
+      itemDetail: DataResolverService
+    },
     loadChildren: () => import('./single-item/single-item.module').then( m => m.SingleItemPageModule)
   },
   {
@@ -34,14 +39,19 @@ const routes: Routes = [
   {
     path: 'forgot-password',
     loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+  },  {
+    path: 'send-payment',
+    loadChildren: () => import('./send-payment/send-payment.module').then( m => m.SendPaymentPageModule)
   }
-];
 
+];
 
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    // Add preloading by custom functionality
+    // RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: CustomPreloadingStrategyService })
   ],
   exports: [RouterModule]
 })
