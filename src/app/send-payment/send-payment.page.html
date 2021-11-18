@@ -17,13 +17,13 @@
       </ion-button>
     </section>
     <section class="tabs-section">
-      <span class="tabs-custom ion-activatable">
-      <ion-icon name="home"></ion-icon>
-      <ion-ripple-effect></ion-ripple-effect>
+      <span class="tabs-custom ion-activatable" [routerLink]="['/tabnav']">
+        <ion-icon name="home"></ion-icon>
+        <ion-ripple-effect></ion-ripple-effect>
       </span>
-      <span class="tabs-custom ion-activatable">
-      <ion-icon name="cart"></ion-icon>
-      <ion-ripple-effect></ion-ripple-effect>
+      <span class="tabs-custom ion-activatable" [routerLink]="['/tabnav/cart']">
+        <ion-icon name="cart"></ion-icon>
+        <ion-ripple-effect></ion-ripple-effect>
       </span>
     </section>
   </div>
