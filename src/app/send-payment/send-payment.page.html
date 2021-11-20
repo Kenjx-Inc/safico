@@ -9,10 +9,10 @@
     </section>
 
     <section class="payments-wrapper">
-      <ion-button class="payments-button" [routerLink]="['/tabnav/home']" routerDirection="root">
+      <ion-button class="payments-button" (click)=" initiatePaymentViaMTN()">
         Mtn Mobile Money
       </ion-button>
-      <ion-button class="payments-button" [routerLink]="['/tabnav/home']" routerDirection="root">
+      <ion-button class="payments-button" (click)=" initiatePaymentViaAitel()">
         Airtel Mobile Money
       </ion-button>
     </section>

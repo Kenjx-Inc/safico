@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DataService, ITEM } from '../services/data.service';
+import { DataService} from '../services/data.service';
 import { LoadingController } from '@ionic/angular';
 
 
@@ -23,22 +23,19 @@ export class SingleItemPage implements OnInit {
 
   ngOnInit() {
   }
-  
+
   ionViewWillEnter() {
     if (this.route.snapshot.data['itemDetail']) {
       this.item = this.route.snapshot.data.itemDetail;
-      console.log(this.item);
-      this.value = 1;     
-      this.newPrice =  this.item.price; 
+      this.value = 1;
+      this.newPrice = this.item.price;
     }
-    console.log("loaded.....");
   }
 
   subtractQuantity($event) {
     //Check the value to be over 1
     if ($event > 1) {
       this.value = $event;
-      console.log('Subtract....');
       this.value -= 1;
       this.setNewPrice(this.value);
       return this.value;
@@ -46,30 +43,25 @@ export class SingleItemPage implements OnInit {
   }
 
   addQuantity($event) {
-    console.log("Number ", $event)
     this.value = $event;
-    console.log('Add Quantity...');
     this.value += 1;
     this.setNewPrice(this.value);
     return this.value;
   }
 
 
-  setNewPrice(value){
-      console.log(this.newPrice);  
-      let priceCost = this.item.price;    // set the unit price    
-      this.newPrice = priceCost * value;
-      console.log(this.newPrice, "-------New");
+  setNewPrice(value) {
+    let priceCost = this.item.price;    // set the unit price    
+    this.newPrice = priceCost * value;
   }
 
-  orderNow(id){
-      let price = this.newPrice
-      let quantity = this.value;
-      let onCart = true;
-     let cartItemOrder =  { ...this.item, price, onCart, quantity};
-     this.dataService.addToCart(id, cartItemOrder);
-     console.log("Activated Order");
-     
+  orderNow(id) {
+    let price = this.newPrice
+    let quantity = this.value;
+    let onCart = true;
+    let cartItemOrder = { ...this.item, price, onCart, quantity };
+    this.dataService.addToCart(id, cartItemOrder);
+
   }
-  
+
 }

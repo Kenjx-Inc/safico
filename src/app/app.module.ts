@@ -18,6 +18,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { environment } from '../environments/environment';
 import { DataResolverService } from './services/data-resolver.service';
 import { DataService } from './services/data.service';
+import { HttpClientModule } from '@angular/common/http';
+import { MobileMoneyApiService } from './services/mobile-money-api.service';
 
 
 @NgModule({
@@ -25,6 +27,7 @@ import { DataService } from './services/data.service';
   entryComponents: [],
   imports: [BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     IonicModule.forRoot(),
@@ -34,6 +37,7 @@ import { DataService } from './services/data.service';
     CallNumber,
     DataResolverService,
     DataService,
+    MobileMoneyApiService,
     {
       provide: RouteReuseStrategy,
       useClass: IonicRouteStrategy

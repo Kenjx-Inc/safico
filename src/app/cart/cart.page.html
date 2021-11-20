@@ -44,7 +44,7 @@
     <span class="distance-price">(Distance : {{ distance }} KM - UGX {{ distanceCost }})</span>
   </section>
   <section class="order-button">
-    <ion-button class="order-button" [routerLink]="['/send-payment']">Place Order</ion-button>
+    <ion-button class="order-button" [routerLink]="['/send-payment']" (click)="placeOrder()">Place Order</ion-button>
   </section>
 
   <!-- ITEM TO SHOW WHEN CART IS EMPTY -->

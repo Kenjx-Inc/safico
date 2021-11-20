@@ -62,7 +62,9 @@ export class CartPage implements OnInit {
   }
 
   placeOrder(){
-    
+    let total = this.grandTotal;
+    let distance = this.distance;
+    this.dataService.addToCartOrder({...this.cartItems, total, distance})
   }
 
 }

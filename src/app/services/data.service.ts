@@ -40,9 +40,9 @@ export class DataService {
   deleteCartItem(id: string) {
     this.ngFirestore.collection('cart').doc(id).delete().then(
       (res) => {
-        alert("Deleted item ");  
+        alert("Deleted item ");
       }
-    ).catch( (err)=> alert("Error deleting the item"));
+    ).catch((err) => alert("Error deleting the item"));
   }
 
   //  Fetch cart items
@@ -53,6 +53,16 @@ export class DataService {
   addToCart(id, item) {
     this.ngFirestore.collection('cart').doc(id).set(
       { ...item });
+  }
+
+  // Add to cart-order
+  addToCartOrder(item) {;
+      this.ngFirestore.collection('cart-order').add(item);
+  }
+
+  // Fetch Card Order price
+  getCartOrder() {
+    return this.ngFirestore.collection('cart-order').snapshotChanges();
   }
 
 }
