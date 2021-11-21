@@ -10,7 +10,7 @@
 <ion-content>
   <div class="item-wrapper">
     <div class="image-wrapper">
-      <img [src]="item?.img" alt="">
+      <img [src]="item?.img" [alt]="item?.name">
     </div>
     <ion-card class="item">
       <ion-header class="ion-no-border item-details-header">
@@ -30,12 +30,14 @@
       <section class="quantity-selection">
         <ion-label class="quantity-label">Quantity</ion-label>
         <div class="quantity-selection-input">
-          <span title="subtract" (click)="subtractQuantity(value)">
+          <span title="subtract" (click)="subtractQuantity(value)" class="ripple-parent ion-activatable">
             <ion-icon name="remove-circle-outline"></ion-icon>
+            <ion-ripple-effect></ion-ripple-effect>
           </span>
-          <ion-label>{{ value }}</ion-label>
-          <span title="add" (click)="addQuantity(value)">
+          <ion-label>{{ value | number }}</ion-label>
+          <span title="add" (click)="addQuantity(value)" class="ripple-parent ion-activatable">
             <ion-icon name="add-circle"></ion-icon>
+            <ion-ripple-effect></ion-ripple-effect>
           </span>
         </div>
       </section>

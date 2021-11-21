@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonSlides } from '@ionic/angular';
+import { DataService, ITEM } from '../services/data.service';
 
 @Component({
   selector: 'app-home',
@@ -23,10 +25,28 @@ export class HomePage implements OnInit {
     speed: 1
   };
 
+  itemsRecommended: any;
+  items: any;
 
-  constructor() { }
+  constructor(private dataService: DataService, private router: Router) {
+    }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.dataService.getItems().subscribe((res) => {
+      this.items = res.map((item) => {
+        return {
+          id: item.payload.doc.id,
+          ...item.payload.doc.data() as ITEM
+        }
+      });
+
+      this.itemsRecommended = this.items.filter((_item) => {
+        if (_item.category === "Drink" || _item.category === "Lunch/Supper" || _item.category === "Fast Food") {
+          return _item;
+        }
+      });
+    })
+  }
 
   async segmentChanged(event) {
     console.log(this.segment);
@@ -37,6 +57,11 @@ export class HomePage implements OnInit {
     this.selectedSlide = slides;
     slides.getActiveIndex().then(selectedIndex =>
       this.segment = selectedIndex);
+  }
+
+  // Navigate to single item
+  navigateToItem(id){
+    this.router.navigateByUrl(`/items/${id}`,{ skipLocationChange: true});
   }
 
 }

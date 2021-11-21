@@ -32,6 +32,7 @@ ion-content::part(scroll) {
   right: 0;
   text-align: left;
   transform: translateY(0%);
+  width: 100vw;
 
   ion-searchbar {
     --border-radius: 35px;
@@ -51,13 +52,16 @@ ion-content::part(scroll) {
     margin:  auto 15px;
 
     .recommended-items {
-      font-size: 1.3rem;
+      font-size: 1.5rem;
       font-weight: 400;
     }
 
     .list-all-items {
       opacity: 0.4;
       font-weight: 300;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       .view-all-items-link:hover,
       .view-all-items-link:focus{
@@ -68,7 +72,7 @@ ion-content::part(scroll) {
 
     ion-icon.arrow-forward-icon {
       font-size: inherit;
-      top: 2px;
+      top: 10px;
       padding-left: 2px;
       color: #e34611;
     }
@@ -83,33 +87,8 @@ ion-content::part(scroll) {
   }
 
 
-  .item {
-    display: flex;
-    justify-content: center;
-    align-items: baseline;
-    margin-top: 1.5rem !important;
-    margin: 0;
-    height: 150% !important;
-    flex-direction: column !important;
-  }
-
-  .item-image-wrapper {
-    z-index: 4;
-    width: 200px;
-    height: 200px;
-    padding: .4rem;
-    margin: auto !important;
-
-    .item-image {
-      display: block;
-      width: 100%;
-    }
-  }
-
-
   .item-showcase {
-    background: #e34411;
-    transform: translateY(-75%);
+    // transform: translateY(-75%);
     border-radius: 23px;
     display: flex;
     flex-direction: column;
@@ -119,13 +98,14 @@ ion-content::part(scroll) {
     margin-left: 12px;
     width: 60vw !important;
     max-width: 450px;
-    height: 200px !important;
-  }
+    height: 300px !important;
+    color: #fff;
+    margin-top:  0px;
 
-  .item-showcase * {
+  
+  .item-showcase {
     --color: #F6ECE4 !important;
     color: #F6ECE4 !important;
-    text-align: left;
   }
 
   .swiper-slide {
@@ -133,13 +113,25 @@ ion-content::part(scroll) {
   }
 
   // Secondary color for the slide(for distinguishing)
-  .second-item-cat {
-    background: #a1a19d !important;
+  
+  
+  .item-image-wrapper{
+    background: #e34611fd;
+
+     .item-image{
+        width: 100% !important;
+     }
+  }
+
+  .general-content{
+    background: #e34411;
   }
 
   .item-category {
     font-size: 0.6rem;
     font-weight: 200 !important;
+    color: #fff;
+    opacity: 0.64;
   }
 
   .item-price {
@@ -149,7 +141,7 @@ ion-content::part(scroll) {
 }
 
 ///////////////////////////////
-// Bottom Section ////
+// Bottom Section //// NOT USED
 /////////////////////////////
 
 ion-segment {
@@ -237,4 +229,5 @@ ion-segment-button {
     }
 
   }
+}
 }
