@@ -26,11 +26,7 @@ export class ItemsPage implements OnInit {
     })
   }
 
-  // Populate data items
-  itemsList() {
-    this.dataService.getItems().subscribe();
-  }
-
+  
   openItemDetails(id) {
     this.loadingCtrl.create( {
       message: 'Please wait...',

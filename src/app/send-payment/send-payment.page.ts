@@ -35,21 +35,21 @@ export class SendPaymentPage implements OnInit {
 
   initiatePaymentViaAitel() {
     // // Call to Airtel Payment   
-       this.mobileMoneyAPI.makePaymentViaAitel().subscribe( (res)=>{
-           console.log(res);
-           console.log("RES", res);
-       })
-       
-      }
+    this.mobileMoneyAPI.makePaymentViaAitel().subscribe((res) => {
+      console.log(res);
+      console.log("RES", res);
+    })
 
-      initiatePaymentMTN() {
-        // // Call to Airtel Payment   
-           this.mobileMoneyAPI.makePaymentViaMTN().subscribe( (res)=>{
-               console.log(res);
-               console.log("RES", res);
-           })
-           
-          }
+  }
+
+  initiatePaymentMTN() {
+    // // Call to Airtel Payment   
+    // this.mobileMoneyAPI.makePaymentViaMTN().subscribe( (res)=>{
+    //      console.log(res);
+    //      console.log("RES", res);
+    //  })
+
+  }
 }
 
 
