@@ -54,3 +54,12 @@
 ion-ripple-effect{  
   --ripple-color: #e34611a2 !important;
 }
+
+.tab-selected, 
+.tab-selected:hover,
+.tab-selected:focus,
+ion-tab-button:hover,
+ion-tab-button:focus{
+   color: #e34411 !important;
+   --color: #e34411 !important;
+}

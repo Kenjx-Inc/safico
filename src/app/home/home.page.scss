@@ -16,7 +16,8 @@ ion-content::part(scroll) {
   --min-height: 105px !important;
   --border-width: 0 !important;
   padding: 0.5rem 0.8rem;
-  width: 100vw !important;
+  margin: auto;
+  width: 98vw !important;
 
   .company-name {
     font-size: 2rem;
