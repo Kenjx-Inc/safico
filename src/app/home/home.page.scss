@@ -51,6 +51,11 @@ ion-content::part(scroll) {
     width: 95vw;
   }
 
+  ion-item{
+     width: 85vw;
+     margin: auto;
+  }
+
   header {
     display: flex;
     justify-content: space-between;
