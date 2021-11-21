@@ -11,7 +11,10 @@ import { DataService, ITEM } from '../services/data.service';
 
 export class HomePage implements OnInit {
   selectedSlide: any;
-  segment = 0;
+  segment = 0; 
+  itemsFoundList: any;
+  isItemAvailable = false;
+
   // eslint-disable-next-line @typescript-eslint/member-ordering
   @ViewChild('slides', { static: false }) slider: IonSlides;
   options = {
@@ -64,4 +67,30 @@ export class HomePage implements OnInit {
     this.router.navigateByUrl(`/items/${id}`,{ skipLocationChange: true});
   }
 
+  navigateToProfile(){
+     this.router.navigateByUrl('/tabnav/profile');
+  }
+  
+
+  // Implement search on home
+
+    getItemsBySearch(event: any) {
+        // Reset items back to all of the items
+        // this.allItems();
+
+        // set val to the value of the searchbar
+        const value = event.target.value;
+
+        // if the value is an empty string don't filter the items
+        if (value && value.trim() !== '') {
+            this.isItemAvailable = true;
+            this.itemsFoundList = this.items.filter((item) => {
+              // console.log(item.name)
+                if(item.name.toLowerCase().includes(value)) return item.name;
+            })
+            console.log(this.itemsFoundList);
+        } else {
+            this.isItemAvailable = false;
+        }
+    }
 }

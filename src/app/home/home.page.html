@@ -2,19 +2,23 @@
   <ion-header class="ion-no-border header-home">
     <ion-toolbar class="header-home-toolbar">
       <ion-title class="company-name">Safico Cafe</ion-title>
-      <ion-avatar slot="end">
+      <ion-avatar slot="end" class="ripple-parent" (click)="navigateToProfile()">
         <img src="../../assets/profile/profile1.PNG" alt="owner of the account" class="profile-image">
+        <ion-ripple-effect></ion-ripple-effect>
       </ion-avatar>
     </ion-toolbar>
   </ion-header>
 
   <ion-content [fullscreen]="true">
     <div id="main-section">
-      
+
       <div id="top-section">
-        <ion-searchbar animated placeholder="Search Food" (ionChange)="onSearchChange($event)" showCancelButton="focus"
-          inputmode="search" search-icon="search-outline" class="ion-no-shadow">
+        <ion-searchbar animated="true" placeholder="Search Food" (ionChange)="getItemsBySearch($event)"
+          showCancelButton="focus" inputmode="search" search-icon="search-outline" class="ion-no-shadow">
         </ion-searchbar>
+        <ion-list *ngIf="isItemAvailable">
+          <ion-item *ngFor="let item of itemsFoundList" routerLink="['/items:id']" (click)="navigateToItem(item.id)">{{ item.name }}</ion-item>
+        </ion-list>
 
         <header>
           <span class="recommended-items">Recommended</span>
@@ -35,22 +39,22 @@
                   <img class="item-image" [src]="item.img" />
                 </section>
                 <section class="general-content">
-                <ion-card-header>
-                  <!-- Category, Title(Name), Price -->
-                  <ion-card-subtitle class="item-category">{{ item.category }}</ion-card-subtitle>
-                  <!-- Hover effect on the title for details OR Give a short description in this section -->
-                  <ion-card-title class="item-name">{{ item.name }}</ion-card-title>
-                </ion-card-header>
-                <ion-card-content class="item-price">
-                  {{item.price | number }} {{ item.currency }}
-                </ion-card-content>
+                  <ion-card-header>
+                    <!-- Category, Title(Name), Price -->
+                    <ion-card-subtitle class="item-category">{{ item.category }}</ion-card-subtitle>
+                    <!-- Hover effect on the title for details OR Give a short description in this section -->
+                    <ion-card-title class="item-name">{{ item.name }}</ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content class="item-price">
+                    {{item.price | number }} {{ item.currency }}
+                  </ion-card-content>
                 </section>
               </ion-card>
             </div>
           </ion-slide>
         </ion-slides>
       </div>
-      
+
     </div>
     <!-- End slides -->
   </ion-content>

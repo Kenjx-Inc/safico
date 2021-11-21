@@ -45,7 +45,6 @@ ion-content {
 // Scroll bar/* Works on Firefox */
 ion-content::part(scroll) {
   scrollbar-width: thin !important;
-  ;
   scrollbar-color: blue orange !important;
 }
 
@@ -54,7 +53,6 @@ ion-content::part(scroll)::-webkit-scrollbar {
   width: 2px !important;
   --width: 2px !important;
 }
-
 
 /////////////////////////////////
 // ITEMS ////////////////////
@@ -118,12 +116,18 @@ ion-content::part(scroll)::-webkit-scrollbar {
         font-size: 20px;
         font-weight: 500;
 
-        .currency{
-           font-size: 55%;
-           vertical-align: super;
+        .currency {
+          font-size: 55%;
+          vertical-align: super;
         }
       }
-
     }
+  }
+
+  .unselection {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    opacity: 0.45;
   }
 }
