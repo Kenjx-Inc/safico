@@ -47,7 +47,7 @@ ion-content {
       max-width: 300px !important;
     }
 
-    form>* {
+    form > * {
       margin-bottom: 12px !important;
       width: 100% !important;
     }
@@ -58,8 +58,16 @@ ion-content {
       border-radius: 10px;
       height: 100px !important;
       border: none !important;
-      --placeholder-color: #000;
+      --placeholder-color: #000 !important;
       text-align: left;
+
+      input:-webkit-autofill,.native-input:-webkit-autofill {
+        background: transparent !important;
+      }
+
+      input:autofill {
+        --background:transparent !important;
+      }
     }
 
     form ion-text {

@@ -63,3 +63,9 @@ ion-tab-button:focus{
    color: #e34411 !important;
    --color: #e34411 !important;
 }
+
+// Form Validation
+.error-message{
+   color:  red;
+   opacity: 0.65;
+}

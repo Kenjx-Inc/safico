@@ -9,13 +9,33 @@
     </section>
 
     <section class="create-wrapper-form">
-      <form class="create-form">
-        <ion-input required type="text" placeholder="First Name" minlength="3" name="first-name"></ion-input>
-        <ion-input required type="text" placeholder="Last Name" minlength="3" name="last-name"></ion-input>
-        <ion-input required type="email" placeholder="Email" name="email"></ion-input>
-        <ion-input required type="password" placeholder="Password" name="password" minlength="8" clear-input="true">
+      <form class="create-form" (ngSubmit)="createUserAccount(validationsForm.value)" [formGroup]="validationsForm">
+        <label class="error-message">{{errorMessage}}</label>
+
+        <!-- INPUTS -->
+        <ion-input class="email-input" required type="email" formControlName="email" placeholder="Email" name="email"></ion-input>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validationMessages.email">
+            <div class="error-message" *ngIf="validationsForm.get('email').hasError(validation.type) &&
+            (validationsForm.get('email').dirty || validationsForm.get('email').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+
+        <ion-input class="password-input" required type="password" placeholder="Password" name="password" formControlName="password"
+          clear-input="true">
         </ion-input>
-       <ion-button class="create-button" [routerLink]="['/login']" routerDirection="root">
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validationMessages.password">
+            <div class="error-message" *ngIf="validationsForm.get('password').hasError(validation.type) &&
+               (validationsForm.get('password').dirty || validationsForm.get('password').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+        <!-- SUBMIT FOR CREATION -->
+        <ion-button class="create-button" type="submit" [disabled]="!validationsForm.valid">
           CREATE NOW
         </ion-button>
       </form>

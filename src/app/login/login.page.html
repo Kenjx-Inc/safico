@@ -9,18 +9,41 @@
     </section>
 
     <section class="login-wrapper-form">
-      <form class="login-form">
-        <ion-input type="email" placeholder="Email"></ion-input>
-        <ion-input type="password" placeholder="Password" clear-input="true"></ion-input>
+
+      <form class="login-form" [formGroup]="validationsForm" (ngSubmit)="logIn(validationsForm.value)">
+        <label class="error-message">{{errorMessage}}</label>
+
+        <ion-input type="email" formControlName="email" placeholder="Email"></ion-input>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validationMessages.email">
+            <div class="error-message" *ngIf="validationsForm.get('email').hasError(validation.type) && 
+              (validationsForm.get('email').dirty || validationsForm.get('email').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+
+        <ion-input type="password" formControlName="password" placeholder="Password" clear-input="true"></ion-input>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validationMessages.password">
+            <div class="error-message" *ngIf="validationsForm.get('password').hasError(validation.type) &&
+               (validationsForm.get('password').dirty || validationsForm.get('password').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+
         <!-- LINK TO FORGOT PASSWORD -->
         <ion-text [routerLink]="['/forgot-password']">
           Forgot Password?
         </ion-text>
-        <ion-button class="login-button" [routerLink]="['/tabnav/home']" routerDirection="root">
+
+        <ion-button class="login-button" type="submit" [disabled]="!validationsForm.valid">
           Login
         </ion-button>
       </form>
     </section>
+
     <section class="create-account-section">
       <p>
         <!-- LINK TO CREATE ACCOUNT -->

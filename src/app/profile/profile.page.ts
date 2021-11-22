@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -17,7 +18,8 @@ export class ProfilePage implements OnInit, AfterViewInit {
     maxResults: 5
   };
 
-  constructor(private geolocation: Geolocation, private nativeGeocoder: NativeGeocoder) {
+  constructor(private geolocation: Geolocation, 
+    private authService: AuthService ,private nativeGeocoder: NativeGeocoder) {
   }
 
   ngOnInit() {
