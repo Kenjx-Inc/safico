@@ -14,19 +14,14 @@ export class ForgotPasswordPage implements OnInit {
   ngOnInit() {
   }
 
-
   // Reset Password - Email specified recieves the reset token from firebase
   resetPassword(email) {
-    this.AuthService.initiatePasswordRecovery(email).then(
+    // Obtain value from the input-email object
+    this.AuthService.initiatePasswordRecovery(email.value).then(
       (res) => {
-        window.alert("Password reset link sent successfully! Check your mail please");
-        this.router.navigate(['login']);
-      })
-      .catch(error => {
-        window.alert("Unsuccessful, try again!")
-        this.router.navigate(['/forgot-password']);
-      });
-
+        this.router.navigateByUrl('/login');
+      }
+    )
   }
 
 }
