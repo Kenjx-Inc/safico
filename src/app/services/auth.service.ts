@@ -11,8 +11,7 @@ export class AuthService {
   userData: any;
 
   constructor(public afStore: AngularFirestore,
-    public ngFireAuth: AngularFireAuth,
-    public router: Router) {
+    public ngFireAuth: AngularFireAuth, public router: Router) {
 
     this.ngFireAuth.authState.subscribe(user => {
       if (user) {
@@ -27,18 +26,16 @@ export class AuthService {
   }
 
   // Create account with user and password first
-  createUser(email, password, otherDetails) {
+  createUser(email, password, otherDetails?) {
     return this.ngFireAuth.createUserWithEmailAndPassword(email, password)
-      .then((user) => {
-        if (user) {
-          user.user.updateProfile({
-            displayName: otherDetails.firstName + " " + otherDetails.lastName,
-            photoURL: otherDetails.imgURL,
+      .then((res) => {
+        if (res) {
+          res.user.updateProfile({
+            displayName: otherDetails?.firstName + " " + otherDetails?.lastName,
+            photoURL: otherDetails?.imgURL
           }).then((res) => {
-            // user.user.updatePhoneNumber+(otherDetails.telephone);
-            this.router.navigate(['/login'])
-          });
-          console.log(user.user);
+            // this.router.navigate(['/login'])
+          }).catch(err => { console.log(err) });
         }
       }
       );
@@ -63,18 +60,18 @@ export class AuthService {
     this.ngFireAuth.onAuthStateChanged((user) => {
       if (user) {
         // User is signed in.
-        console.log(user);
-        console.log("Signed in....");
-        return user;        
-         } else {
+        console.log("USER", user);
+        console.log("USER DATA", this.userData);
+        return user;
+
+      } else {
         // User is signed out.
-        // ...
         this.router.navigate(['login']);
       }
     });
   }
 
-  // Returns true when user is looged in
+  // Returns true when user is logged in
   getIsLoggedIn() {
     const user = JSON.parse(localStorage.getItem('user'));
     return (user !== null && user.emailVerified !== false) ? true : false;
@@ -91,10 +88,3 @@ export class AuthService {
   }
 }
 
-export interface User {
-  uid: string;
-  email: string;
-  displayName: string;
-  photoImgURL: string;
-  emailVerified: boolean;
-}

@@ -47,24 +47,17 @@ export class CreateAccountPage implements OnInit {
   }
 
   createUserAccount(value) {
-    // this.authService.createUser(value.email, value.password).
-    //   then((res) => {
-    //     // this.navCtrl.navigateForward('/login');
-        this.userEmail = value.email;
-        this.userPassword = value.password;
-        this.presentModal();
-        // this.presentAlertPrompt();
-      // }).catch((error) => {
-      //   this.errorMessage = error.message;
-      // })
+    this.userEmail = value.email;
+    this.userPassword = value.password;
+    this.presentModal();
   }
 
   async presentModal() {
     const modal = await this.modalController.create({
       component: UserCreateEditModalPage,
       componentProps: {
-         email: this.userEmail,
-         password: this.userPassword
+        email: this.userEmail,
+        password: this.userPassword
       },
       cssClass: 'user-modal',
       presentingElement: await this.modalController.getTop() // Get the top-most ion-modal
@@ -72,58 +65,9 @@ export class CreateAccountPage implements OnInit {
     return await modal.present();
   }
 
-  async presentAlertPrompt() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'Add more details.',
-      inputs: [
-        {
-          name: 'first_name',
-          type: 'text',
-          placeholder: 'First Name'
-        },
-        {
-          name: 'last_name',
-          type: 'text',
-          id: 'last-name',
-          placeholder: 'Last Name'
-        },
-        {
-          name: 'file',
-          type: 'text',
-          id: 'file',
-          value: 'hello',
-          placeholder: 'Last Name'
-        },
-        {
-          name: 'email',
-          value: this.userEmail
-        },
-        {
-          name: 'last_name',
-          type: 'text',
-          id: 'last-name',
-          value: 'hello',
-          placeholder: 'Last Name'
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          cssClass: 'secondary',
-          handler: () => {
-            console.log('Confirm Cancel');
-          }
-        }, {
-          text: 'Ok',
-          handler: () => {
-            console.log('Confirm Ok');
-          }
-        }
-      ]
-    });
-
-    await alert.present();
+  async closeModal() {
+    await this.modalController.dismiss();
   }
+
+
 }
