@@ -46,7 +46,7 @@
           </ng-container>
         </div>
 
-        <ion-input required type="file" (change)="uploadFile($event.target.files)"
+        <ion-input required type="file" (change)="onFileChosen($event)"
          placeholder="Add a profile image" name="profileImage"
           formControlName="profileImage" clear-input="true" accept="image/*">
         </ion-input>

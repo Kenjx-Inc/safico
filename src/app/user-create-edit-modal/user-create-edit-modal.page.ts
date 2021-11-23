@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
@@ -34,15 +35,18 @@ export class UserCreateEditModalPage implements OnInit {
     'profileImage': [{ type: 'required', message: 'A profile image is required.' }
     ]
   };
+  selectedFiles: any;
+  currentImageUrl: any;
+  storage: any;
 
   constructor(private formBuilder: FormBuilder, private navCtrl: NavController,
-    public authService: AuthService, private dataService: DataService) {
+    public authService: AuthService, private ngFireStorage: AngularFireStorage, private dataService: DataService) {
     // authService.getUser().then((data) => {
     //   this.userEmail  = data.email;
     //   console.log(this.userEmail);
     // });
 
-    
+
   }
 
   ngOnInit() {
@@ -65,19 +69,39 @@ export class UserCreateEditModalPage implements OnInit {
     });
   }
 
+  onFileChosen(event: any) {
+    this.selectedFiles = event.target.files; // just assigns the selected file/s in <input> this.selectedFiles
+  }
 
-  addMoreUserDetails(form) {
-    let firstName = form.firstName;
-    let lastName = form.lastName;
-    let telephone = form.telephone;
-    let imgURL = this.dataService.IMAGE_URL_FROM_FIREBASE;
-    console.log(imgURL);
-    // this.navCtrl.navigateForward(['/login']);
+  async addMoreUserDetails(form) {
+
+    const user = this.authService.getUser();
+
+    
+    if (this.selectedFiles.length) {
+      // Get selected file
+      const file = this.selectedFiles[0];
+      // let firstName = form.firstName;
+      // let lastName = form.lastName;
+      // let telephone = form.telephone;
+      // let imgURL = this.dataService.IMAGE_URL_FROM_FIREBASE_STORAGE;
+      // console.log(imgURL);
+      // this.navCtrl.navigateForward(['/login']);
+      
+      // / Get the fullPath in Storage after upload
+      const fullPathInStorage = await this.dataService.uploadImage(user, file);
+
+      /**
+       * You can now store the fullPathInStorage in firestore
+       *
+       * afs.update(...)
+       */
+
+      // Get the downloadUrl for the src of img
+      this.currentImageUrl = await this.ngFireStorage
+        .ref(fullPathInStorage)
+        .getDownloadURL()
+        .toPromise();
+    }
   }
-  
-  uploadFile(fileEvent){
-    console.log("................",fileEvent);
-     this.dataService.fileUpload(fileEvent);
-  }
- 
 }

@@ -30,7 +30,8 @@ export class ITEM {
 
 export class DataService {
   ngFireUploadTask: AngularFireUploadTask;
-  IMAGE_URL_FROM_FIREBASE: Observable<string>;
+  IMAGE_URL_FROM_FIREBASE_PATH: Observable<string>;
+  IMAGE_URL_FROM_FIREBASE_STORAGE: any;
   files: Observable<FILE[]>;
   FileName: string;
   FileSize: number;
@@ -38,18 +39,20 @@ export class DataService {
   isImgUploaded: boolean;
   ngFirestoreCollection: AngularFirestoreCollection<FILE>;
   progressSnapshot: any;
+  currentImageUrl: string; // to store the downloadUrl of image to be displayed
+  selectedFiles: Array<File>; // to store selected files in the File Explorer
+
 
   constructor(
     private ngFirestore: AngularFirestore,
     private ngFireStorage: AngularFireStorage
 
   ) {
-    this.isImgUploading = false;
-    this.isImgUploaded = false;
+    // this.isImgUploading = false;
+    // this.isImgUploaded = false;
 
-    this.ngFirestoreCollection = ngFirestore.collection<FILE>('profile');
-    this.files = this.ngFirestoreCollection.valueChanges();
-
+    // this.ngFirestoreCollection = ngFirestore.collection<FILE>('profile');
+    // this.files = this.ngFirestoreCollection.valueChanges();
   }
 
   getItems() {
@@ -81,7 +84,6 @@ export class DataService {
 
   // Add to cart-order
   addToCartOrder(item) {
-    ;
     this.ngFirestore.collection('cart-order').add(item);
   }
 
@@ -89,62 +91,73 @@ export class DataService {
   getCartOrder() {
     return this.ngFirestore.collection('cart-order').snapshotChanges();
   }
-
-  // add user info
-  addUser(newUser) {
-    this.ngFirestore.collection('user').add(newUser);
-  }
-
-  // get user info based on the id
-  getUser(userId) {
-    return this.ngFirestore.collection('user').doc(userId).snapshotChanges();
-  }
-
   // File Upload
-  fileUpload(event: FileList) {
-    const file = event.item(0);
+  // async fileUpload(event: FileList) {
+  //   const file = event.item(0);
 
-    this.isImgUploading = true;
-    this.isImgUploaded = false;
+  //   this.isImgUploading = true;
+  //   this.isImgUploaded = false;
 
-    this.FileName = file.name;
-    const fileStoragePath = `filesStorage/${new Date().getTime()}_${file.name}`;
-    const imageRef = this.ngFireStorage.ref(fileStoragePath);
+  //   this.FileName = file.name;
+  //   const fileStoragePath = `filesStorage/${new Date().getTime()}_${file.name}`;
+  //   const imageRef = this.ngFireStorage.ref(fileStoragePath);
 
-    this.ngFireUploadTask = this.ngFireStorage.upload(fileStoragePath, file);
+  //   this.ngFireUploadTask = this.ngFireStorage.upload(fileStoragePath, file);
 
-    this.progressSnapshot = this.ngFireUploadTask.snapshotChanges().pipe( 
+  //   this.ngFireUploadTask.snapshotChanges().pipe(
+  //     finalize(() => {
+  //       this.IMAGE_URL_FROM_FIREBASE_PATH = imageRef.getDownloadURL();
+  //       this.IMAGE_URL_FROM_FIREBASE_PATH.subscribe(resp => {
 
-    finalize(() => {
-      this.IMAGE_URL_FROM_FIREBASE = imageRef.getDownloadURL();
+  //         this.fileStorage({
+  //           name: file.name,
+  //           filepath: resp,
+  //           size: this.FileSize
+  //         });
+  //         this.isImgUploading = false;
+  //         this.isImgUploaded = true;
 
-      this.IMAGE_URL_FROM_FIREBASE.subscribe(resp => {
-        this.fileStorage({
-          name: file.name,
-          filepath: resp,
-          size: this.FileSize
-        });
-        this.isImgUploading = false;
-        this.isImgUploaded = true;
+  //       }, error => {
+  //         console.log(error);
+  //       })
+  //     }),
+  //     tap(snap => {
+  //       this.FileSize = snap.totalBytes;
+  //     })
+  //   )
 
-      }, error => {
-        console.log(error);
-      })
-    }),
-      tap(snap => {
-        this.FileSize = snap.totalBytes;
-      })
-    )
+  //   this.IMAGE_URL_FROM_FIREBASE_STORAGE = await this.ngFireStorage.ref(file.name).getDownloadURL().toPromise();
+  //   console.log("IMG>>2", this.IMAGE_URL_FROM_FIREBASE_STORAGE);
+
+  // }
+
+
+  // fileStorage(image: FILE) {
+  //   const imgId = this.ngFirestore.createId();
+
+  //   this.ngFirestoreCollection.doc(imgId).set(image).then(data => {
+  //     console.log(data);
+  //   }).catch(error => {
+  //     console.log(error);
+  //   });
+  // }
+
+
+  async fileUpload(user) {
+  this.IMAGE_URL_FROM_FIREBASE_STORAGE = await this.ngFireStorage.ref(user.userPhoto)
+    .getDownloadURL()
+    .toPromise();
   }
 
+  
+  async uploadImage(uid, file): Promise < string > {
+    const fileRef = this.ngFireStorage.ref(uid).child(file.name);
 
-  fileStorage(image: FILE) {
-    const imgId = this.ngFirestore.createId();
+    // Upload file in reference
+    if (!!file) {
+      const result = await fileRef.put(file);
 
-    this.ngFirestoreCollection.doc(imgId).set(image).then(data => {
-      console.log(data);
-    }).catch(error => {
-      console.log(error);
-    });
+      return result.ref.fullPath;
+    }
   }
 }
