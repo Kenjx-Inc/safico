@@ -1,0 +1,70 @@
+<div class="user-add-modal">
+  <ion-header class="ion-no-border">
+    <ion-toolbar class="ion-no-border">
+      <ion-title class="add-title">Add Details</ion-title>
+      <section class="add-section">Let's set our account here shortly...</section>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content class="create-content">
+    <section class="user-wrapper-form">
+      <form class="create-form" (ngSubmit)="addMoreUserDetails(validationsForm.value)" [formGroup]="validationsForm">
+        <label class="error-message">{{errorMessage}}</label>
+        <!-- INPUTS -->
+        <ion-input required type="text" formControlName="firstName" placeholder="First Name" name="firstName">
+        </ion-input>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validationMessages.firstName">
+            <div class="error-message" *ngIf="validationsForm.get('firstName').hasError(validation.type) &&
+          (validationsForm.get('firstName').dirty || validationsForm.get('firstName').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+
+        <ion-input required type="text" formControlName="lastName" placeholder="Last Name" name="lastName"></ion-input>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validationMessages.lastName">
+            <div class="error-message" *ngIf="validationsForm.get('lastName').hasError(validation.type) &&
+          (validationsForm.get('lastName').dirty || validationsForm.get('lastName').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+
+        <ion-input disabled [value]="email" type="email" name="email"></ion-input>
+
+        <ion-input required type="tel" placeholder="0712345679" name="telephone" formControlName="telephone"
+          clear-input="true">
+        </ion-input>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validationMessages.telephone">
+            <div class="error-message" *ngIf="validationsForm.get('telephone').hasError(validation.type) &&
+             (validationsForm.get('telephone').dirty || validationsForm.get('telephone').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+
+        <ion-input required type="file" (change)="uploadFile($event.target.files)"
+         placeholder="Add a profile image" name="profileImage"
+          formControlName="profileImage" clear-input="true" accept="image/*">
+        </ion-input>
+
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validationMessages.profileImage">
+            <div class="error-message" *ngIf="validationsForm.get('profileImage').hasError(validation.type) &&
+             (validationsForm.get('profileImage').dirty || validationsForm.get('profileImage').touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+
+        <!-- SUBMIT FOR CREATION -->
+        <ion-button class="create-button" type="submit" [disabled]="!validationsForm.valid">
+          SAVE
+        </ion-button>
+      </form>
+    </section>
+  </ion-content>
+</div>

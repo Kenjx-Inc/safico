@@ -27,8 +27,21 @@ export class AuthService {
   }
 
   // Create account with user and password first
-  createUser(email, password) {
+  createUser(email, password, otherDetails) {
     return this.ngFireAuth.createUserWithEmailAndPassword(email, password)
+      .then((user) => {
+        if (user) {
+          user.user.updateProfile({
+            displayName: otherDetails.firstName + " " + otherDetails.lastName,
+            photoURL: otherDetails.imgURL,
+          }).then((res) => {
+            // user.user.updatePhoneNumber+(otherDetails.telephone);
+            this.router.navigate(['/login'])
+          });
+          console.log(user.user);
+        }
+      }
+      );
   }
 
   //  Login 
@@ -43,6 +56,22 @@ export class AuthService {
       }).catch((error) => {
         window.alert(error)
       })
+  }
+
+  // Get User Info
+  getUser() {
+    this.ngFireAuth.onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in.
+        console.log(user);
+        console.log("Signed in....");
+        return user;        
+         } else {
+        // User is signed out.
+        // ...
+        this.router.navigate(['login']);
+      }
+    });
   }
 
   // Returns true when user is looged in

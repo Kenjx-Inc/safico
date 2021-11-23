@@ -1,8 +1,16 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Router } from "@angular/router";
 import { Observable } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { finalize, tap } from 'rxjs/operators';
+import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/compat/storage';
+
+
+export interface FILE {
+  name: string;
+  filepath: string;
+  size: number;
+}
 
 export class ITEM {
   id: string;
@@ -21,11 +29,28 @@ export class ITEM {
 })
 
 export class DataService {
+  ngFireUploadTask: AngularFireUploadTask;
+  IMAGE_URL_FROM_FIREBASE: Observable<string>;
+  files: Observable<FILE[]>;
+  FileName: string;
+  FileSize: number;
+  isImgUploading: boolean;
+  isImgUploaded: boolean;
+  ngFirestoreCollection: AngularFirestoreCollection<FILE>;
+  progressSnapshot: any;
 
   constructor(
     private ngFirestore: AngularFirestore,
-    private router: Router
-  ) { }
+    private ngFireStorage: AngularFireStorage
+
+  ) {
+    this.isImgUploading = false;
+    this.isImgUploaded = false;
+
+    this.ngFirestoreCollection = ngFirestore.collection<FILE>('profile');
+    this.files = this.ngFirestoreCollection.valueChanges();
+
+  }
 
   getItems() {
     return this.ngFirestore.collection('items').snapshotChanges();
@@ -36,7 +61,6 @@ export class DataService {
   }
 
   // Cart Items actions
-  //  Delete cart items
   deleteCartItem(id: string) {
     this.ngFirestore.collection('cart').doc(id).delete().then(
       (res) => {
@@ -56,8 +80,9 @@ export class DataService {
   }
 
   // Add to cart-order
-  addToCartOrder(item) {;
-      this.ngFirestore.collection('cart-order').add(item);
+  addToCartOrder(item) {
+    ;
+    this.ngFirestore.collection('cart-order').add(item);
   }
 
   // Fetch Card Order price
@@ -65,4 +90,61 @@ export class DataService {
     return this.ngFirestore.collection('cart-order').snapshotChanges();
   }
 
+  // add user info
+  addUser(newUser) {
+    this.ngFirestore.collection('user').add(newUser);
+  }
+
+  // get user info based on the id
+  getUser(userId) {
+    return this.ngFirestore.collection('user').doc(userId).snapshotChanges();
+  }
+
+  // File Upload
+  fileUpload(event: FileList) {
+    const file = event.item(0);
+
+    this.isImgUploading = true;
+    this.isImgUploaded = false;
+
+    this.FileName = file.name;
+    const fileStoragePath = `filesStorage/${new Date().getTime()}_${file.name}`;
+    const imageRef = this.ngFireStorage.ref(fileStoragePath);
+
+    this.ngFireUploadTask = this.ngFireStorage.upload(fileStoragePath, file);
+
+    this.progressSnapshot = this.ngFireUploadTask.snapshotChanges().pipe( 
+
+    finalize(() => {
+      this.IMAGE_URL_FROM_FIREBASE = imageRef.getDownloadURL();
+
+      this.IMAGE_URL_FROM_FIREBASE.subscribe(resp => {
+        this.fileStorage({
+          name: file.name,
+          filepath: resp,
+          size: this.FileSize
+        });
+        this.isImgUploading = false;
+        this.isImgUploaded = true;
+
+      }, error => {
+        console.log(error);
+      })
+    }),
+      tap(snap => {
+        this.FileSize = snap.totalBytes;
+      })
+    )
+  }
+
+
+  fileStorage(image: FILE) {
+    const imgId = this.ngFirestore.createId();
+
+    this.ngFirestoreCollection.doc(imgId).set(image).then(data => {
+      console.log(data);
+    }).catch(error => {
+      console.log(error);
+    });
+  }
 }

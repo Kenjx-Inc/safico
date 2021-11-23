@@ -18,6 +18,8 @@ export class ProfilePage implements OnInit, AfterViewInit {
     maxResults: 5
   };
 
+  currentUser: any;
+
   constructor(private geolocation: Geolocation, 
     private authService: AuthService ,private nativeGeocoder: NativeGeocoder) {
   }

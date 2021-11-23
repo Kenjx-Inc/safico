@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { CreateAccountPageRoutingModule } from './create-account-routing.module';
 
 import { CreateAccountPage } from './create-account.page';
+import { UserCreateEditModalPage } from '../user-create-edit-modal/user-create-edit-modal.page';
 
 @NgModule({
   imports: [
@@ -16,6 +17,8 @@ import { CreateAccountPage } from './create-account.page';
     IonicModule,
     CreateAccountPageRoutingModule
   ],
-  declarations: [CreateAccountPage]
+  declarations: [CreateAccountPage,
+    UserCreateEditModalPage,
+  ]
 })
-export class CreateAccountPageModule {}
+export class CreateAccountPageModule { }

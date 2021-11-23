@@ -42,6 +42,10 @@ const routes: Routes = [
   },  {
     path: 'send-payment',
     loadChildren: () => import('./send-payment/send-payment.module').then( m => m.SendPaymentPageModule)
+  },
+  {
+    path: 'user-create-edit-modal',
+    loadChildren: () => import('./user-create-edit-modal/user-create-edit-modal.module').then( m => m.UserCreateEditModalPageModule)
   }
 
 ];
