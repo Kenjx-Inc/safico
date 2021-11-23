@@ -11,7 +11,7 @@ import { DataService, ITEM } from '../services/data.service';
 
 export class HomePage implements OnInit {
   selectedSlide: any;
-  segment = 0; 
+  segment = 0;
   itemsFoundList: any;
   isItemAvailable = false;
 
@@ -32,7 +32,7 @@ export class HomePage implements OnInit {
   items: any;
 
   constructor(private dataService: DataService, private router: Router) {
-    }
+  }
 
   ngOnInit() {
     this.dataService.getItems().subscribe((res) => {
@@ -63,34 +63,31 @@ export class HomePage implements OnInit {
   }
 
   // Navigate to single item
-  navigateToItem(id){
-    this.router.navigateByUrl(`/items/${id}`,{ skipLocationChange: true});
+  navigateToItem(id) {
+    this.router.navigateByUrl(`/items/${id}`, { skipLocationChange: true });
   }
 
-  navigateToProfile(){
-     this.router.navigateByUrl('/tabnav/profile');
+  navigateToProfile() {
+    this.router.navigateByUrl('/tabnav/profile');
   }
-  
+
 
   // Implement search on home
 
-    getItemsBySearch(event: any) {
-        // Reset items back to all of the items
-        // this.allItems();
+  getItemsBySearch(event: any) {
+    // set val to the value of the searchbar
+    const value = event.target.value;
 
-        // set val to the value of the searchbar
-        const value = event.target.value;
-
-        // if the value is an empty string don't filter the items
-        if (value && value.trim() !== '') {
-            this.isItemAvailable = true;
-            this.itemsFoundList = this.items.filter((item) => {
-              // console.log(item.name)
-                if(item.name.toLowerCase().includes(value)) return item.name;
-            })
-            console.log(this.itemsFoundList);
-        } else {
-            this.isItemAvailable = false;
-        }
+    // if the value is an empty string don't filter the items
+    if (value && value.trim() !== '') {
+      this.isItemAvailable = true;
+      this.itemsFoundList = this.items.filter((item) => {
+        // console.log(item.name)
+        if (item.name.toLowerCase().includes(value.toLowerCase())) return item.name;
+      })
+      console.log(this.itemsFoundList);
+    } else {
+      this.isItemAvailable = false;
     }
+  }
 }
