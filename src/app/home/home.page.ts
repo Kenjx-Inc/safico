@@ -52,7 +52,6 @@ export class HomePage implements OnInit {
   }
 
   async segmentChanged(event) {
-    console.log(this.segment);
     await this.selectedSlide.slideTo(this.segment);
   }
 
@@ -71,7 +70,6 @@ export class HomePage implements OnInit {
     this.router.navigateByUrl('/tabnav/profile');
   }
 
-
   // Implement search on home
 
   getItemsBySearch(event: any) {
@@ -82,10 +80,8 @@ export class HomePage implements OnInit {
     if (value && value.trim() !== '') {
       this.isItemAvailable = true;
       this.itemsFoundList = this.items.filter((item) => {
-        // console.log(item.name)
         if (item.name.toLowerCase().includes(value.toLowerCase())) return item.name;
       })
-      console.log(this.itemsFoundList);
     } else {
       this.isItemAvailable = false;
     }

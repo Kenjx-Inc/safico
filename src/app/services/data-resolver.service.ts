@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
 import { DataService } from './data.service';
-import { catchError, takeUntil } from 'rxjs/operators'
+import { catchError, publishReplay, takeUntil } from 'rxjs/operators'
 import { EMPTY, Subject } from 'rxjs';
 
 @Injectable({

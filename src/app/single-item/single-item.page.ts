@@ -17,7 +17,7 @@ export class SingleItemPage implements OnInit {
   newPrice: number;
 
   constructor(private dataService: DataService,
-    private route: ActivatedRoute, private router: Router,
+    private route: ActivatedRoute,
     public loadingController: LoadingController) {
   }
 
