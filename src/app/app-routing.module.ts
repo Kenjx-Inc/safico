@@ -13,9 +13,9 @@ const routes: Routes = [
     loadChildren: () => import('./track-orders/track-orders.module').then( m => m.TrackOrdersPageModule)
   },
   {
-    path: 'items/:id',
+    path: 'item/:id',
     resolve: {
-      itemDetail: DataResolverService
+      itemDetails: DataResolverService
     },
     loadChildren: () => import('./single-item/single-item.module').then( m => m.SingleItemPageModule)
   },
@@ -39,7 +39,8 @@ const routes: Routes = [
   {
     path: 'forgot-password',
     loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
-  },  {
+  },
+  {
     path: 'send-payment',
     loadChildren: () => import('./send-payment/send-payment.module').then( m => m.SendPaymentPageModule)
   },

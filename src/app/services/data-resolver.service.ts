@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router } from '@angular/router';
 import { DataService } from './data.service';
-import { catchError, publishReplay, takeUntil } from 'rxjs/operators'
+import { catchError, take, takeUntil, shareReplay } from 'rxjs/operators';
 import { EMPTY, Subject } from 'rxjs';
 
 @Injectable({
@@ -11,21 +11,19 @@ export class DataResolverService implements Resolve<any>, OnDestroy {
   itemDetails: any;
   private unsubscribe$ = new Subject<void>();
 
-  constructor(private dataService: DataService, private router: Router) {
-    this.itemDetails = null;
-  }
+  constructor(private dataService: DataService, private router: Router) { }
 
   resolve(route: ActivatedRouteSnapshot) {
-    let id = route.paramMap.get('id');
-    this.dataService.getItem(id).pipe(catchError(() => {
-      this.router.navigate(['/']);
-      return EMPTY;
-    }),
-      takeUntil(this.unsubscribe$)
-    ).subscribe((value) => {
-      this.itemDetails = { ...value };
-    });
-    return this.itemDetails;
+    const id = route.paramMap.get('id');
+    return this.dataService.getItem(id)
+      .pipe(take(1),
+        shareReplay(),
+        catchError(() => {
+          this.router.navigate(['/']);
+          return EMPTY;
+        }),
+        takeUntil(this.unsubscribe$)
+      );
   }
 
   ngOnDestroy(): void {

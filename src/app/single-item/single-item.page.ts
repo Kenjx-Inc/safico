@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DataService} from '../services/data.service';
+import { DataService } from '../services/data.service';
 import { LoadingController } from '@ionic/angular';
 
 
@@ -14,7 +14,7 @@ export class SingleItemPage implements OnInit {
   item: any;
   isLoaded = false;
   value: number;
-  newPrice: number;
+  newPrice;
 
   constructor(private dataService: DataService,
     private route: ActivatedRoute,
@@ -22,14 +22,11 @@ export class SingleItemPage implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  ionViewWillEnter() {
-    if (this.route.snapshot.data['itemDetail']) {
-      this.item = this.route.snapshot.data.itemDetail;
-      this.value = 1;
-      this.newPrice = this.item.price;
-    }
+    this.route.data.subscribe((value) => {
+      this.item = { ...value.itemDetails };
+    });
+    this.value = 1;
+    this.newPrice = this.item.price;
   }
 
   subtractQuantity($event) {
@@ -51,15 +48,15 @@ export class SingleItemPage implements OnInit {
 
 
   setNewPrice(value) {
-    let priceCost = this.item.price;    // set the unit price    
+    const priceCost = this.item.price;    // set the unit price
     this.newPrice = priceCost * value;
   }
 
   orderNow(id) {
-    let price = this.newPrice
-    let quantity = this.value;
-    let onCart = true;
-    let cartItemOrder = { ...this.item, price, onCart, quantity };
+    const price = this.newPrice;
+    const quantity = this.value;
+    const onCart = true;
+    const cartItemOrder = { ...this.item, price, onCart, quantity };
     this.dataService.addToCart(id, cartItemOrder);
 
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, LoadingController } from '@ionic/angular';
 import { DataService, ITEM } from '../services/data.service';
 
 @Component({
@@ -10,13 +10,18 @@ import { DataService, ITEM } from '../services/data.service';
 })
 
 export class HomePage implements OnInit {
+
+  @ViewChild('slides', { static: false }) slider: IonSlides;
+
   selectedSlide: any;
   segment = 0;
+  isLoaded = false;
   itemsFoundList: any;
+  itemsRecommended: any;
+  items: any;
+  loading: HTMLIonLoadingElement;
   isItemAvailable = false;
 
-  // eslint-disable-next-line @typescript-eslint/member-ordering
-  @ViewChild('slides', { static: false }) slider: IonSlides;
   options = {
     slidesPerView: 1.5,
     spaceBetweenView: 10
@@ -28,27 +33,24 @@ export class HomePage implements OnInit {
     speed: 1
   };
 
-  itemsRecommended: any;
-  items: any;
-
-  constructor(private dataService: DataService, private router: Router) {
+  constructor(private dataService: DataService, private router: Router, private loadingCtrl: LoadingController) {
+     this.loadingNow();
   }
 
   ngOnInit() {
     this.dataService.getItems().subscribe((res) => {
-      this.items = res.map((item) => {
-        return {
-          id: item.payload.doc.id,
-          ...item.payload.doc.data() as ITEM
-        }
-      });
+      this.items = res.map((item) => ({
+        id: item.payload.doc.id,
+        ...item.payload.doc.data() as ITEM
+      }));
 
       this.itemsRecommended = this.items.filter((_item) => {
-        if (_item.category === "Drink" || _item.category === "Lunch/Supper" || _item.category === "Fast Food") {
+        if (_item.category === 'Drink' || _item.category === 'Lunch/Supper' || _item.category === 'Fast Food') {
+          this.isLoaded = !this.isLoaded;
           return _item;
         }
       });
-    })
+    });
   }
 
   async segmentChanged(event) {
@@ -61,9 +63,11 @@ export class HomePage implements OnInit {
       this.segment = selectedIndex);
   }
 
+
   // Navigate to single item
   navigateToItem(id) {
-    this.router.navigateByUrl(`/items/${id}`, { skipLocationChange: true });
+    this.loadingNow();
+    this.router.navigateByUrl(`/item/${id}`, { skipLocationChange: true });
   }
 
   navigateToProfile() {
@@ -80,10 +84,22 @@ export class HomePage implements OnInit {
     if (value && value.trim() !== '') {
       this.isItemAvailable = true;
       this.itemsFoundList = this.items.filter((item) => {
-        if (item.name.toLowerCase().includes(value.toLowerCase())) return item.name;
-      })
+        if (item.name.toLowerCase().includes(value.toLowerCase())) { return item.name; }
+      });
     } else {
       this.isItemAvailable = false;
     }
+  }
+
+  loadingNow() {
+    this.loadingCtrl.create({
+      message: 'Please wait...',
+      translucent: true,
+      backdropDismiss: true,
+      duration: 4000
+    }).then((overlay) => {
+      this.loading = overlay;
+      this.loading.present();
+    });
   }
 }

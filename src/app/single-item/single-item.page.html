@@ -1,59 +1,58 @@
 <ion-header class="item-header ion-no-border">
-  <div class="image-cover-background"></div>
-  <ion-toolbar>
-    <ion-button [routerLink]="['/tabnav/home']">
-      <ion-icon slot="start" [routerLink]="['/tabnav/home']" name="chevron-back"></ion-icon>
-    </ion-button>
-  </ion-toolbar>
+    <div class="image-cover-background"></div>
+    <ion-toolbar>
+        <ion-button [routerLink]="['/tabnav/home']">
+            <ion-icon slot="start" [routerLink]="['/tabnav/home']" name="chevron-back"></ion-icon>
+        </ion-button>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="item-wrapper">
-    <div class="image-wrapper">
-      <img [src]="item?.img" [alt]="item?.name">
-    </div>
-    <ion-card class="item">
-      <ion-header class="ion-no-border item-details-header">
-        <ion-title>{{item?.name}}
-        </ion-title>
-        <!-- Category -->
-        <ion-chip>{{item?.category}}</ion-chip>
-      </ion-header>
-      <section class="item-details-section">
-        <ion-header class="ion-no-border">
-          Ingredients
-        </ion-header>
-        <!-- DETAILS OF THE ITEM -->
-        <section class="specific-ingredients">{{ item?.description }}
-        </section>
-      </section>
-      <section class="quantity-selection">
-        <ion-label class="quantity-label">Quantity</ion-label>
-        <div class="quantity-selection-input">
-          <span title="subtract" (click)="subtractQuantity(value)" class="ripple-parent ion-activatable">
+    <div class="item-wrapper" *ngIf="item">
+        <div class="image-wrapper">
+            <img [src]="item?.img" [alt]="item?.name">
+        </div>
+        <ion-card class="item">
+            <ion-header class="ion-no-border item-details-header">
+                <ion-title>{{item?.name}}
+                </ion-title>
+                <!-- Category -->
+                <ion-chip>{{item?.category}}</ion-chip>
+            </ion-header>
+            <section class="item-details-section">
+                <ion-header class="ion-no-border">
+                    Ingredients
+                </ion-header>
+                <!-- DETAILS OF THE ITEM -->
+                <section class="specific-ingredients">{{ item?.description }}
+                </section>
+            </section>
+            <section class="quantity-selection">
+                <ion-label class="quantity-label">Quantity</ion-label>
+                <div class="quantity-selection-input">
+                    <span title="subtract" (click)="subtractQuantity(value)" class="ripple-parent ion-activatable">
             <ion-icon name="remove-circle-outline"></ion-icon>
             <ion-ripple-effect></ion-ripple-effect>
           </span>
-          <ion-label>{{ value | number }}</ion-label>
-          <span title="add" (click)="addQuantity(value)" class="ripple-parent ion-activatable">
+                    <ion-label>{{ value | number }}</ion-label>
+                    <span title="add" (click)="addQuantity(value)" class="ripple-parent ion-activatable">
             <ion-icon name="add-circle"></ion-icon>
             <ion-ripple-effect></ion-ripple-effect>
           </span>
-        </div>
-      </section>
-      <!-- BOTTOM FIXED CARD -->
-    </ion-card>
-    <ion-card class="fixed-card-order">
-      <div class="total-price-section">
-        <span class="total-price-heading">Total Price </span>
-        <span>{{ newPrice }}</span>
-      </div>
-      <ion-button class="order-now-button" (click)="orderNow(item.id, newPrice, value)" [routerLink]="['/items']" routerDirection="back"> Add To Cart </ion-button>
-    </ion-card>
-  </div>
+                </div>
+            </section>
+            <!-- BOTTOM FIXED CARD -->
+        </ion-card>
+        <ion-card class="fixed-card-order">
+            <div class="total-price-section">
+                <span class="total-price-heading">Total Price </span>
+                <span>{{ newPrice }}</span>
+            </div>
+            <ion-button class="order-now-button" (click)="orderNow(item.id, newPrice, value)" [routerLink]="['/items']" routerDirection="back"> Add To Cart </ion-button>
+        </ion-card>
+    </div>
 </ion-content>
 
 <!-- <div *ngIf="item == null" class="page-loader">
   <ion-spinner name="lines-small"></ion-spinner>
 </div> -->
-

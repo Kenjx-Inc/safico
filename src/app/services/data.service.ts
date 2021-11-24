@@ -42,9 +42,9 @@ export class DataService {
   deleteCartItem(id: string) {
     this.ngFirestore.collection('cart').doc(id).delete().then(
       (res) => {
-        alert("Deleted item ");
+        alert('Deleted item ');
       }
-    ).catch((err) => alert("Error deleting the item"));
+    ).catch((err) => alert('Error deleting the item'));
   }
 
   //  Fetch cart items

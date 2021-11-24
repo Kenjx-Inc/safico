@@ -10,23 +10,21 @@ import { DataService, ITEM } from '../services/data.service';
 })
 
 export class ItemsPage implements OnInit {
-  private loading: any;
   items: ITEM[];
+  private loading: any;
   constructor(private dataService: DataService, private router: Router,
     public loadingCtrl: LoadingController) { }
 
   ngOnInit() {
     this.dataService.getItems().subscribe((res) => {
-      this.items = res.map((item) => {
-        return {
+      this.items = res.map((item) => ({
           id: item.payload.doc.id,
           ...item.payload.doc.data() as ITEM
-        }
-      });
-    })
+        }));
+    });
   }
 
-  
+
   openItemDetails(id) {
     this.loadingCtrl.create( {
       message: 'Please wait...',
@@ -36,8 +34,8 @@ export class ItemsPage implements OnInit {
     }).then( (overlay)=>{
       this.loading = overlay;
       this.loading.present();
-    })
-    
-    this.router.navigateByUrl(`/items/${id}`,{ skipLocationChange: true});
+    });
+
+    this.router.navigateByUrl(`/item/${id}`,{ skipLocationChange: true});
   }
 }
