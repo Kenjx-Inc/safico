@@ -11,7 +11,7 @@
   <section class="cart-section">
     <ion-card class="item" *ngFor="let item of cartItems">
       <div class="background-image-wrapper">
-        <img [src]="item.image" />
+        <img [src]="item.img" />
       </div>
       <div class="item-summary">
         <ion-card-subtitle class="item-category">{{item.category}}</ion-card-subtitle>
@@ -20,13 +20,13 @@
       </div>
       <div class="input-quantity">
         <ion-label>{{ item.quantity }}</ion-label>
-        <span title="subtract" class="ion-activatable" 
+        <span title="subtract" class="ion-activatable"
         style="overflow: visible; position: relative;" (click)="removeCartItem(item.id)">
           <ion-icon name="trash"></ion-icon>
           <ion-ripple-effect type="unbounded"></ion-ripple-effect>
         </span>
-        
-      </div> 
+
+      </div>
     </ion-card>
   </section>
   <section class="amount-section">

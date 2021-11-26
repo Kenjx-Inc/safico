@@ -48,7 +48,7 @@
                 <span class="total-price-heading">Total Price </span>
                 <span>{{ newPrice }}</span>
             </div>
-            <ion-button class="order-now-button" (click)="orderNow(item.id, newPrice, value)" [routerLink]="['/items']" routerDirection="back"> Add To Cart </ion-button>
+            <ion-button class="order-now-button" (click)="orderNow(item.id)" [routerLink]="['/items']" routerDirection="back"> Add To Cart </ion-button>
         </ion-card>
     </div>
 </ion-content>

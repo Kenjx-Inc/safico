@@ -47,24 +47,25 @@ export class DataService {
     ).catch((err) => alert('Error deleting the item'));
   }
 
-  //  Fetch cart items
-  getCartItems() {
-    return this.ngFirestore.collection('cart').snapshotChanges();
+  //  Fetch cart items for a user
+  getCartItems(userId) {
+    return this.ngFirestore.collection('cart').doc(userId).collection('items').snapshotChanges();
   }
 
-  addToCart(id, item) {
-    this.ngFirestore.collection('cart').doc(id).set(
+  // Add specific items for spefic user
+  addToCart(userId, id, item) {
+    this.ngFirestore.collection('cart').doc(userId).collection('items').doc(id).set(
       { ...item });
   }
 
-  // Add to cart-order
-  addToCartOrder(item) {
-    this.ngFirestore.collection('cart-order').add(item);
+  // Add to cart-order by specific user
+  addToCartOrder(item, userId) {
+    this.ngFirestore.collection('cart-order').doc(userId).set(item);
   }
 
   // Fetch Card Order price
-  getCartOrder() {
-    return this.ngFirestore.collection('cart-order').snapshotChanges();
+  getCartOrder(userId) {
+    return this.ngFirestore.collection('cart-order').doc(userId).snapshotChanges();
   }
 
 }

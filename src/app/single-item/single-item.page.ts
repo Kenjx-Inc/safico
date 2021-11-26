@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { LoadingController } from '@ionic/angular';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -15,10 +16,15 @@ export class SingleItemPage implements OnInit {
   isLoaded = false;
   value: number;
   newPrice;
+  userID: string;
+
 
   constructor(private dataService: DataService,
     private route: ActivatedRoute,
-    public loadingController: LoadingController) {
+    public loadingController: LoadingController,
+    private authService: AuthService) {
+
+    this.getUserID();
   }
 
   ngOnInit() {
@@ -57,8 +63,20 @@ export class SingleItemPage implements OnInit {
     const quantity = this.value;
     const onCart = true;
     const cartItemOrder = { ...this.item, price, onCart, quantity };
-    this.dataService.addToCart(id, cartItemOrder);
+    this.dataService.addToCart(this.userID, id, cartItemOrder);
 
   }
 
+  // Obtain the userID of the auth user
+  getUserID() {
+    const userData = JSON.parse(localStorage.getItem('user'));
+    if (userData) {
+      this.userID = userData.uid;
+      console.log(this.userID);
+      return this.userID;
+    }
+    else {
+      window.alert('Not authenticated!');
+    }
+  }
 }

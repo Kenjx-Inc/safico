@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { AngularFireAuth } from "@angular/fire/compat/auth";
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -31,17 +31,16 @@ export class AuthService {
       .then((res) => {
         if (res) {
           res.user.updateProfile({
-            displayName: otherDetails?.firstName + " " + otherDetails?.lastName,
+            displayName: otherDetails?.firstName + ' ' + otherDetails?.lastName,
             photoURL: otherDetails?.imgURL
-          }).then((res) => {
-            // this.router.navigate(['/login'])
+          }).then(() => {
           }).catch(err => { console.log(err) });
         }
       }
       );
   }
 
-  //  Login 
+  //  Login
   logIn(email, password) {
     return this.ngFireAuth.signInWithEmailAndPassword(email, password);
   }
@@ -51,24 +50,8 @@ export class AuthService {
       .then(() => {
         window.alert('Password reset email has been sent, please check your inbox.');
       }).catch((error) => {
-        window.alert(error)
-      })
-  }
-
-  // Get User Info
-  getUser() {
-    this.ngFireAuth.onAuthStateChanged((user) => {
-      if (user) {
-        // User is signed in.
-        console.log("USER", user);
-        console.log("USER DATA", this.userData);
-        return user;
-
-      } else {
-        // User is signed out.
-        this.router.navigate(['login']);
-      }
-    });
+        window.alert(error);
+      });
   }
 
   // Returns true when user is logged in
@@ -77,7 +60,7 @@ export class AuthService {
     return (user !== null && user.emailVerified !== false) ? true : false;
   }
 
-  // Sign-out 
+  // Sign-out
   logOut() {
     if (this.ngFireAuth.currentUser) {
       return this.ngFireAuth.signOut().then(() => {

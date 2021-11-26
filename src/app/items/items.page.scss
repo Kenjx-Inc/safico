@@ -73,15 +73,15 @@ ion-content::part(scroll)::-webkit-scrollbar {
     box-shadow: 2px 2px 3px -1px #b9b9b9cc;
 
     .background-image-wrapper {
-      width: 100px;
-      height: 100px;      
+      width: 150px;
+      height: 100px;
       border-radius: 10px;
       margin-right: 20px;
       background: #81818133;
 
       img {
         max-width: 100%;
-        z-index: 5;
+        max-height: 100%;
       }
     }
 
@@ -94,13 +94,13 @@ ion-content::part(scroll)::-webkit-scrollbar {
       justify-content: flex-start;
       align-items: center;
       cursor: pointer;
-      
+
       .section-one {
         inline-size: 40vw;
         overflow-wrap: break-word;
         text-align: left;
         flex: 1 1 60%;
-        // word-wrap: ; 
+        // word-wrap: ;
 
         .item-title {
           font-weight: 600;
