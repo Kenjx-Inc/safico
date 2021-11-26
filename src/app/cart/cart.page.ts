@@ -42,7 +42,7 @@ export class CartPage implements OnInit {
 
   //  Remove cart item
   removeCartItem(id: string) {
-    this.dataService.deleteCartItem(id);
+    this.dataService.deleteCartItem(this.userID, id);
     this.getTotal();
   }
 
