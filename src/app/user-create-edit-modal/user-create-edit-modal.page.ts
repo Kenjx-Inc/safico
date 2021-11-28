@@ -25,11 +25,11 @@ export class UserCreateEditModalPage implements OnInit {
 
 
   validationMessages = {
-    'firstName': [
+    firstName: [
       { type: 'required', message: 'First name is required.' },
       { type: 'pattern', message: 'Please enter a valid name.' }
     ],
-    'lastName': [
+    lastName: [
       { type: 'required', message: 'Last name is required.' },
       { type: 'pattern', message: 'Please enter a valid name.' }
     ]
@@ -57,7 +57,6 @@ export class UserCreateEditModalPage implements OnInit {
   }
 
   addMoreUserDetails(form) {
-    console.log(this.authService.userData);
     this.authService.createUser(this.email, this.password, { ...form }).then((res) => {
       this.modal.dismiss();
       this.navCtrl.navigateRoot('/login');

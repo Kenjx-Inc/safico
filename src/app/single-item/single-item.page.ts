@@ -72,7 +72,6 @@ export class SingleItemPage implements OnInit {
     const userData = JSON.parse(localStorage.getItem('user'));
     if (userData) {
       this.userID = userData.uid;
-      console.log(this.userID);
       return this.userID;
     }
     else {

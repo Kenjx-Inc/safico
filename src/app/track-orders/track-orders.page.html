@@ -63,7 +63,7 @@
     </section>
 
     <!-- ORDER RECIEVED BUTTON -->
-    <ion-button class="ripple-parent" (click)='isOrderRecieved()'>Order Recieved
+    <ion-button class="ripple-parent" [disabled]="orderRecieved === false" (click)='isOrderRecieved()'>Order Recieved
       <ion-ripple-effect type="unbounded"></ion-ripple-effect>
      </ion-button>
   </ion-card>

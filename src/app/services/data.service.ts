@@ -38,15 +38,7 @@ export class DataService {
     return this.ngFirestore.collection('items').doc(id).valueChanges({ idField: 'id' });
   }
 
-  // Cart Items actions
-  deleteCartItem(id: string) {
-    this.ngFirestore.collection('cart').doc(id).delete().then(
-      (res) => {
-        alert('Deleted item ');
-      }
-    ).catch((err) => alert('Error deleting the item'));
-  }
-
+  // Cart Item Actions
   //  Fetch cart items for a user
   getCartItems(userId) {
     return this.ngFirestore.collection('cart').doc(userId).collection('items').snapshotChanges();
@@ -58,14 +50,40 @@ export class DataService {
       { ...item });
   }
 
+  // Delete a specific cart item
+  deleteCartItem(userId, id) {
+    this.ngFirestore.collection('cart').doc(userId).collection('items').doc(id).delete();
+  }
+
   // Add to cart-order by specific user
   addToCartOrder(item, userId) {
     this.ngFirestore.collection('cart-order').doc(userId).set(item);
   }
 
-  // Fetch Card Order price
+  // Fetch Card Order
   getCartOrder(userId) {
     return this.ngFirestore.collection('cart-order').doc(userId).snapshotChanges();
+  }
+
+  // Delete existing cart items
+  clearCart(userId) {
+    const ref = this.ngFirestore.collection('cart').doc(userId).collection('items').ref;
+    const ref2Collection = this.ngFirestore.collection('cart').doc(userId);
+
+    // first delete single items...
+    this.getCartItems(userId)
+      .subscribe((res) => {
+        res.forEach((item) => {
+          ref.doc(item.payload.doc.id).delete();
+        });
+      });
+
+    ref2Collection.delete();
+  }
+  
+  // Delete existing cart order
+  clearCartOrder(userId) {
+    this.ngFirestore.collection('cart-order').doc(userId).delete();
   }
 
 }
