@@ -3,7 +3,7 @@
         <ion-toolbar class="header-home-toolbar">
             <ion-title class="company-name">Safico Cafe</ion-title>
             <ion-avatar slot="end" class="ripple-parent" (click)="navigateToProfile()">
-                <img src="../../assets/profile/profile1.PNG" alt="owner of the account" class="profile-image">
+                <img [src]="imagePathURL" alt="owner of the account" class="profile-image">
                 <ion-ripple-effect></ion-ripple-effect>
             </ion-avatar>
         </ion-toolbar>

@@ -22,6 +22,11 @@ export class HomePage implements OnInit {
   loading: HTMLIonLoadingElement;
   isItemAvailable = false;
 
+  // user image profile
+  imagePathURL: string;
+  filePathDefault = '../../assets/profile/profile1.PNG';
+
+
   options = {
     slidesPerView: 1.5,
     spaceBetweenView: 10
@@ -34,7 +39,7 @@ export class HomePage implements OnInit {
   };
 
   constructor(private dataService: DataService, private router: Router, private loadingCtrl: LoadingController) {
-     this.loadingNow();
+    this.loadingNow();
   }
 
   ngOnInit() {
@@ -99,6 +104,8 @@ export class HomePage implements OnInit {
       duration: 4000
     }).then((overlay) => {
       this.loading = overlay;
+      const user = JSON.parse(localStorage.getItem('user'));
+       this.imagePathURL = user.providerData[0].photoURL !== null ? user.photoURL : this.filePathDefault;
       this.loading.present();
     });
   }
