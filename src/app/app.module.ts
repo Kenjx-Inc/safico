@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ActivatedRouteSnapshot, RouteReuseStrategy, RouterStateSnapshot } from '@angular/router';
+import { RouteReuseStrategy} from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
@@ -20,7 +20,6 @@ import { DataResolverService } from './services/data-resolver.service';
 import { DataService } from './services/data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MobileMoneyApiService } from './services/mobile-money-api.service';
-
 
 @NgModule({
   declarations: [AppComponent],

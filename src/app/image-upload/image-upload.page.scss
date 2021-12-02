@@ -1,0 +1,77 @@
+.image-upload-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.4rem;
+  flex-direction: row;
+  margin-bottom: 1.2rem;
+
+  .toolbar-container {
+    padding: 5px 2px !important;
+    width: 300px !important;
+
+    .add-edit-title {
+      font-size: 1.5rem !important;
+    }
+  }
+
+  ion-button.close-modal {
+    z-index: 50;
+    color: #e34411;
+    opacity: 0.56;
+    height: 60px !important;
+    padding: 0px;
+    right: 5px;
+    --box-shadow: none !important;
+    --padding: 0px;
+    --background: transparent;
+    --border-radius: 50%;
+
+    ion-icon {
+      font-size: 40px;
+    }
+  }
+}
+
+.image-content {
+  width: 89vw;
+  max-width: 500px;
+  top: 12px;
+
+  ion-card {
+    padding: 12px 6px 24px;
+    box-shadow: 2px -2px -1px 1px rgba(227, 70, 17, 0.116);
+
+    ion-card-title {
+      font-size: 1.1rem;
+      font-weight: 200;
+      opacity: 0.8;
+    }
+
+    .progress-section{
+      margin-top: 7px;
+    }
+    ion-button {
+      height: 50px;
+      width: 95%;
+      margin: auto 8px;
+      box-shadow: none;
+      --background: transparent;
+    }
+
+    input {
+      height: 22px;
+      width: 100%;
+      background-color: #e3461193;
+    }
+    #file-upload-button {
+      height: 24px;
+    }
+
+    .tiny-font {
+      font-size: 0.95rem;
+      font-style: italic;
+      opacity: 0.76;
+    }
+  }
+}

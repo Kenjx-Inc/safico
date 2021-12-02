@@ -1,0 +1,47 @@
+<div class="user-add-modal">
+  <ion-header class="image-upload-header ion-no-border">
+    <ion-toolbar class="ion-no-border">
+      <ion-title class="add-edit-title">Add/Edit Image</ion-title>
+    </ion-toolbar>
+    <ion-button class="close-modal ripple-parent ion-activatable" (click)="closeUploadModal()">
+      <ion-icon slot="icon-only" name="close"></ion-icon>
+      <ion-ripple-effect></ion-ripple-effect>
+    </ion-button>
+  </ion-header>
+
+  <ion-content class="image-content">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Select File</ion-card-title>
+      </ion-card-header>
+
+      <ion-button class="block">
+        <input type="file" class="upload" (change)="fileUpload($event.target.files)" accept="image/*" />
+      </ion-button>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Files selected: <b class="tiny-font">{{ fileName }}</b></ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div *ngIf="progressNum | async as percentage">
+          Progress: {{ percentage | number }}%
+          <ion-progress-bar color="danger" value="{{ percentage / 100 }}"></ion-progress-bar>
+        </div>
+        <div class="progress-section"
+        *ngIf="progressSnapshot| async">
+          <section *ngIf="!isImgUploaded && isImgUploading">
+            <p>Uploading now...</p>
+          </section>
+          <section *ngIf="isImgUploaded && !isImgUploading">
+            <p>Upload Done! You may close please.<br/>
+               <small class="tiny-font">The image may take sometime to update...</small>
+            </p>
+          </section>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+</div>

@@ -46,9 +46,30 @@ ion-content::part(scroll)::-webkit-scrollbar {
 }
 
 ion-avatar {
+  position: relative;
   width: 120px !important;
   height: 120px !important;
   margin: 1.8rem auto 1.2rem !important;
+
+  .edit-image-icon-wrapper {
+    background: #e34411;
+    border-radius: 50%;
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    right: 4px;
+    bottom: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.86;
+    cursor: pointer;
+
+    .edit-image-icon {
+      font-size: 20px !important;
+      color: #fff;
+    }
+  }
 }
 
 .profile-details {
@@ -71,6 +92,7 @@ ion-avatar {
 .profile-name .first-name,
 .profile-name .last-name {
   font-weight: 700;
+  margin-right: 5px;
   font-size: 27px;
 }
 

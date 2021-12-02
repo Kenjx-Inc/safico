@@ -47,7 +47,11 @@ const routes: Routes = [
   {
     path: 'user-create-edit-modal',
     loadChildren: () => import('./user-create-edit-modal/user-create-edit-modal.module').then( m => m.UserCreateEditModalPageModule)
+  },  {
+    path: 'image-upload',
+    loadChildren: () => import('./image-upload/image-upload.module').then( m => m.ImageUploadPageModule)
   }
+
 
 ];
 

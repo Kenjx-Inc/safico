@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AlertController, ModalController, NavController, NavParams } from '@ionic/angular';
+import { ModalController} from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
 import { UserCreateEditModalPage } from '../user-create-edit-modal/user-create-edit-modal.page';
 
@@ -28,10 +27,8 @@ export class CreateAccountPage implements OnInit {
   };
 
   constructor(public authService: AuthService,
-    private navCtrl: NavController,
     private formBuilder: FormBuilder,
-    public modalController: ModalController,
-    private alertController: AlertController) { }
+    public modalController: ModalController) { }
 
   ngOnInit() {
     this.validationsForm = this.formBuilder.group({
@@ -68,6 +65,4 @@ export class CreateAccountPage implements OnInit {
   async closeModal() {
     await this.modalController.dismiss();
   }
-
-
 }

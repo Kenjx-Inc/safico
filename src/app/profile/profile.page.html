@@ -1,6 +1,6 @@
 <ion-header class="header-profile">
   <ion-toolbar class="header-toolbar">
-    <ion-title>Welcome, Kenjx! </ion-title>
+    <ion-title>Welcome {{firstName}} </ion-title>
     <ion-button class="logout-button ripple-parent" (click)="authService.logOut()">
       LogOut
       <ion-icon name="log-out"></ion-icon>
@@ -12,15 +12,20 @@
 <ion-content>
   <section class="profile-image-section">
     <ion-avatar>
-      <img src="../../assets/profile/profile1.PNG" />
+      <img [src]="filePathFireStore" />
+      <div (click)=" presentUploadModal()" class="ripple-parent ion-activatable edit-image-icon-wrapper">
+        <ion-icon class="edit-image-icon" name="pencil-outline"></ion-icon>
+        <ion-ripple-effect></ion-ripple-effect>
+      </div>
     </ion-avatar>
   </section>
+
   <section class="profile-details">
     <span class="profile-name">
-      <span class="first-name"></span>
-      <span class="last-name">Joel</span>
+      <span class="first-name">{{firstName}}</span>
+      <span class="last-name">{{lastName}}</span>
     </span>
-    <span class="email"> {{ currentUser?.email }}</span>
+    <span class="email"> {{ userEmail }}</span>
     <span class="home-address-location">{{ address }}</span>
   </section>
 

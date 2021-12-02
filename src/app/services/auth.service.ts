@@ -34,7 +34,7 @@ export class AuthService {
             displayName: otherDetails?.firstName + ' ' + otherDetails?.lastName,
             photoURL: otherDetails?.imgURL
           }).then(() => {
-          }).catch(err => { console.log(err) });
+          }).catch(err => { console.log(err); });
         }
       }
       );
@@ -66,8 +66,22 @@ export class AuthService {
       return this.ngFireAuth.signOut().then(() => {
         localStorage.removeItem('user');
         this.router.navigateByUrl('/login');
-      })
+      });
     }
   }
+
+  // Get user from firestore
+  addImageToUser(imgURL) {
+    this.ngFireAuth.onAuthStateChanged((res) => {
+
+        res.updateProfile({
+          photoURL: imgURL
+        }).catch( err => console.log(err));
+
+
+
+    });
+  }
+
 }
 

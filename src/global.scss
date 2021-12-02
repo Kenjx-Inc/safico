@@ -51,11 +51,11 @@
   overflow: hidden;
 }
 
-ion-ripple-effect{  
+ion-ripple-effect{
   --ripple-color: #e34611a2 !important;
 }
 
-.tab-selected, 
+.tab-selected,
 .tab-selected:hover,
 .tab-selected:focus,
 ion-tab-button:hover,
@@ -68,4 +68,92 @@ ion-tab-button:focus{
 .error-message{
    color:  red;
    opacity: 0.65;
+}
+
+
+// Modal design
+.user-add-modal {
+  padding: 18px;
+  height: 100vh;
+
+  .add-title {
+      padding-top: 32px;
+      font-size: 2.5rem !important;
+  }
+  .add-section {
+      padding: 12px 18px;
+  }
+
+  ion-content {
+      padding: 10px 5px !important;
+      height: 100vh;
+  }
+
+  .create-content {
+      display: flex;
+      flex-direction: column;
+      padding-top: 37px !important;
+      width: 95vw;
+      max-width: 500px;
+      margin: auto !important;
+
+      .user-wrapper-form {
+          margin: auto;
+
+          form {
+              width: 100%;
+              margin: 15px  !important;
+              display: flex;
+              flex-direction: column;
+              max-width: 350px !important;
+          }
+
+          form > * {
+              margin-bottom: 12px !important;
+              width: 100% !important;
+          }
+
+          ion-input {
+              background: #e346112a !important;
+              padding: 0.4rem 0.9rem 0.4rem !important;
+              // border-radius: 10px;
+              height: 100px !important;
+              border: none !important;
+              --placeholder-color: #000 !important;
+              text-align: left;
+
+              input:-webkit-autofill,
+              .native-input:-webkit-autofill {
+                  background: transparent !important;
+              }
+
+              input:autofill {
+                  --background: transparent !important;
+              }
+          }
+
+          form ion-text {
+              text-align: right;
+              font-size: 12px !important;
+              margin: 6px -3px 6px !important;
+              color: #e34611;
+              font-weight: 200;
+              cursor: pointer;
+          }
+
+          .button-solid {
+              height: 50px;
+              padding: 0 !important;
+              margin: 10px auto;
+              --background: #e34411 !important;
+              --background-activated: transparent;
+              --background-hover: #e346115b !important;
+              --background-focused: #e346115b !important;
+              --background-activated-opacity: 0.6;
+              --background-focused-opacity: 0.08;
+              --background-hover-opacity: 0.85;
+              --box-shadow: 0 3px 1px -2px #e34411, 0 2px 2px 0 #e346118c 0 1px 5px 0 #e346110a;
+          }
+      }
+  }
 }

@@ -2,12 +2,15 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 import { AuthService } from '../services/auth.service';
+import { ModalController } from '@ionic/angular';
+import { ImageUploadPage } from '../image-upload/image-upload.page';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
+
 export class ProfilePage implements OnInit, AfterViewInit {
   coords: any;
   lat: any;
@@ -17,11 +20,24 @@ export class ProfilePage implements OnInit, AfterViewInit {
     useLocale: true,
     maxResults: 5
   };
+  filePathFireStore: string;
+  filePathDefault = '../../assets/profile/profile1.PNG';
+  fileId: any;
+  firstName: string;
+  lastName: string;
+  userEmail: string;
 
-  currentUser: any;
+  constructor(private geolocation: Geolocation,
+    public authService: AuthService,
+    private nativeGeocoder: NativeGeocoder,
+    public modalController: ModalController) {
 
-  constructor(private geolocation: Geolocation, 
-    private authService: AuthService ,private nativeGeocoder: NativeGeocoder) {
+    // Get user credentials...
+    const user = JSON.parse(localStorage.getItem('user'));
+    this.filePathFireStore = user.providerData[0].photoURL !== null ? user.photoURL : this.filePathDefault;
+    this.firstName = user.displayName.split(' ')[0];
+    this.lastName = user.displayName.split(' ')[1];
+    this.userEmail = user.email;
   }
 
   ngOnInit() {
@@ -68,6 +84,24 @@ export class ProfilePage implements OnInit, AfterViewInit {
       if (object[value].length) { this.address += object[value] + ', '; }
     }
     return this.address.slice(0, -2);
+  }
+
+
+  async presentUploadModal() {
+    const modal = await this.modalController.create({
+      component: ImageUploadPage,
+      cssClass: 'user-modal',
+      presentingElement: await this.modalController.getTop() // Get the top-most ion-modal
+    });
+
+    modal.onDidDismiss().then((data) => {
+      this.filePathFireStore = data.data;
+
+      // Save to user credentials...
+      this.authService.addImageToUser(this.filePathFireStore);
+    });
+
+    return await modal.present();
   }
 
 }
