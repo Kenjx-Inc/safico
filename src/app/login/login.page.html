@@ -1,7 +1,7 @@
 <ion-content>
   <div class="login-content">
     <div class="image-wrapper-logo">
-      <img src="../../assets/logo1.JPG" />
+      <img src="../../assets/logo.webp" />
     </div>
     <section class="intro">
       <p class="login">Safina and Covic Restaurant</p>
@@ -16,7 +16,7 @@
         <ion-input type="email" formControlName="email" placeholder="Email"></ion-input>
         <div class="validation-errors">
           <ng-container *ngFor="let validation of validationMessages.email">
-            <div class="error-message" *ngIf="validationsForm.get('email').hasError(validation.type) && 
+            <div class="error-message" *ngIf="validationsForm.get('email').hasError(validation.type) &&
               (validationsForm.get('email').dirty || validationsForm.get('email').touched)">
               {{ validation.message }}
             </div>
