@@ -25,6 +25,16 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+#container {
+  -webkit-box-sizing: border-box !important;
+  box-sizing: border-box !important;
+  min-width: 432px !important;
+  width: 100%;
+  margin: auto;
+  max-width: 900px;
+}
+
+
 .custom-alert-wrapper .alert-wrapper {
   --width: 64vw;
   --height: 25vh;

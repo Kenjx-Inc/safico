@@ -1,5 +1,6 @@
 .home-page {
-  margin: 0px 6px !important;
+  margin: 5px auto !important;
+  width: 100vw;
 }
 
 ion-content {
@@ -17,7 +18,7 @@ ion-content::part(scroll) {
   --border-width: 0 !important;
   padding: 0.5rem 0.8rem;
   margin: auto -5px auto -5px;
-  width: 100vw !important;
+  width: 100% !important;
   display: flex;
   justify-content: center;
 
@@ -37,10 +38,12 @@ ion-content::part(scroll) {
   left: 0;
   right: 0;
   text-align: left;
+  padding: 5px 0px 5px 10px;
   transform: translateY(0%);
-  width: 100vw;
+  width: 100%;
 
   ion-searchbar {
+    max-width: 700px;
     --border-radius: 35px;
     --placeholder-opacity: 0.5;
     --icon-color: #e34411;
@@ -60,7 +63,7 @@ ion-content::part(scroll) {
   header {
     display: flex;
     justify-content: space-between;
-    margin: auto 15px;
+    margin: 25px 15px 10px;
 
     .recommended-items {
       font-size: 1.5rem;
@@ -106,15 +109,10 @@ ion-content::part(scroll) {
     align-items: flex-start;
     margin-left: 12px;
     width: 60vw !important;
-    max-width: 450px;
+    max-width: 300px;
     height: 300px !important;
-    color: #fff;
+    color: #f6ece4 !important;
     margin-top: 0px;
-
-    .item-showcase {
-      --color: #f6ece4 !important;
-      color: #f6ece4 !important;
-    }
 
     .swiper-slide {
       margin-left: 18px !important;
@@ -231,6 +229,56 @@ ion-content::part(scroll) {
         font-size: 27px;
         opacity: 0.8;
       }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  ion-slide {
+    width: 70vw !important;
+
+    ion-card {
+      height: 250px;
+      background: #e34411;
+
+      .item-name {
+        font-size: 0.9rem;
+      }
+
+      .item-image-wrapper {
+        height: 160px !important;
+
+        img{
+          display: inline-block;
+          width: 100%;
+        }
+      }
+    }
+
+    #main-section .item-showcase {
+      width: 90vw !important;
+      height: 300px !important;
+    }
+  }
+}
+@media (min-width: 649px) {
+  ion-slide {
+    width: 50vw !important;
+
+    #main-section .item-showcase {
+      width: 80vw !important;
+      max-width: 300px;
+      height: 300px !important;
+    }
+  }
+}
+@media (min-width: 800px)  {
+   ion-slide {
+    width: 40vw !important;
+
+    #main-section .item-showcase {
+      max-width: 350px;
+      height: 310px !important;
     }
   }
 }

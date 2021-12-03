@@ -1,60 +1,63 @@
 <div class="home-page">
-    <ion-header class="ion-no-border header-home">
-        <ion-toolbar class="header-home-toolbar">
-            <ion-title class="company-logo">
-              <img src="../../assets/logo.webp" alt="logo"/>
-            </ion-title>
-            <ion-avatar slot="end" class="ripple-parent" (click)="navigateToProfile()">
-                <img [src]="imagePathURL" alt="" class="profile-image">
-                <ion-ripple-effect></ion-ripple-effect>
-            </ion-avatar>
-        </ion-toolbar>
-    </ion-header>
+  <ion-header class="ion-no-border header-home">
+    <ion-toolbar class="header-home-toolbar">
+      <ion-title class="company-logo">
+        <img src="../../assets/logo.webp" alt="logo" />
+      </ion-title>
+      <ion-avatar slot="end" class="ripple-parent" (click)="navigateToProfile()">
+        <img [src]="imagePathURL" alt="" class="profile-image">
+        <ion-ripple-effect></ion-ripple-effect>
+      </ion-avatar>
+    </ion-toolbar>
+  </ion-header>
 
-    <ion-content [fullscreen]="true">
-        <div id="main-section">
-            <div id="top-section">
-                <ion-searchbar animated="true" placeholder="Search food by name" (ionChange)="getItemsBySearch($event)" showCancelButton="focus" inputmode="search" search-icon="search-outline" class="ion-no-shadow">
-                </ion-searchbar>
-                <ion-list *ngIf="isItemAvailable">
-                    <ion-item *ngFor="let item of itemsFoundList" routerLink="['/items:id']" (click)="navigateToItem(item.id)">{{ item.name }}</ion-item>
-                </ion-list>
+  <ion-content [fullscreen]="true">
+    <div id="main-section">
+      <div id="top-section">
+        <ion-searchbar animated="true" placeholder="Search food by name" (ionChange)="getItemsBySearch($event)"
+          showCancelButton="focus" inputmode="search" search-icon="search-outline" class="ion-no-shadow">
+        </ion-searchbar>
+        <ion-list *ngIf="isItemAvailable">
+          <ion-item *ngFor="let item of itemsFoundList" routerLink="['/items:id']" (click)="navigateToItem(item.id)">{{
+            item.name }}</ion-item>
+        </ion-list>
 
-                <header>
-                    <span class="recommended-items">Recommended</span>
-                    <span class="list-all-items">
+        <header>
+          <span class="recommended-items">Recommended</span>
+          <span class="list-all-items">
             <span class="view-all-items-link ripple-parent" [routerLink]="['/items']">View All</span>
-                    <ion-icon class="arrow-forward-icon" name="chevron-forward"></ion-icon>
-                    <ion-ripple-effect></ion-ripple-effect>
-                    </span>
-                </header>
+            <ion-icon class="arrow-forward-icon" name="chevron-forward"></ion-icon>
+            <ion-ripple-effect></ion-ripple-effect>
+          </span>
+        </header>
 
-                <!-- Slides for the recommended items -->
-                <ion-slides class="first-slides" mode="ios" pager="false" [options]="options">
-                    <ion-slide *ngFor="let item of itemsRecommended">
-                        <div class="item">
-                            <ion-card class="item-showcase" [routerLink]="['/items:id']" (click)="navigateToItem(item?.id)">
-                                <section class="item-image-wrapper">
-                                    <img class="item-image" [src]="item.img" />
-                                </section>
-                                <section class="general-content">
-                                    <ion-card-header>
-                                        <!-- Category, Title(Name), Price -->
-                                        <ion-card-subtitle class="item-category">{{ item.category }}</ion-card-subtitle>
-                                        <!-- Hover effect on the title for details OR Give a short description in this section -->
-                                        <ion-card-title class="item-name">{{ item.name }}</ion-card-title>
-                                    </ion-card-header>
-                                    <ion-card-content class="item-price">
-                                        {{item.price | number }} {{ item.currency }}
-                                    </ion-card-content>
-                                </section>
-                            </ion-card>
-                        </div>
-                    </ion-slide>
-                </ion-slides>
+        <!-- Slides for the recommended items -->
+        <ion-slides class="first-slides" mode="ios" pager="false" [options]="options">
+          <ion-slide *ngFor="let item of itemsRecommended">
+            <div class="item">
+              <ion-card class="item-showcase" [routerLink]="['/items:id']" routerDirection="forward"
+                (click)="navigateToItem(item?.id)">
+                <section class="item-image-wrapper">
+                  <img class="item-image" [src]="item.img" />
+                </section>
+                <section class="general-content">
+                  <ion-card-header>
+                    <!-- Category, Title(Name), Price -->
+                    <ion-card-subtitle class="item-category">{{ item.category }}</ion-card-subtitle>
+                    <!-- Hover effect on the title for details OR Give a short description in this section -->
+                    <ion-card-title class="item-name">{{ item.name }}</ion-card-title>
+                  </ion-card-header>
+                  <ion-card-content class="item-price">
+                    {{item.price | number }} {{ item.currency }}
+                  </ion-card-content>
+                </section>
+              </ion-card>
             </div>
+          </ion-slide>
+        </ion-slides>
+      </div>
 
-        </div>
-        <!-- End slides -->
-    </ion-content>
+    </div>
+    <!-- End slides -->
+  </ion-content>
 </div>
