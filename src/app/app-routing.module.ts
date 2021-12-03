@@ -2,30 +2,35 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CustomPreloadingStrategyService } from './services/custom-preloading-strategy.service';
 import { DataResolverService } from './services/data-resolver.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
   {
     path: 'tabnav',
+    canActivate: [AuthGuardService],
     loadChildren: () => import('./tabnav/tabnav.module').then(m => m.TabnavPageModule)
   },
   {
     path: 'track-orders',
-    loadChildren: () => import('./track-orders/track-orders.module').then( m => m.TrackOrdersPageModule)
+    canActivate: [AuthGuardService],
+    loadChildren: () => import('./track-orders/track-orders.module').then(m => m.TrackOrdersPageModule)
   },
   {
     path: 'item/:id',
     resolve: {
       itemDetails: DataResolverService
     },
-    loadChildren: () => import('./single-item/single-item.module').then( m => m.SingleItemPageModule)
+    canActivate: [AuthGuardService],
+    loadChildren: () => import('./single-item/single-item.module').then(m => m.SingleItemPageModule)
   },
   {
     path: 'items',
-    loadChildren: () => import('./items/items.module').then( m => m.ItemsPageModule)
+    canActivate: [AuthGuardService],
+    loadChildren: () => import('./items/items.module').then(m => m.ItemsPageModule)
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: '',
@@ -34,24 +39,27 @@ const routes: Routes = [
   },
   {
     path: 'create-account',
-    loadChildren: () => import('./create-account/create-account.module').then( m => m.CreateAccountPageModule)
+    loadChildren: () => import('./create-account/create-account.module').then(m => m.CreateAccountPageModule)
   },
   {
     path: 'forgot-password',
-    loadChildren: () => import('./forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
+    loadChildren: () => import('./forgot-password/forgot-password.module').then(m => m.ForgotPasswordPageModule)
   },
   {
     path: 'send-payment',
-    loadChildren: () => import('./send-payment/send-payment.module').then( m => m.SendPaymentPageModule)
+    canActivate: [AuthGuardService],
+    loadChildren: () => import('./send-payment/send-payment.module').then(m => m.SendPaymentPageModule)
   },
   {
     path: 'user-create-edit-modal',
-    loadChildren: () => import('./user-create-edit-modal/user-create-edit-modal.module').then( m => m.UserCreateEditModalPageModule)
-  },  {
+    canActivate: [AuthGuardService],
+    loadChildren: () => import('./user-create-edit-modal/user-create-edit-modal.module').then(m => m.UserCreateEditModalPageModule)
+  },
+  {
     path: 'image-upload',
-    loadChildren: () => import('./image-upload/image-upload.module').then( m => m.ImageUploadPageModule)
+    canActivate: [AuthGuardService],
+    loadChildren: () => import('./image-upload/image-upload.module').then(m => m.ImageUploadPageModule)
   }
-
 
 ];
 

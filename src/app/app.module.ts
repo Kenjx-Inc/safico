@@ -20,6 +20,7 @@ import { DataResolverService } from './services/data-resolver.service';
 import { DataService } from './services/data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MobileMoneyApiService } from './services/mobile-money-api.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,6 +37,7 @@ import { MobileMoneyApiService } from './services/mobile-money-api.service';
     CallNumber,
     DataResolverService,
     DataService,
+    AuthGuardService,
     MobileMoneyApiService,
     {
       provide: RouteReuseStrategy,
