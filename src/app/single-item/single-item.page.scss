@@ -3,7 +3,7 @@
   margin-top: 0px;
   padding-bottom: 5px !important;
   z-index: -5;
-  // background: transparent !important;
+  background: #fff;
 
   .image-cover-background {
     background: #e34411;
@@ -52,12 +52,10 @@
 
 ion-content {
   width: calc(100% + 35px);
-  // background: transparent;
-  // --background: transparent;
   margin: 0px !important;
-  padding: auto 15px;
+  padding: 0 15px;
+  font-size: 150%;
 }
-
 
 /////////////////////////////////
 // ITEM ////////////////////
@@ -66,20 +64,22 @@ ion-content {
 .item-wrapper {
   padding: auto 20px;
   margin-right: 17px;
-  // position: fixed;
-  // bottom: 0px !important;
 
-  .image-wrapper{
-     margin: auto;
-     display: block;
-     min-height: 35vh;
+  .image-wrapper {
+    display: block;
+    min-height: 35vh;
 
     img {
+      object-fit: fill;
       width: 100%;
     }
   }
 
   .item {
+    position: absolute;
+    bottom: 0px;
+    right: 0%;
+    left: 0%;
     font-size: 75% !important;
     padding: 35px 20px 30px 20px !important;
     border-top-right-radius: 35px !important;
@@ -89,7 +89,7 @@ ion-content {
     align-items: center;
     width: 100vw;
     flex-direction: column !important;
-    margin: -15px 0 -25px !important;
+    margin: -5px 0 -25px !important;
     background: #fff;
     box-shadow: 0px -2px 12px -2px rgba(221, 221, 221, 0.849);
 
@@ -123,7 +123,7 @@ ion-content {
         color: rgba(0, 0, 0, 0.89);
         font-weight: 600;
         font-size: 16px;
-        margin-bottom: .4rem;
+        margin-bottom: 0.4rem;
       }
 
       .specific-ingredients {
@@ -155,11 +155,11 @@ ion-content {
           margin: 3px;
         }
 
-        span{
-           border-radius: 50%;
-           display: flex;
-           --ripple-color: #e34611a2 !important;
-           justify-content: center;
+        span {
+          border-radius: 50%;
+          display: flex;
+          --ripple-color: #e34611a2 !important;
+          justify-content: center;
         }
 
         ion-icon {
@@ -174,49 +174,60 @@ ion-content {
       }
     }
 
-  }
+    //////////////////////////////
+    /// Bottom Fixed Card
+    //////////////////////////////
 
-  //////////////////////////////
-  /// Bottom Fixed Card
-  //////////////////////////////
-
-  .fixed-card-order {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 35px 20px;
-    width: 100vw;
-    margin: 0;
-    height: 85px;
-    color: #fff;
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
-    background: #e34411;
-
-    .total-price-section {
+    .fixed-card-order {
       display: flex;
-      flex-direction: column;
-      text-align: left;
-      font-size: 0.85rem;
-      font-weight: 200 !important;
+      justify-content: space-between;
+      align-items: center;
+      padding: 35px 20px;
+      width: 100vw;
+      margin: 0;
+      height: 85px;
+      color: #fff;
+      border-top-right-radius: 20px;
+      border-top-left-radius: 20px;
+      background: #e34411;
 
-      span {
-        display: block;
-        margin-bottom: .2rem;
+      .total-price-section {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        font-size: 0.85rem;
+        font-weight: 200 !important;
+
+        span {
+          display: block;
+          margin-bottom: 0.2rem;
+        }
+
+        .total-price-heading {
+          font-size: 75%;
+          font-weight: 300;
+        }
       }
 
-      .total-price-heading {
-        font-size: 75%;
-        font-weight: 300;
+      ion-button {
+        text-transform: capitalize;
+        --background: #fff !important;
+        --border-radius: 28px !important;
+        --box-shadow: 0 3px 1px -2px #e34411, 0 2px 2px 0 #e346118c 0 1px 5px 0 #e346110a;
+        color: #e34411;
       }
     }
 
-    ion-button {
-      text-transform: capitalize;
-      --background: #fff !important;
-      --border-radius: 28px !important;
-      --box-shadow: 0 3px 1px -2px #e34411, 0 2px 2px 0 #e346118c 0 1px 5px 0 #e346110a;
-      color: #e34411;
-    }
   }
+
 }
+
+//  Media queries
+@media (min-width: 476px){
+  .item-wrapper .item{
+    bottom: unset;
+    padding-bottom: 0px !important;
+  }
+
+}
+

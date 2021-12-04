@@ -42,13 +42,13 @@
                 </div>
             </section>
             <!-- BOTTOM FIXED CARD -->
-        </ion-card>
-        <ion-card class="fixed-card-order">
-            <div class="total-price-section">
-                <span class="total-price-heading">Total Price </span>
-                <span>{{ newPrice }}</span>
-            </div>
-            <ion-button class="order-now-button" (click)="orderNow(item.id)" [routerLink]="['/items']" routerDirection="back"> Add To Cart </ion-button>
+            <ion-card class="fixed-card-order">
+                <div class="total-price-section">
+                    <span class="total-price-heading">Total Price </span>
+                    <span>{{ newPrice }}</span>
+                </div>
+                <ion-button class="order-now-button" (click)="orderNow(item.id)" [routerLink]="['/items']" routerDirection="back"> Add To Cart </ion-button>
+            </ion-card>
         </ion-card>
     </div>
 </ion-content>
