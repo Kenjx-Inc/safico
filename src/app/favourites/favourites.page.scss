@@ -125,9 +125,8 @@ ion-content::part(scroll)::-webkit-scrollbar {
   }
 
   .unselection {
-    position: absolute;
-    top: 50%;
-    left: 25%;
+    position: relative;
+    top: 30vh;
     opacity: 0.45;
   }
 }
