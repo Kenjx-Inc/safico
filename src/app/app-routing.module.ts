@@ -33,11 +33,6 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
   },
   {
-    path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
-  },
-  {
     path: 'create-account',
     loadChildren: () => import('./create-account/create-account.module').then(m => m.CreateAccountPageModule)
   },
@@ -59,7 +54,12 @@ const routes: Routes = [
     path: 'image-upload',
     canActivate: [AuthGuardService],
     loadChildren: () => import('./image-upload/image-upload.module').then(m => m.ImageUploadPageModule)
+  },
+  {
+    path: 'splash',
+    loadChildren: () => import('./splash/splash.module').then( m => m.SplashPageModule)
   }
+
 
 ];
 

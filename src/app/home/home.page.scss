@@ -10,14 +10,13 @@ ion-content {
   height: auto !important;
 }
 ion-content::part(scroll) {
-  padding-left: 45px;
+  padding-left: 25px;
 }
 .header-home-toolbar {
   --background: #fff !important;
   --min-height: 105px !important;
   --border-width: 0 !important;
   padding: 0.5rem 0.8rem;
-  margin: auto -5px auto -5px;
   width: 100% !important;
   display: flex;
   justify-content: center;

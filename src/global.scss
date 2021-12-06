@@ -167,3 +167,13 @@ ion-tab-button:focus{
       }
   }
 }
+
+#scrollable{
+    width: calc(100% + 20px) !important;
+    height:auto !important;
+    justify-content: center;
+ }
+ #scrollable::part(scroll){
+    padding-right: 20px;
+
+}
