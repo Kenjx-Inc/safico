@@ -30,23 +30,25 @@
   </section>
 
   <div class="profile-request-services">
-    <ion-card class="card-one">
+    <ion-card class="card-one ripple-parent" [routerLink]="['/tabnav/cart']" >
       <div class="first-request">
         <div class="background-icon-wrapper">
           <ion-icon name="menu"></ion-icon>
         </div>
         <p class="go-cart">My Orders </p>
       </div>
-      <ion-icon name="chevron-forward-circle" [routerLink]="['/tabnav/cart']"></ion-icon>
+      <ion-icon name="chevron-forward-circle"></ion-icon>
+      <ion-ripple-effect></ion-ripple-effect>
     </ion-card>
-    <ion-card class="card-two">
+    <ion-card class="card-two" [routerLink]="['/track-orders']">
       <div class="second-request">
         <div class="background-icon-wrapper">
           <ion-icon name="location"></ion-icon>
         </div>
         <p class="track-my-orders">Order Progress</p>
       </div>
-      <ion-icon name="chevron-forward-circle" [routerLink]="['/track-orders']"></ion-icon>
+      <ion-icon name="chevron-forward-circle"></ion-icon>
+      <ion-ripple-effect></ion-ripple-effect>
     </ion-card>
   </div>
 

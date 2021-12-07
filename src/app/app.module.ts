@@ -21,6 +21,8 @@ import { DataService } from './services/data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MobileMoneyApiService } from './services/mobile-money-api.service';
 import { AuthGuardService } from './services/auth-guard.service';
+import { BackNavigationService } from './services/back-navigation.service';
+import { BackNavigationModule } from './shared/back-navigation/back-navigation.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,6 +32,7 @@ import { AuthGuardService } from './services/auth-guard.service';
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
+    BackNavigationModule,
     IonicModule.forRoot(),
     AppRoutingModule],
   providers: [NativeGeocoder,
@@ -39,6 +42,7 @@ import { AuthGuardService } from './services/auth-guard.service';
     DataService,
     AuthGuardService,
     MobileMoneyApiService,
+    BackNavigationService,
     {
       provide: RouteReuseStrategy,
       useClass: IonicRouteStrategy

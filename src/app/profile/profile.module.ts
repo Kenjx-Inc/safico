@@ -8,7 +8,7 @@ import { ProfilePageRoutingModule } from './profile-routing.module';
 
 import { ProfilePage } from './profile.page';
 import { ImageUploadPage } from '../image-upload/image-upload.page';
-
+import { BackNavigationDirective } from '../back-navigation.directive';
 @NgModule({
   imports: [
     CommonModule,
@@ -16,6 +16,6 @@ import { ImageUploadPage } from '../image-upload/image-upload.page';
     IonicModule,
     ProfilePageRoutingModule
   ],
-  declarations: [ProfilePage,ImageUploadPage]
+  declarations: [ProfilePage, ImageUploadPage, BackNavigationDirective]
 })
 export class ProfilePageModule { }

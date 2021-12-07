@@ -9,6 +9,7 @@ import { IonicModule } from '@ionic/angular';
 import { TrackOrdersPageRoutingModule } from './track-orders-routing.module';
 
 import { TrackOrdersPage } from './track-orders.page';
+import { BackNavigationModule} from '../shared/back-navigation/back-navigation.module';
 
 @NgModule({
   imports: [
@@ -18,6 +19,7 @@ import { TrackOrdersPage } from './track-orders.page';
     HttpClientModule,
     HttpClientJsonpModule,
     IonicModule,
+    BackNavigationModule,
     TrackOrdersPageRoutingModule
   ],
   declarations: [TrackOrdersPage]

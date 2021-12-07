@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { CustomPreloadingStrategyService } from './services/custom-preloading-strategy.service';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { DataResolverService } from './services/data-resolver.service';
 import { AuthGuardService } from './services/auth-guard.service';
 
@@ -57,18 +56,15 @@ const routes: Routes = [
   },
   {
     path: 'splash',
-    loadChildren: () => import('./splash/splash.module').then( m => m.SplashPageModule)
+    loadChildren: () => import('./splash/splash.module').then(m => m.SplashPageModule)
   }
-
 
 ];
 
 
 @NgModule({
   imports: [
-    // Add preloading by custom functionality
-    // RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-    RouterModule.forRoot(routes, { preloadingStrategy: CustomPreloadingStrategyService })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
   ],
   exports: [RouterModule]
 })

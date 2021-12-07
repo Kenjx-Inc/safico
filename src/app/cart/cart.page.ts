@@ -1,7 +1,6 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { DataService, ITEM } from '../services/data.service';
-import { SingleItemPage } from '../single-item/single-item.page';
+
 
 @Component({
   selector: 'app-cart',
