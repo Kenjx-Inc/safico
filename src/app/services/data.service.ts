@@ -12,6 +12,7 @@ export interface FILE {
 export class ITEM {
   id: string;
   name: string;
+  category: string;
   description: string;
   img: string;
   currency: string;
@@ -80,7 +81,7 @@ export class DataService {
 
     ref2Collection.delete();
   }
-  
+
   // Delete existing cart order
   clearCartOrder(userId) {
     this.ngFirestore.collection('cart-order').doc(userId).delete();
