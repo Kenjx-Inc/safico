@@ -4,18 +4,19 @@
   padding-bottom: 5px !important;
   z-index: 5;
 
-  ion-toolbar {
+  .items-header-toolbar-container {
     display: flex !important;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: row !important;
     --margin: 0px;
+    padding: .15rem 0px;
     position: relative;
 
     ion-button {
-      margin-left: 5px;
-      width: 50px;
-      height: 50px;
+      margin-left: 10px;
+      width: 60px;
+      height: 60px;
       --background: transparent !important;
       --box-shadow: none;
 
@@ -24,14 +25,18 @@
         display: block;
         color: #e34411 !important;
       }
+      .cart-link-icon {
+        flex: 1 1 10%;
+        position: relative;
+        font-size: 40px;
+        right: 5%;
+      }
     }
 
     ion-title {
+      width: 60%;
       display: inline-block;
-      position: absolute;
-      top: 19px;
-      left: 1%;
-      width: 100%;
+      margin: auto;
       text-align: center;
     }
   }
@@ -94,7 +99,7 @@ ion-content::part(scroll)::-webkit-scrollbar {
       cursor: pointer;
 
       .section-one {
-        inline-size: 40%;
+        inline-size: 60%;
         overflow-wrap: break-word;
         text-align: left;
         flex: 1 1 60%;
@@ -129,7 +134,7 @@ ion-content::part(scroll)::-webkit-scrollbar {
   }
 }
 
-@media (min-width: 400px) {
+@media (min-width: 463px) {
   .item-section .item .background-image-wrapper {
     flex: 1 1 20%;
     min-width: 140px;

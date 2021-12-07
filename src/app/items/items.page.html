@@ -1,9 +1,16 @@
 <ion-header class="items-header">
-  <ion-toolbar>
-    <ion-button [routerLink]="['/tabnav/home']">
-      <ion-icon slot="start" [routerLink]="['/tabnav/home']" name="chevron-back"></ion-icon>
-    </ion-button>
-    <ion-title> All Items </ion-title>
+  <ion-toolbar class="items-header-toolbar ion-text-center">
+    <div class="items-header-toolbar-container">
+      <ion-button [routerLink]="['/tabnav/home']"  routerDirection="back" class="ripple-parent">
+        <ion-icon slot="start" name="chevron-back"></ion-icon>
+        <ion-ripple-effect></ion-ripple-effect>
+      </ion-button>
+      <ion-title> All Items </ion-title>
+      <ion-button [routerLink]="['/tabnav/cart']" routerDirection="forward" class="ripple-parent">
+        <ion-icon class="cart-link-icon" name="cart"></ion-icon>
+        <ion-ripple-effect></ion-ripple-effect>
+      </ion-button>
+    </div>
   </ion-toolbar>
 </ion-header>
 
