@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, NavController } from '@ionic/angular';
+import { enterAnimation } from '../nav-animation';
 import { DataService, ITEM } from '../services/data.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class ItemsPage implements OnInit {
   items: ITEM[];
   private loading: any;
   constructor(private dataService: DataService, private router: Router,
-    public loadingCtrl: LoadingController) { }
+    public loadingCtrl: LoadingController, private navCtrl: NavController) { }
 
   ngOnInit() {
     this.dataService.getItems().subscribe((res) => {
@@ -36,6 +37,7 @@ export class ItemsPage implements OnInit {
       this.loading.present();
     });
 
+    this.navCtrl.setDirection('forward', true, 'forward', enterAnimation);
     this.router.navigateByUrl(`/item/${id}`,{ skipLocationChange: true});
   }
 }

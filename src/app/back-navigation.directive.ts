@@ -4,7 +4,6 @@ import { BackNavigationService } from './services/back-navigation.service';
 @Directive({
   selector: '[appBackButton]'
 })
-
 export class BackNavigationDirective {
 
   constructor(private nav: BackNavigationService) { }

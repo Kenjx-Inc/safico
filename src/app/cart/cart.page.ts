@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { enterAnimation } from '../nav-animation';
 import { DataService, ITEM } from '../services/data.service';
 
 
@@ -17,7 +19,7 @@ export class CartPage implements OnInit {
   distanceCost: number;
   distancePerCost = 2000;  // Cost in UGX
 
-  constructor(private dataService: DataService) {
+  constructor(private dataService: DataService, private navCtrl: NavController) {
     // Obtain the user id from storage
     const { uid } = JSON.parse(localStorage.getItem('user'));
     this.userID = uid;
@@ -67,7 +69,8 @@ export class CartPage implements OnInit {
     const total = this.grandTotal;
     const distance = this.distance;
     const userID = this.userID;
-    this.dataService.addToCartOrder({ ...this.cartItems, total, distance}, userID);
+    this.dataService.addToCartOrder({ ...this.cartItems, total, distance }, userID);
+    this.navCtrl.setDirection('forward', true, 'forward', enterAnimation);
   }
 
 }

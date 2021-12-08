@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalController, NavController } from '@ionic/angular';
+import { enterAnimation } from '../nav-animation';
 import { AuthService } from '../services/auth.service';
 
 
@@ -59,6 +60,7 @@ export class UserCreateEditModalPage implements OnInit {
   addMoreUserDetails(form) {
     this.authService.createUser(this.email, this.password, { ...form }).then((res) => {
       this.modal.dismiss();
+      this.navCtrl.setDirection('forward', true, 'forward', enterAnimation);
       this.navCtrl.navigateRoot('/login');
     });
   }

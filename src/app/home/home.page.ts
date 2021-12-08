@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { IonSlides, LoadingController } from '@ionic/angular';
+import { IonSlides, LoadingController, NavController } from '@ionic/angular';
+import { enterAnimation } from '../nav-animation';
 import { DataService, ITEM } from '../services/data.service';
 
 @Component({
@@ -38,7 +39,8 @@ export class HomePage implements OnInit {
     speed: 1
   };
 
-  constructor(private dataService: DataService, private router: Router, private loadingCtrl: LoadingController) {
+  constructor(private dataService: DataService, private router: Router,
+    private navCtrl: NavController, private loadingCtrl: LoadingController) {
     this.loadingNow();
   }
 
@@ -76,6 +78,7 @@ export class HomePage implements OnInit {
   }
 
   navigateToProfile() {
+    this.navCtrl.setDirection('forward', true, 'forward', enterAnimation);
     this.router.navigateByUrl('/tabnav/profile');
   }
 
@@ -105,7 +108,7 @@ export class HomePage implements OnInit {
     }).then((overlay) => {
       this.loading = overlay;
       const user = JSON.parse(localStorage.getItem('user'));
-       this.imagePathURL = user.providerData[0].photoURL !== null ? user.photoURL : this.filePathDefault;
+      this.imagePathURL = user.providerData[0].photoURL !== null ? user.photoURL : this.filePathDefault;
       this.loading.present();
     });
   }

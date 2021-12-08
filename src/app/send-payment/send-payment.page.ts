@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CallNumber } from '@ionic-native/call-number/ngx';
-import { ToastController } from '@ionic/angular';
+import { NavController, ToastController } from '@ionic/angular';
+import { enterAnimation } from '../nav-animation';
 import { DataService } from '../services/data.service';
 import { MobileMoneyApiService } from '../services/mobile-money-api.service';
 
@@ -21,6 +22,7 @@ export class SendPaymentPage implements OnInit {
 
   constructor(private dataService: DataService,
     private call: CallNumber,
+    private navCtrl: NavController,
     private mobileMoneyAPI: MobileMoneyApiService,
     private router: Router,
     private toastController: ToastController) {
@@ -45,6 +47,7 @@ export class SendPaymentPage implements OnInit {
     toast.present();
 
     toast.onWillDismiss().then(() => {
+      this.navCtrl.setDirection('forward', true, 'forward', enterAnimation);
       this.router.navigate(['/track-orders']);
     });
 

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy} from '@angular/router';
+import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
@@ -24,6 +24,8 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { BackNavigationService } from './services/back-navigation.service';
 import { BackNavigationModule } from './shared/back-navigation/back-navigation.module';
 
+import { enterAnimation } from './nav-animation';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -33,7 +35,9 @@ import { BackNavigationModule } from './shared/back-navigation/back-navigation.m
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     BackNavigationModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({
+      navAnimation: enterAnimation // Add your animations!
+    }),
     AppRoutingModule],
   providers: [NativeGeocoder,
     Geolocation,
