@@ -4,6 +4,7 @@ import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@io
 import { AuthService } from '../services/auth.service';
 import { ModalController } from '@ionic/angular';
 import { ImageUploadPage } from '../image-upload/image-upload.page';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -30,7 +31,8 @@ export class ProfilePage implements OnInit, AfterViewInit {
   constructor(private geolocation: Geolocation,
     public authService: AuthService,
     private nativeGeocoder: NativeGeocoder,
-    public modalController: ModalController) {
+    public modalController: ModalController,
+    public router: Router) {
 
     // Get user credentials...
     const user = JSON.parse(localStorage.getItem('user'));
@@ -102,6 +104,14 @@ export class ProfilePage implements OnInit, AfterViewInit {
     });
 
     return await modal.present();
+  }
+
+  goToCartPage() {
+    this.router.navigateByUrl('/tabnav/cart');
+  }
+
+  goToTrackPage() {
+    this.router.navigateByUrl('/track-orders');
   }
 
 }

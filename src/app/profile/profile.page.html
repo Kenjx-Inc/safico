@@ -1,11 +1,13 @@
 <ion-header class="header-profile">
   <ion-toolbar class="header-toolbar">
+  <div class="header-toolbar-content">
     <ion-title>Welcome {{firstName}} </ion-title>
     <ion-button class="logout-button ripple-parent" (click)="authService.logOut()">
-      LogOut
+      <span class="log-out-label">Log Out</span>
       <ion-icon name="log-out"></ion-icon>
       <ion-ripple-effect></ion-ripple-effect>
     </ion-button>
+    </div>
   </ion-toolbar>
 </ion-header>
 
@@ -30,7 +32,7 @@
   </section>
 
   <div class="profile-request-services">
-    <ion-card class="card-one ripple-parent" [routerLink]="['/tabnav/cart']" >
+    <ion-card class="card-one ripple-parent" (click)="goToCartPage()">
       <div class="first-request">
         <div class="background-icon-wrapper">
           <ion-icon name="menu"></ion-icon>
@@ -40,7 +42,7 @@
       <ion-icon name="chevron-forward-circle"></ion-icon>
       <ion-ripple-effect></ion-ripple-effect>
     </ion-card>
-    <ion-card class="card-two" [routerLink]="['/track-orders']">
+    <ion-card class="card-two" (click)="goToTrackPage()">
       <div class="second-request">
         <div class="background-icon-wrapper">
           <ion-icon name="location"></ion-icon>
