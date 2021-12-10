@@ -10,15 +10,17 @@
     align-items: flex-start;
     flex-direction: row !important;
     --margin: 0px;
-    padding: .25rem 0px;
+    padding: 0.25rem 0px;
     position: relative;
 
     ion-button {
       margin-left: 5px;
       width: 50px;
       height: 50px;
+      --border-radius: 50%;
       --background: transparent !important;
       --box-shadow: none;
+      --ripple-color: #e34411 !important;
 
       ion-icon {
         --cursor: pointer !important;
@@ -210,28 +212,55 @@ ion-content::part(scroll)::-webkit-scrollbar {
     }
   }
 }
-@media (min-width: 732px) {
+@media (min-width: 400px) {
+  .cart-section {
+    align-items: center;
+
+    .background-image-wrapper {
+      flex: 1 1 20%;
+      min-width: 140px;
+      height: 140px;
+    }
+
+    .item-summary {
+      flex: 1 1 70%;
+      flex-direction: row;
+      align-items: center;
+      text-align: center;
+    }
+  }
+}
+@media (min-width: 578px) {
+  .cart-section .item .background-image-wrapper {
+    flex: 1 1 35%;
+    min-width: 170px;
+    height: 170px;
+  }
+}
+@media (min-width: 856px) {
   .cart-section {
     display: flex;
     flex-flow: row wrap;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: space-around;
+    align-items: center;
 
     .item {
       width: 40vw;
       max-width: 500px;
 
-      .background-image-wrapper {
-        width: 150px;
-        height: 120px;
-      }
-
       .item-summary {
+        align-items: flex-start;
+        text-align: left;
         .item-price {
           width: 100%;
-          // font-size: 150%;
         }
       }
     }
+  }
+
+  .amount-section {
+    width: 100%;
+    padding: 1.1rem;
+    margin: auto;
   }
 }
