@@ -33,7 +33,7 @@
 
         <!-- Slides for the recommended items -->
         <ion-slides class="first-slides" mode="ios" pager="false" [options]="options">
-          <ion-slide *ngFor="let item of itemsRecommended">
+          <ion-slide class="slide" *ngFor="let item of itemsRecommended">
             <div class="item">
               <ion-card class="item-showcase" [routerLink]="['/items:id']" routerDirection="forward"
                 (click)="navigateToItem(item?.id)">

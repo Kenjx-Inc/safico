@@ -34,7 +34,7 @@ ion-content::part(scroll) {
 
 #main-section {
   position: absolute;
-  left: 0;
+  left: -5px;
   right: 0;
   text-align: left;
   padding: 5px 0px 5px 10px;
@@ -51,7 +51,7 @@ ion-content::part(scroll) {
     --background: #f6ece4;
     font-size: 12px !important;
     margin: 0px auto 15px !important;
-    width: 95vw;
+    width: 95%;
   }
 
   ion-item {
@@ -62,7 +62,7 @@ ion-content::part(scroll) {
   header {
     display: flex;
     justify-content: space-between;
-    margin: 25px 15px 10px;
+    margin: 25px 20px 10px;
 
     .recommended-items {
       font-size: 1.5rem;
@@ -99,16 +99,15 @@ ion-content::part(scroll) {
   }
 
   .item-showcase {
-    // transform: translateY(-75%);
-    border-radius: 23px;
+    border-radius: 25px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     justify-content: flex-end;
     align-items: flex-start;
     margin-left: 12px;
-    width: 60vw !important;
-    max-width: 300px;
+    width: 60vw;
+    max-width: 350px;
     height: 300px !important;
     color: #f6ece4 !important;
     margin-top: 0px;
@@ -123,6 +122,8 @@ ion-content::part(scroll) {
       background: #e34611fd;
 
       .item-image {
+        object-fit: fill;
+        height: 200px;
         width: 100% !important;
       }
     }
@@ -179,7 +180,7 @@ ion-content::part(scroll) {
     border-radius: 15px;
     width: 85vw;
     height: 100px;
-    max-width: 350px;
+    max-width: 300px;
 
     ion-avatar {
       width: 120px;
@@ -233,7 +234,7 @@ ion-content::part(scroll) {
 }
 
 @media (max-width: 450px) {
-  ion-slide {
+  .swiper-slide {
     width: 70vw !important;
 
     ion-card {
@@ -247,7 +248,7 @@ ion-content::part(scroll) {
       .item-image-wrapper {
         height: 160px !important;
 
-        img{
+        img {
           display: inline-block;
           width: 100%;
         }
@@ -255,28 +256,32 @@ ion-content::part(scroll) {
     }
 
     #main-section .item-showcase {
-      width: 90vw !important;
+      width: 90% !important;
       height: 300px !important;
     }
   }
 }
-@media (min-width: 649px) {
-  ion-slide {
-    width: 50vw !important;
+@media (min-width: 535px) {
+  .swiper-slide {
+    display: flex;
+    justify-content: flex-start;
+    width: 70vw !important;
+    padding-left: 0px !important;
 
     #main-section .item-showcase {
-      width: 80vw !important;
-      max-width: 300px;
+      border-radius: 20px;
+      max-width: 250px;
       height: 300px !important;
     }
   }
 }
-@media (min-width: 800px)  {
-   ion-slide {
-    width: 40vw !important;
+
+@media (min-width: 648px) {
+  .swiper-slide {
+    width: 400px !important;
 
     #main-section .item-showcase {
-      max-width: 350px;
+      width: 200px;
       height: 310px !important;
     }
   }
