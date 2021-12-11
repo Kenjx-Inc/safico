@@ -1,21 +1,22 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterContentChecked, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonSlides, LoadingController, NavController } from '@ionic/angular';
 import { enterAnimation } from '../nav-animation';
 import { DataService, ITEM } from '../services/data.service';
 
+import { SwiperComponent } from 'swiper/angular';
+import { SwiperOptions } from 'swiper';
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 
-export class HomePage implements OnInit {
+export class HomePage implements OnInit, AfterContentChecked {
 
-  @ViewChild('slides', { static: false }) slider: IonSlides;
+  @ViewChild('swiper') swiper: SwiperComponent;
 
-  selectedSlide: any;
-  segment = 0;
   isLoaded = false;
   itemsFoundList: any;
   itemsRecommended: any;
@@ -27,22 +28,33 @@ export class HomePage implements OnInit {
   imagePathURL: string;
   filePathDefault = '../../assets/profile/profile1.PNG';
 
-
-  options = {
-    slidesPerView: 1.5,
-    spaceBetweenView: 10
-  };
-
-  slidesOptions = {
-    initialSlide: 0,
+  swiperConfig: SwiperOptions = {
     slidesPerView: 1,
-    speed: 1
+    spaceBetween: 10,
+    breakpoints: {
+      // when window width is >= 320px
+    320: {
+      slidesPerView: 1.5,
+      spaceBetween: 10
+    },
+    // when window width is >= 480px
+    573: {
+      slidesPerView: 2.5,
+      spaceBetween: 5
+    },
+    // when window width is >= 640px
+    900: {
+      slidesPerView: 3.5,
+      spaceBetween: 5
+    }
+    }
   };
 
   constructor(private dataService: DataService, private router: Router,
     private navCtrl: NavController, private loadingCtrl: LoadingController) {
     this.loadingNow();
   }
+
 
   ngOnInit() {
     this.dataService.getItems().subscribe((res) => {
@@ -59,17 +71,11 @@ export class HomePage implements OnInit {
       });
     });
   }
-
-  async segmentChanged(event) {
-    await this.selectedSlide.slideTo(this.segment);
+  ngAfterContentChecked() {
+    if (this.swiper) {
+      this.swiper.updateSwiper({});
+    }
   }
-
-  async slidesChanged(slides: IonSlides) {
-    this.selectedSlide = slides;
-    slides.getActiveIndex().then(selectedIndex =>
-      this.segment = selectedIndex);
-  }
-
 
   // Navigate to single item
   navigateToItem(id) {

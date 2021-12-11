@@ -1,6 +1,5 @@
 .home-page {
-  margin: 5px auto !important;
-  width: 100vw;
+  width: 100%;
 }
 
 ion-content {
@@ -16,7 +15,8 @@ ion-content::part(scroll) {
   --background: #fff !important;
   --min-height: 105px !important;
   --border-width: 0 !important;
-  padding: 0.5rem 0.8rem;
+  left: -17px;
+  padding: 0.5rem 1.5rem 0.1rem 0rem;
   width: 100% !important;
   display: flex;
   justify-content: center;
@@ -24,7 +24,7 @@ ion-content::part(scroll) {
   .company-logo {
     display: block;
     margin-top: 10px;
-    padding-left: 5px;
+    margin-left: -5px;
   }
 
   ion-avatar {
@@ -32,9 +32,14 @@ ion-content::part(scroll) {
   }
 }
 
+#top-section {
+  margin-bottom: 84px;
+  padding-left: .65rem;
+}
+
 #main-section {
   position: absolute;
-  left: -5px;
+  left: -18px;
   right: 0;
   text-align: left;
   padding: 5px 0px 5px 10px;
@@ -50,8 +55,10 @@ ion-content::part(scroll) {
     --box-shadow: none;
     --background: #f6ece4;
     font-size: 12px !important;
-    margin: 0px auto 15px !important;
-    width: 95%;
+    left: -5px;
+    font-size: 12px !important;
+    margin: 1px auto -5px !important;
+    width: 90%;
   }
 
   ion-item {
@@ -62,7 +69,7 @@ ion-content::part(scroll) {
   header {
     display: flex;
     justify-content: space-between;
-    margin: 25px 20px 10px;
+    margin: 1.563rem 1.25rem 0.625rem;
 
     .recommended-items {
       font-size: 1.5rem;
@@ -94,10 +101,6 @@ ion-content::part(scroll) {
   ///////////////////////////////////////////
   // Items Showcase
   //////////////////////////////////////////
-  .first-slides::content {
-    height: 400px !important;
-  }
-
   .item-showcase {
     border-radius: 25px;
     display: flex;
@@ -105,18 +108,8 @@ ion-content::part(scroll) {
     flex-wrap: nowrap;
     justify-content: flex-end;
     align-items: flex-start;
-    margin-left: 12px;
-    width: 60vw;
-    max-width: 350px;
-    height: 300px !important;
     color: #f6ece4 !important;
-    margin-top: 0px;
-
-    .swiper-slide {
-      margin-left: 18px !important;
-    }
-
-    // Secondary color for the slide(for distinguishing)
+    max-width: 322px;
 
     .item-image-wrapper {
       background: #e34611fd;
@@ -143,146 +136,22 @@ ion-content::part(scroll) {
       margin-top: -8px !important;
     }
   }
-
-  ///////////////////////////////
-  // Bottom Section //// NOT USED
-  /////////////////////////////
-
-  ion-segment {
-    margin-bottom: 13px;
-    padding: 0 13px;
-  }
-
-  ion-segment-button {
-    text-transform: capitalize !important;
-    font-size: 16px !important;
-    font-weight: 500 !important;
-    --color-checked: #e34411;
-  }
-
-  .bottom-slides::content {
-    height: auto !important;
-  }
-
-  .popular-items ion-slide.swiper-slide {
-    height: 200px !important;
-    // width: 300px !important;
-    justify-content: flex-start !important;
-  }
-
-  .card-bottom-section {
-    background: #ffffff;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: row;
-    margin: -53px 0 40px 0px;
-    padding: 1rem 0.9rem !important;
-    border-radius: 15px;
-    width: 85vw;
-    height: 100px;
-    max-width: 300px;
-
-    ion-avatar {
-      width: 120px;
-      height: 100%;
-      max-height: 80px;
-      border: none;
-      --border-radius: 20px !important;
-    }
-
-    ion-card-content {
-      display: flex;
-      width: 100%;
-      text-align: left;
-      justify-content: space-between;
-      flex-direction: row !important;
-      font-weight: 600 !important;
-
-      span.item-price {
-        display: block;
-        padding-top: 9px !important;
-        font-weight: 600 !important;
-      }
-
-      .item-summary > .item-name {
-        display: block;
-        font-weight: 400 !important;
-        margin-top: -10px !important;
-        font-size: 20px !important;
-      }
-
-      .favourite-icon-border {
-        width: 33px;
-        height: 33px;
-        border-radius: 50%;
-        background: #e34411;
-        opacity: 0.7;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .favourite-icon-border > * {
-        color: #fff;
-        display: block;
-        z-index: 3;
-        font-size: 27px;
-        opacity: 0.8;
-      }
-    }
-  }
 }
 
-@media (max-width: 450px) {
-  .swiper-slide {
-    width: 70vw !important;
-
-    ion-card {
-      height: 250px;
-      background: #e34411;
-
-      .item-name {
-        font-size: 0.9rem;
-      }
-
-      .item-image-wrapper {
-        height: 160px !important;
-
-        img {
-          display: inline-block;
-          width: 100%;
-        }
-      }
-    }
-
-    #main-section .item-showcase {
-      width: 90% !important;
-      height: 300px !important;
-    }
-  }
-}
-@media (min-width: 535px) {
-  .swiper-slide {
-    display: flex;
-    justify-content: flex-start;
-    width: 70vw !important;
-    padding-left: 0px !important;
-
-    #main-section .item-showcase {
-      border-radius: 20px;
-      max-width: 250px;
-      height: 300px !important;
-    }
-  }
+//  Swiper Slides
+.swiper-container {
+  width: 100%;
+  height: 100%;
 }
 
-@media (min-width: 648px) {
-  .swiper-slide {
-    width: 400px !important;
-
-    #main-section .item-showcase {
-      width: 200px;
-      height: 310px !important;
-    }
-  }
+.swiper-wrapper {
+  padding-bottom: 0.5rem;
+  padding-left: 0.5rem;
 }
+
+// .swiper-slide {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+// }

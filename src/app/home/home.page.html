@@ -31,32 +31,28 @@
           </span>
         </header>
 
-        <!-- Slides for the recommended items -->
-        <ion-slides class="first-slides" mode="ios" pager="false" [options]="options">
-          <ion-slide class="slide" *ngFor="let item of itemsRecommended">
-            <div class="item">
-              <ion-card class="item-showcase" [routerLink]="['/items:id']" routerDirection="forward"
-                (click)="navigateToItem(item?.id)">
-                <section class="item-image-wrapper">
-                  <img class="item-image" [src]="item.img" />
-                </section>
-                <section class="general-content">
-                  <ion-card-header>
-                    <!-- Category, Title(Name), Price -->
-                    <ion-card-subtitle class="item-category">{{ item.category }}</ion-card-subtitle>
-                    <!-- Hover effect on the title for details OR Give a short description in this section -->
-                    <ion-card-title class="item-name">{{ item.name }}</ion-card-title>
-                  </ion-card-header>
-                  <ion-card-content class="item-price">
-                    {{item.price | number }} {{ item.currency }}
-                  </ion-card-content>
-                </section>
-              </ion-card>
-            </div>
-          </ion-slide>
-        </ion-slides>
+        <!-- Slides for items -->
+        <swiper #swiper [config]="swiperConfig">
+          <ng-template swiperSlide *ngFor="let item of itemsRecommended">
+            <ion-card class="item-showcase" [routerLink]="['/items:id']" routerDirection="forward"
+              (click)="navigateToItem(item?.id)">
+              <section class="item-image-wrapper">
+                <img class="item-image" [src]="item.img" />
+              </section>
+              <section class="general-content">
+                <ion-card-header>
+                  <ion-card-subtitle class="item-category">{{ item.category }}</ion-card-subtitle>
+                  <ion-card-title class="item-name">{{ item.name }}</ion-card-title>
+                </ion-card-header>
+                <ion-card-content class="item-price">
+                  {{item.price | number }} {{ item.currency }}
+                </ion-card-content>
+              </section>
+            </ion-card>
+          </ng-template>
+        </swiper>
+        
       </div>
-
     </div>
     <!-- End slides -->
   </ion-content>
