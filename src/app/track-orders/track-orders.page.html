@@ -3,7 +3,7 @@
     <ion-button class="ripple-parent" appBackButton>
       <ion-icon slot="start" name="chevron-back"></ion-icon>
       <ion-ripple-effect></ion-ripple-effect>
-     </ion-button>
+    </ion-button>
     <ion-title>Track Orders</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -18,7 +18,7 @@
 
   <!-- DRIVER CONTACT -->
   <ion-card class="track-card-details" slot="fixed">
-    <div class="line-divider"></div>
+    <hr />
     <ion-card class="driver-contact ion-no-border">
       <div class="driver">
         <ion-avatar>
@@ -34,7 +34,7 @@
       <button class="call-button ripple-parent ion-activatable" (click)="callDriver()">
         <ion-icon name="call"></ion-icon>
         <ion-ripple-effect type="unbounded"></ion-ripple-effect>
-       </button>
+      </button>
     </ion-card>
 
     <!-- TRACKING DELIVERY -->
@@ -67,6 +67,6 @@
     <!-- ORDER RECIEVED BUTTON -->
     <ion-button class="ripple-parent" [disabled]="orderRecieved === false" (click)='isOrderRecieved()'>Order Recieved
       <ion-ripple-effect type="unbounded"></ion-ripple-effect>
-     </ion-button>
+    </ion-button>
   </ion-card>
 </ion-content>

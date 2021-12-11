@@ -69,13 +69,13 @@ ion-content {
     border-top-right-radius: 35px;
     padding: 0px 20px;
 
-    .line-divider {
-      border: 2px solid #ccc;
+    hr {
+      border: 2px solid #77777742;
       width: 15%;
-      opacity: 0.96;
-      height: 1px;
       border-radius: 25px;
-      margin: 10px auto 20px !important;
+      height: 0px !important;
+      display: block !important;
+      font-size: 2em !important;
     }
 
     .driver-contact {
