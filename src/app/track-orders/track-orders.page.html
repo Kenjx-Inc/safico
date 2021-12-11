@@ -20,15 +20,17 @@
   <ion-card class="track-card-details" slot="fixed">
     <div class="line-divider"></div>
     <ion-card class="driver-contact ion-no-border">
-      <ion-avatar>
-        <img src="../../assets/profile/profile1.PNG">
-      </ion-avatar>
-      <ion-item lines="none">
-        <div class="driver-details">
-          <p class="driver-name">Sunday Nicholas</p>
-          <p class="driver-spec">Driver</p>
-        </div>
-      </ion-item>
+      <div class="driver">
+        <ion-avatar>
+          <img src="../../assets/default_driver.png">
+        </ion-avatar>
+        <ion-item class="driver-info" lines="none">
+          <div class="driver-details">
+            <p class="driver-name">Sunday Nicholas</p>
+            <p class="driver-spec">Driver</p>
+          </div>
+        </ion-item>
+      </div>
       <button class="call-button ripple-parent ion-activatable" (click)="callDriver()">
         <ion-icon name="call"></ion-icon>
         <ion-ripple-effect type="unbounded"></ion-ripple-effect>

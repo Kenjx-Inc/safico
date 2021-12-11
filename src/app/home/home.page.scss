@@ -8,9 +8,10 @@ ion-content {
   padding: 0 25px;
   height: auto !important;
 }
-ion-content::part(scroll) {
-  padding-left: 25px;
-}
+// ion-content::part(scroll) {
+//   padding-left: 25px;
+// }
+
 .header-home-toolbar {
   --background: #fff !important;
   --min-height: 105px !important;
@@ -148,10 +149,3 @@ ion-content::part(scroll) {
   padding-bottom: 0.5rem;
   padding-left: 0.5rem;
 }
-
-// .swiper-slide {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-// }

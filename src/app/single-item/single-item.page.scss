@@ -62,16 +62,14 @@ ion-content {
 /////////////////////////////////
 
 .item-wrapper {
-  padding: auto 20px;
   margin-right: 17px;
-
+  background-color: #e34411;
   .image-wrapper {
-    display: block;
-    min-height: 35vh;
-
+    min-height: 25%;
     img {
       object-fit: fill;
       width: 100%;
+      height: 100%;
     }
   }
 
@@ -217,17 +215,13 @@ ion-content {
         color: #e34411;
       }
     }
-
   }
-
 }
 
 //  Media queries
-@media (min-width: 476px){
-  .item-wrapper .item{
+@media (min-width: 476px) {
+  .item-wrapper .item {
     bottom: unset;
     padding-bottom: 0px !important;
   }
-
 }
-
