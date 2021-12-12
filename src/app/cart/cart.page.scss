@@ -62,9 +62,15 @@ ion-content::part(scroll)::-webkit-scrollbar {
 // CART ITEMS ////////////////////
 /////////////////////////////////
 .cart-section-empty {
-  min-height: 23vh;
+  min-height: 10vh;
   p {
-    margin-top: 30%;
+    margin-top: 10%;
+    opacity: 0.8;
+    font-size: 0.9rem;
+    a {
+      color: #e34411;
+      font-weight: 600;
+    }
   }
 }
 .cart-section {

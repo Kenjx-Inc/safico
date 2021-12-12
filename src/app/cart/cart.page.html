@@ -9,7 +9,10 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <section class="cart-section">
+  <section class="cart-section-empty ion-text-center" *ngIf="isCartEmpty">
+    <p>No cart items selected. Go to <a [routerLink]="['/items']">items</a></p>
+  </section>
+  <section class="cart-section" *ngIf="isCartEmpty === false">
     <ion-card class="item" *ngFor="let item of cartItems">
       <div class="background-image-wrapper">
         <img [src]="item.img" />
@@ -47,11 +50,4 @@
   <section class="order-button">
     <ion-button class="order-button" [routerLink]="['/send-payment']" (click)="placeOrder()">Place Order</ion-button>
   </section>
-
-  <!-- ITEM TO SHOW WHEN CART IS EMPTY -->
-  <!-- <ion-header>
-    <ion-toolbar class="ion-no-shadow">
-      <>Go back to select your first <a>item</a></>
-    </ion-toolbar>
- </ion-header> -->
 </ion-content>

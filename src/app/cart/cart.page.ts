@@ -12,6 +12,7 @@ import { DataService, ITEM } from '../services/data.service';
 
 export class CartPage implements OnInit {
   cartItems: any[];
+  isCartEmpty = true;
   userID: any;
   subTotal: number;
   grandTotal: number;
@@ -29,6 +30,8 @@ export class CartPage implements OnInit {
           id: item.payload.doc.id,
           ...item.payload.doc.data() as ITEM
         }));
+
+        if (this.cartItems) { this.isCartEmpty = false };
 
         this.getSubTotal();
         this.getTotal();
