@@ -40,11 +40,6 @@ const routes: Routes = [
     loadChildren: () => import('./forgot-password/forgot-password.module').then(m => m.ForgotPasswordPageModule)
   },
   {
-    path: 'send-payment',
-    canActivate: [AuthGuardService],
-    loadChildren: () => import('./send-payment/send-payment.module').then(m => m.SendPaymentPageModule)
-  },
-  {
     path: 'user-create-edit-modal',
     canActivate: [AuthGuardService],
     loadChildren: () => import('./user-create-edit-modal/user-create-edit-modal.module').then(m => m.UserCreateEditModalPageModule)

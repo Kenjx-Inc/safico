@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, ToastController, AlertController } from '@ionic/angular';
 import { enterAnimation } from '../nav-animation';
 import { DataService, ITEM } from '../services/data.service';
 
@@ -19,8 +19,10 @@ export class CartPage implements OnInit {
   distance: number;
   distanceCost: number;
   distancePerCost = 2000;  // Cost in UGX
+  customMessage: string;
 
-  constructor(private dataService: DataService, private navCtrl: NavController) {
+  constructor(private dataService: DataService, private toastCtrl: ToastController,
+    private navCtrl: NavController, private alertCtrl: AlertController) {
     // Obtain the user id from storage
     const { uid } = JSON.parse(localStorage.getItem('user'));
     this.userID = uid;
@@ -31,7 +33,7 @@ export class CartPage implements OnInit {
           ...item.payload.doc.data() as ITEM
         }));
 
-        if (this.cartItems) { this.isCartEmpty = false };
+        if (this.cartItems) { this.isCartEmpty = false; }
 
         this.getSubTotal();
         this.getTotal();
@@ -46,8 +48,28 @@ export class CartPage implements OnInit {
 
   //  Remove cart item
   removeCartItem(id: string) {
-    this.dataService.deleteCartItem(this.userID, id);
+    this.presentConfirmDeleteAlert(id);
     this.getTotal();
+  }
+
+  async presentConfirmDeleteAlert(_id: string) {
+    const alert = await this.alertCtrl.create({
+      header: 'Alert!',
+      message: 'Confirm delete item?',
+      cssClass: 'custom-alert-wrapper',
+      buttons: [{
+        text: 'Cancel'
+      },
+      {
+        text: 'OK',
+        handler: () => {
+          this.dataService.deleteCartItem(this.userID, _id);
+        }
+      }
+      ]
+    });
+
+    await alert.present();
   }
 
   // Get subtotal from cart items alone
@@ -73,7 +95,21 @@ export class CartPage implements OnInit {
     const distance = this.distance;
     const userID = this.userID;
     this.dataService.addToCartOrder({ ...this.cartItems, total, distance }, userID);
-    this.navCtrl.setDirection('forward', true, 'forward', enterAnimation);
+    this.customMessage = 'Your order is being processed...';
+    this.presentToast();
   }
 
+  // Present order toast
+  //  Navigate to Track Page
+  async presentToast() {
+    const toast = await this.toastCtrl.create({
+      message: this.customMessage,
+      duration: 2000
+    });
+    toast.present();
+
+    toast.onWillDismiss().then(() => {
+      this.navCtrl.setDirection('forward', true, 'forward', enterAnimation);
+    });
+  }  
 }
