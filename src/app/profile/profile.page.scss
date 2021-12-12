@@ -3,9 +3,9 @@
 ///////////////////////////////////
 
 ion-content {
-  width: calc(100% + 11px);
+  width: calc(100% - 3px);
   display: flex;
-  align-items: center;
+  justify-content: center !important;
   text-align: center;
 }
 
@@ -114,9 +114,8 @@ ion-avatar {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 95%;
-  left: -12px;
   margin: auto;
+  width: 95%;
 }
 
 .profile-request-services > *,
@@ -178,4 +177,3 @@ ion-icon[name="menu"] {
     margin: auto;
   }
 }
-

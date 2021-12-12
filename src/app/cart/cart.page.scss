@@ -41,7 +41,7 @@
 }
 
 ion-content {
-  width: calc(100% + 11px);
+  width: calc(100% - 3px);
 }
 
 // Scroll bar/* Works on Firefox */
@@ -61,7 +61,12 @@ ion-content::part(scroll)::-webkit-scrollbar {
 /////////////////////////////////
 // CART ITEMS ////////////////////
 /////////////////////////////////
-
+.cart-section-empty {
+  min-height: 23vh;
+  p {
+    margin-top: 30%;
+  }
+}
 .cart-section {
   .item {
     padding-right: 15px !important;
@@ -157,6 +162,7 @@ ion-content::part(scroll)::-webkit-scrollbar {
 ///////////////////////
 .amount-section {
   padding: 5px;
+  margin: auto;
 
   .amount-section-subtotal,
   .amount-section-total {

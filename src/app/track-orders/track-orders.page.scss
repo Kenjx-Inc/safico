@@ -1,5 +1,4 @@
 .track-order-header {
-  margin-top: 10px;
   padding-bottom: 5px !important;
 
   ion-toolbar {
@@ -8,6 +7,7 @@
     align-items: flex-start;
     flex-direction: row !important;
     --margin: 0px;
+    padding: 0.25rem 0px;
     position: relative;
 
     ion-button {
