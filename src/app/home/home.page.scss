@@ -3,7 +3,7 @@
 }
 
 ion-content {
-  width: calc(100% + 25px);
+  width: calc(100% + 15px);
   --background: #fff !important;
   padding: 0 25px;
   height: auto !important;
@@ -17,7 +17,7 @@ ion-content {
   --min-height: 105px !important;
   --border-width: 0 !important;
   left: -17px;
-  padding: 0.5rem 1.5rem 0.1rem 0rem;
+  padding: 0.5rem 0.56rem 0.1rem 0.1rem;
   width: 100% !important;
   display: flex;
   justify-content: center;
@@ -70,7 +70,7 @@ ion-content {
   header {
     display: flex;
     justify-content: space-between;
-    margin: 1.563rem 1.25rem 0.625rem;
+    margin: 1.563rem 0.6rem 0.625rem 15px;
 
     .recommended-items {
       font-size: 1.5rem;

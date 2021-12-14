@@ -96,8 +96,9 @@ ion-content {
         ion-avatar {
           border: 2px solid #e3461133;
         }
-      }
+
       .driver-details {
+        padding-top: 0.45rem;
         .driver-name {
           font-weight: 600;
           opacity: 0.85;
@@ -114,6 +115,7 @@ ion-content {
           font-size: 13px;
         }
       }
+    }
 
       .call-button {
         width: 40px !important;

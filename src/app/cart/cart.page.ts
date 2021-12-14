@@ -54,14 +54,16 @@ export class CartPage implements OnInit {
 
   async presentConfirmDeleteAlert(_id: string) {
     const alert = await this.alertCtrl.create({
-      header: 'Alert!',
+      header: 'Cart',
       message: 'Confirm delete item?',
       cssClass: 'custom-alert-wrapper',
       buttons: [{
-        text: 'Cancel'
+        text: 'Cancel',
+        cssClass: 'alert-style-two'
       },
       {
         text: 'OK',
+        cssClass: 'alert-style-one',
         handler: () => {
           this.dataService.deleteCartItem(this.userID, _id);
         }
@@ -111,5 +113,5 @@ export class CartPage implements OnInit {
     toast.onWillDismiss().then(() => {
       this.navCtrl.setDirection('forward', true, 'forward', enterAnimation);
     });
-  }  
+  }
 }
