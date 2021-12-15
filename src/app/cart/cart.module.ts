@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { CartPageRoutingModule } from './cart-routing.module';
 
 import { CartPage } from './cart.page';
-import { BackNavigationModule } from '../shared/back-navigation/back-navigation.module';
+import { BackNavigationModule } from '../back-navigation.module';
 
 
 @NgModule({

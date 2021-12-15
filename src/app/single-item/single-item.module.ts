@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { SingleItemPageRoutingModule } from './single-item-routing.module';
 
 import { SingleItemPage } from './single-item.page';
-import { BackNavigationModule} from '../shared/back-navigation/back-navigation.module';
+import {BackNavigationModule}  from '../back-navigation.module';
 
 @NgModule({
   imports: [

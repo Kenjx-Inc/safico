@@ -22,7 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MobileMoneyApiService } from './services/mobile-money-api.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { BackNavigationService } from './services/back-navigation.service';
-import { BackNavigationModule } from './shared/back-navigation/back-navigation.module';
+import { BackNavigationModule } from './back-navigation.module';
 
 import { enterAnimation } from './nav-animation';
 

@@ -30,7 +30,7 @@ export class ImageUploadPage implements OnInit {
   filePath: string;
   fileId: string;
   imgIdFromFirestore: string;
-  userID:string;
+  userID: string;
 
   private ngFirestoreCollection: AngularFirestoreCollection<FILE>;
 
@@ -52,8 +52,8 @@ export class ImageUploadPage implements OnInit {
   }
 
   // Change image of the user
-  fileUpload(event: FileList) {
-    const file = event.item(0);
+  fileUpload(event) {
+    const file = event.target.files[0].item(0);
 
     if (file.type.split('/')[0] !== 'image') {
       console.log('File type not supported!');

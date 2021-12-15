@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "safico",
+	"appId": "com.safico",
+	"appName": "Safico",
 	"webDir": "www",
 	"bundledWebRuntime": false
 }

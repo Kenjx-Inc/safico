@@ -2,16 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { BackNavigationRoutingModule } from './back-navigation-routing.module';
-import { BackNavigationDirective } from '../../back-navigation.directive';
+import { BackNavigationDirective } from './back-navigation/back-navigation.directive';
 
 @NgModule({
   declarations: [BackNavigationDirective],
-  imports: [
-    CommonModule
-    , BackNavigationRoutingModule
-  ], exports: [
-    BackNavigationDirective
-  ]
+  imports: [CommonModule, BackNavigationRoutingModule],
+  exports: [BackNavigationDirective]
 })
 
 export class BackNavigationModule { }

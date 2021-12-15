@@ -5,9 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { UserCreateEditModalPageRoutingModule } from './user-create-edit-modal-routing.module';
-
-import { UserCreateEditModalPage } from './user-create-edit-modal.page';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +12,6 @@ import { UserCreateEditModalPage } from './user-create-edit-modal.page';
     IonicModule,
     UserCreateEditModalPageRoutingModule
   ],
-  declarations: [UserCreateEditModalPage]
+  declarations: []
 })
 export class UserCreateEditModalPageModule {}
