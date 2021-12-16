@@ -12,11 +12,11 @@ import { AuthService } from '../services/auth.service';
 export class LoginPage implements OnInit {
 
   validationMessages = {
-    'email': [
+    email: [
       { type: 'required', message: 'Email is required.' },
       { type: 'pattern', message: 'Please enter a valid email.' }
     ],
-    'password': [
+    password: [
       { type: 'required', message: 'Password is required.' },
       { type: 'minlength', message: 'Password must be at least 5 characters long.' }
     ]
@@ -45,11 +45,35 @@ export class LoginPage implements OnInit {
   logIn(value) {
     this.authService.logIn(value.email, value.password)
       .then((res) => {
-        this.errorMessage = "";
+        this.errorMessage = '';
         this.navCtrl.navigateForward('/tabnav')
       }).catch((error) => {
-        this.errorMessage = error.message;
-      })
+        console.log(error);
+        this.getCustomErrorMessage(error.message);
+      });
+  }
+
+  getCustomErrorMessage(message) {
+    switch (message) {
+      case 'auth/network-request-failed':
+        this.errorMessage = 'Please check again your internet connection.';
+        break;
+      case 'auth/user-disabled':
+        this.errorMessage = 'Please create another account or call the administrator.';
+        break;
+      case 'auth/user-token-expired':
+      case 'auth/invalid-user-token':
+        this.errorMessage = 'Please sign in again.';
+        break;
+      case 'auth/web-storage-unsupported':
+        this.errorMessage = 'Device storage not yet supported or unavailable.';
+        break;
+      case 'auth/too-many-requests':
+        this.errorMessage = 'Sorry, try again later!';
+        break;
+      default:
+        this.errorMessage = 'Please restart the app or check your internet connection.';
+    }
   }
 
 }
