@@ -73,9 +73,9 @@ export class UserCreateEditModalPage implements OnInit {
       case 'auth/email-already-in-use':
         this.errorMessage = 'This email address is already in use!.';
         break;
-        case 'auth/invalid-email':
-          this.errorMessage = 'Invalid email!';
-          break;
+      case 'auth/invalid-email':
+        this.errorMessage = 'Invalid email!';
+        break;
       default:
         this.errorMessage = 'Check your internet connection, or try again!';
     }
