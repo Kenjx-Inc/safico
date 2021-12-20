@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { ModalController} from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
 import { UserCreateEditModalPage } from '../user-create-edit-modal/user-create-edit-modal.page';
 
@@ -16,11 +16,11 @@ export class CreateAccountPage implements OnInit {
   userPassword: any;
 
   validationMessages = {
-    'email': [
+    email: [
       { type: 'required', message: 'Email is required.' },
       { type: 'pattern', message: 'Please enter a valid email.' }
     ],
-    'password': [
+    password: [
       { type: 'required', message: 'Password is required.' },
       { type: 'minlength', message: 'Password must be at least 5 characters long.' }
     ]
@@ -62,7 +62,4 @@ export class CreateAccountPage implements OnInit {
     return await modal.present();
   }
 
-  async closeModal() {
-    await this.modalController.dismiss();
-  }
 }

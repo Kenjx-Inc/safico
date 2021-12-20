@@ -59,9 +59,31 @@ export class UserCreateEditModalPage implements OnInit {
 
   addMoreUserDetails(form) {
     this.authService.createUser(this.email, this.password, { ...form }).then((res) => {
-      this.modal.dismiss();
+      this.errorMessage = '';
+      this.closeModal();
       this.navCtrl.setDirection('forward', true, 'forward', enterAnimation);
       this.navCtrl.navigateRoot('/login');
+    }).catch((error) => {
+      this.getCustomErrorMessage(error.code);
     });
+  }
+
+  getCustomErrorMessage(code) {
+    switch (code) {
+      case 'auth/email-already-in-use':
+        this.errorMessage = 'This email address is already in use!.';
+        break;
+        case 'auth/invalid-email':
+          this.errorMessage = 'Invalid email!';
+          break;
+      default:
+        this.errorMessage = 'Check your internet connection, or try again!';
+    }
+    this.navCtrl.setDirection('back', true, 'back', enterAnimation);
+    this.navCtrl.navigateRoot('/create-account');
+  }
+
+  async closeModal() {
+    await this.modal.dismiss();
   }
 }

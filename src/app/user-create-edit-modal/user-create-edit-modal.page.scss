@@ -14,6 +14,20 @@ ion-content {
   height: 100vh !important;
   text-align: left;
 
+  .close-button {
+    position: fixed;
+    top: 5%;
+    right: 5%;
+    z-index: 10;
+    border-radius: 50%;
+    cursor: pointer;
+    opacity: 0.55;
+
+    ion-icon {
+      color: #e34411;
+      font-size: 35px;
+    }
+  }
   .add-details-header {
     padding-top: 32px;
   }

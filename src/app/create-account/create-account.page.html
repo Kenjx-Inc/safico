@@ -10,10 +10,9 @@
 
     <section class="create-wrapper-form">
       <form class="create-form" (ngSubmit)="createUserAccount(validationsForm.value)" [formGroup]="validationsForm">
-        <label class="error-message">{{errorMessage}}</label>
 
         <!-- INPUTS -->
-        <ion-input class="email-input" required type="email" formControlName="email" placeholder="Email" name="email"></ion-input>
+        <ion-input class="email-input" required type="email" formControlName="email" placeholder="name@example.com" name="email"></ion-input>
         <div class="validation-errors">
           <ng-container *ngFor="let validation of validationMessages.email">
             <div class="error-message" *ngIf="validationsForm.get('email').hasError(validation.type) &&

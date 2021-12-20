@@ -44,16 +44,15 @@ export class LoginPage implements OnInit {
 
   logIn(value) {
     this.authService.logIn(value.email, value.password)
-      .then((res) => {
+      .then(() => {
         this.errorMessage = '';
-        this.navCtrl.navigateForward('/tabnav')
+        this.navCtrl.navigateForward('/tabnav');
       }).catch((error) => {
-        console.log(error);
         this.getCustomErrorMessage(error.message);
       });
   }
 
-  getCustomErrorMessage(message) {
+  getCustomErrorMessage(message: string) {
     switch (message) {
       case 'auth/network-request-failed':
         this.errorMessage = 'Please check again your internet connection.';
