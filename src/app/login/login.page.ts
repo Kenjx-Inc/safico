@@ -60,6 +60,9 @@ export class LoginPage implements OnInit {
       case 'auth/user-disabled':
         this.errorMessage = 'Please create another account or call the administrator.';
         break;
+      case 'auth/user-not-found':
+        this.errorMessage = 'The account below doesn\'t exist!.';
+        break;
       case 'auth/user-token-expired':
       case 'auth/invalid-user-token':
         this.errorMessage = 'Please sign in again.';
