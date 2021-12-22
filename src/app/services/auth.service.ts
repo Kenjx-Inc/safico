@@ -22,7 +22,7 @@ export class AuthService {
         localStorage.setItem('user', null);
         JSON.parse(localStorage.getItem('user'));
       }
-    })
+    });
   }
 
   // Create account with user and password first
@@ -35,6 +35,7 @@ export class AuthService {
             photoURL: otherDetails?.imgURL
           }).then(() => {
           }).catch(err => { console.log(err); });
+          res.user.sendEmailVerification();
         }
       }
       );
@@ -74,9 +75,9 @@ export class AuthService {
   addImageToUser(imgURL) {
     this.ngFireAuth.onAuthStateChanged((res) => {
 
-        res.updateProfile({
-          photoURL: imgURL
-        }).catch( err => console.log(err));
+      res.updateProfile({
+        photoURL: imgURL
+      }).catch(err => console.log(err));
 
 
 

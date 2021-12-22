@@ -14,6 +14,7 @@ export class AuthGuardService implements CanActivate {
 
     if (!this.authService.getIsLoggedIn()) {
       this.router.navigate(['login'], { queryParams: { retUrl: route.url } });
+      window.alert('Email not yet verified, please check your inbox!');
       return false;
     }
     return true;

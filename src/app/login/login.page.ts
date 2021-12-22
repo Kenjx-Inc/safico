@@ -43,13 +43,15 @@ export class LoginPage implements OnInit {
   }
 
   logIn(value) {
-    this.authService.logIn(value.email, value.password)
+    if (this.authService.getIsLoggedIn()) {
+      this.authService.logIn(value.email, value.password)
       .then(() => {
         this.errorMessage = '';
         this.navCtrl.navigateForward('/tabnav');
       }).catch((error) => {
         this.getCustomErrorMessage(error.message);
       });
+    }
   }
 
   getCustomErrorMessage(message: string) {
@@ -69,6 +71,9 @@ export class LoginPage implements OnInit {
         break;
       case 'auth/web-storage-unsupported':
         this.errorMessage = 'Device storage not yet supported or unavailable.';
+        break;
+      case 'auth/user-not-verified':
+        this.errorMessage = 'This email address not verified. Check your inbox!';
         break;
       case 'auth/too-many-requests':
         this.errorMessage = 'Sorry, try again later!';
