@@ -42,7 +42,7 @@ export class ImageUploadPage implements OnInit {
     this.isImgUploading = false;
     this.isImgUploaded = false;
     const user = JSON.parse(localStorage.getItem('user'));
-     this.userID = user.uid;
+    this.userID = user.uid;
     this.ngFirestoreCollection = angularFirestore.collection<FILE>('filesCollection');
     this.files = this.ngFirestoreCollection.valueChanges();
 
@@ -53,8 +53,7 @@ export class ImageUploadPage implements OnInit {
 
   // Change image of the user
   fileUpload(event) {
-    const file = event.target.files[0].item(0);
-
+    const file = event.target.files[0];
     if (file.type.split('/')[0] !== 'image') {
       console.log('File type not supported!');
       return;
