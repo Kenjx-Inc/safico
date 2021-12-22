@@ -11,10 +11,10 @@
 
   <section class="user-wrapper-form">
     <form class="create-form" (ngSubmit)="addMoreUserDetails(validationsForm.value)" [formGroup]="validationsForm">
-      <label class="error-message">{{errorMessage}}</label>
-      <!-- INPUTS -->
+     <!-- INPUTS -->
       <ion-input required type="text" formControlName="firstName" placeholder="First Name" name="firstName">
       </ion-input>
+    
       <div class="validation-errors">
         <ng-container *ngFor="let validation of validationMessages.firstName">
           <div class="error-message" *ngIf="validationsForm.get('firstName').hasError(validation.type) &&

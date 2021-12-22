@@ -59,16 +59,16 @@ export class UserCreateEditModalPage implements OnInit {
   }
 
   addMoreUserDetails(form) {
-    this.authService.createUser(this.email, this.password, { ...form }).then(() => {
+    this.authService.createUser(this.email, this.password, { ...form })
+     .then(() => {
       this.message = 'Verification email sent! Check your inbox.';
       this.presentAlert();
-      // this.message = 'Check your inbox for email verification!.';
+      
     }).catch((error) => {
       this.getCustomErrorMessage(error.code);
       this.presentAlert();
     });
   }
-
 
   async presentAlert() {
     const alert = await this.alertController.create({
@@ -86,6 +86,7 @@ export class UserCreateEditModalPage implements OnInit {
           }
         }]
     });
+
     await alert.present();
   }
 

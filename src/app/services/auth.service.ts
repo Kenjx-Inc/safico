@@ -35,9 +35,10 @@ export class AuthService {
             photoURL: otherDetails?.imgURL
           }).then(() => {
           }).catch(err => { console.log(err); });
+          
           res.user.sendEmailVerification();
         }
-      }
+       }
       );
   }
 
