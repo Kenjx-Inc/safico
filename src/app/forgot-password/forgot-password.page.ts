@@ -9,19 +9,19 @@ import { AuthService } from '../services/auth.service';
 })
 export class ForgotPasswordPage implements OnInit {
 
-  constructor(public AuthService: AuthService, public router: Router) { }
+  constructor(public authService: AuthService, public router: Router) { }
 
   ngOnInit() {
   }
 
   // Reset Password - Email specified recieves the reset token from firebase
-  resetPassword(email) {
+  resetPassword(email){
     // Obtain value from the input-email object
-    this.AuthService.initiatePasswordRecovery(email.value).then(
-      (res) => {
+    this.authService.initiatePasswordRecovery(email.value).then(
+      () => {
         this.router.navigateByUrl('/login');
       }
-    )
+    );
   }
 
 }

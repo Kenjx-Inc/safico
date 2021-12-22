@@ -11,8 +11,6 @@
     <section class="login-wrapper-form">
 
       <form class="login-form" [formGroup]="validationsForm" (ngSubmit)="logIn(validationsForm.value)">
-        <label class="error-message">{{errorMessage}}</label>
-
         <ion-input type="email" formControlName="email" placeholder="Email"></ion-input>
         <div class="validation-errors">
           <ng-container *ngFor="let validation of validationMessages.email">

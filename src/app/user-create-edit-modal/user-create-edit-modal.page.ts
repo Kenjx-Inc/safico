@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ModalController, NavController, AlertController } from '@ionic/angular';
+import { ModalController, NavController, AlertController, ToastController } from '@ionic/angular';
 import { enterAnimation } from '../nav-animation';
 import { AuthService } from '../services/auth.service';
 
@@ -38,10 +38,8 @@ export class UserCreateEditModalPage implements OnInit {
 
 
   constructor(private formBuilder: FormBuilder, private navCtrl: NavController,
-    public authService: AuthService,
-    public router: Router,
-    private modal: ModalController,
-    private alertController: AlertController) {
+    public authService: AuthService, private toastController: ToastController,
+    public router: Router, private modal: ModalController, private alertController: AlertController) {
 
   }
 
@@ -60,16 +58,25 @@ export class UserCreateEditModalPage implements OnInit {
 
   addMoreUserDetails(form) {
     this.authService.createUser(this.email, this.password, { ...form })
-     .then(() => {
-      this.message = 'Verification email sent! Check your inbox.';
-      this.presentAlert();
-      
-    }).catch((error) => {
-      this.getCustomErrorMessage(error.code);
-      this.presentAlert();
-    });
+      .then(() => {
+        this.message = 'Verification email sent! Check your inbox.';
+        this.presentAlert();
+      }).catch((error) => {
+        this.getCustomErrorMessage(error.code);
+        this.presentToast();
+      });
   }
 
+  // Toast
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: this.message,
+      duration: 3000
+    });
+    toast.present();
+  }
+
+  //  Alert For Email Confirmation
   async presentAlert() {
     const alert = await this.alertController.create({
       header: 'Create Account',
